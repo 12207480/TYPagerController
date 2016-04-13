@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B0B0F9731CBE727000020FAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9721CBE727000020FAD /* main.m */; };
+		B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9751CBE727000020FAD /* AppDelegate.m */; };
+		B0B0F9791CBE727000020FAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9781CBE727000020FAD /* ViewController.m */; };
+		B0B0F97C1CBE727000020FAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97A1CBE727000020FAD /* Main.storyboard */; };
+		B0B0F97E1CBE727000020FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97D1CBE727000020FAD /* Assets.xcassets */; };
+		B0B0F9811CBE727000020FAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */; };
+		B0B0F98C1CBE727100020FAD /* TYPagerControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B0B0F9881CBE727100020FAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0B0F9661CBE727000020FAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0B0F96D1CBE727000020FAD;
+			remoteInfo = TYPagerControllerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYPagerControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B0F9721CBE727000020FAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B0B0F9741CBE727000020FAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B0B0F9751CBE727000020FAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B0B0F9771CBE727000020FAD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B0B0F9781CBE727000020FAD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B0B0F97B1CBE727000020FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B0B0F97D1CBE727000020FAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0B0F9801CBE727000020FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B0B0F9821CBE727000020FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0B0F9871CBE727100020FAD /* TYPagerControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TYPagerControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYPagerControllerDemoTests.m; sourceTree = "<group>"; };
+		B0B0F98D1CBE727100020FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B0B0F96B1CBE727000020FAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B0F9841CBE727100020FAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B0B0F9651CBE727000020FAD = {
+			isa = PBXGroup;
+			children = (
+				B0B0F9701CBE727000020FAD /* TYPagerControllerDemo */,
+				B0B0F98A1CBE727100020FAD /* TYPagerControllerDemoTests */,
+				B0B0F96F1CBE727000020FAD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B0B0F96F1CBE727000020FAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */,
+				B0B0F9871CBE727100020FAD /* TYPagerControllerDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0B0F9701CBE727000020FAD /* TYPagerControllerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0F9741CBE727000020FAD /* AppDelegate.h */,
+				B0B0F9751CBE727000020FAD /* AppDelegate.m */,
+				B0B0F9771CBE727000020FAD /* ViewController.h */,
+				B0B0F9781CBE727000020FAD /* ViewController.m */,
+				B0B0F97A1CBE727000020FAD /* Main.storyboard */,
+				B0B0F97D1CBE727000020FAD /* Assets.xcassets */,
+				B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */,
+				B0B0F9821CBE727000020FAD /* Info.plist */,
+				B0B0F9711CBE727000020FAD /* Supporting Files */,
+			);
+			path = TYPagerControllerDemo;
+			sourceTree = "<group>";
+		};
+		B0B0F9711CBE727000020FAD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0F9721CBE727000020FAD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B0B0F98A1CBE727100020FAD /* TYPagerControllerDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */,
+				B0B0F98D1CBE727100020FAD /* Info.plist */,
+			);
+			path = TYPagerControllerDemoTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B0B0F96D1CBE727000020FAD /* TYPagerControllerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0B0F9901CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo" */;
+			buildPhases = (
+				B0B0F96A1CBE727000020FAD /* Sources */,
+				B0B0F96B1CBE727000020FAD /* Frameworks */,
+				B0B0F96C1CBE727000020FAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TYPagerControllerDemo;
+			productName = TYPagerControllerDemo;
+			productReference = B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B0B0F9861CBE727100020FAD /* TYPagerControllerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0B0F9931CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemoTests" */;
+			buildPhases = (
+				B0B0F9831CBE727100020FAD /* Sources */,
+				B0B0F9841CBE727100020FAD /* Frameworks */,
+				B0B0F9851CBE727100020FAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0B0F9891CBE727100020FAD /* PBXTargetDependency */,
+			);
+			name = TYPagerControllerDemoTests;
+			productName = TYPagerControllerDemoTests;
+			productReference = B0B0F9871CBE727100020FAD /* TYPagerControllerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B0B0F9661CBE727000020FAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = tanyang;
+				TargetAttributes = {
+					B0B0F96D1CBE727000020FAD = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = ZW52Q3KXX4;
+					};
+					B0B0F9861CBE727100020FAD = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = ZW52Q3KXX4;
+						TestTargetID = B0B0F96D1CBE727000020FAD;
+					};
+				};
+			};
+			buildConfigurationList = B0B0F9691CBE727000020FAD /* Build configuration list for PBXProject "TYPagerControllerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B0B0F9651CBE727000020FAD;
+			productRefGroup = B0B0F96F1CBE727000020FAD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B0B0F96D1CBE727000020FAD /* TYPagerControllerDemo */,
+				B0B0F9861CBE727100020FAD /* TYPagerControllerDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B0B0F96C1CBE727000020FAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B0F9811CBE727000020FAD /* LaunchScreen.storyboard in Resources */,
+				B0B0F97E1CBE727000020FAD /* Assets.xcassets in Resources */,
+				B0B0F97C1CBE727000020FAD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B0F9851CBE727100020FAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B0B0F96A1CBE727000020FAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B0F9791CBE727000020FAD /* ViewController.m in Sources */,
+				B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */,
+				B0B0F9731CBE727000020FAD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0B0F9831CBE727100020FAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B0F98C1CBE727100020FAD /* TYPagerControllerDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B0B0F9891CBE727100020FAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0B0F96D1CBE727000020FAD /* TYPagerControllerDemo */;
+			targetProxy = B0B0F9881CBE727100020FAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B0B0F97A1CBE727000020FAD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0B0F97B1CBE727000020FAD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0B0F9801CBE727000020FAD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B0B0F98E1CBE727100020FAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B0B0F98F1CBE727100020FAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B0B0F9911CBE727100020FAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B0B0F9921CBE727100020FAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B0B0F9941CBE727100020FAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TYPagerControllerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TYPagerControllerDemo.app/TYPagerControllerDemo";
+			};
+			name = Debug;
+		};
+		B0B0F9951CBE727100020FAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TYPagerControllerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TYPagerControllerDemo.app/TYPagerControllerDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B0B0F9691CBE727000020FAD /* Build configuration list for PBXProject "TYPagerControllerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0B0F98E1CBE727100020FAD /* Debug */,
+				B0B0F98F1CBE727100020FAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0B0F9901CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0B0F9911CBE727100020FAD /* Debug */,
+				B0B0F9921CBE727100020FAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B0B0F9931CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0B0F9941CBE727100020FAD /* Debug */,
+				B0B0F9951CBE727100020FAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B0B0F9661CBE727000020FAD /* Project object */;
+}
