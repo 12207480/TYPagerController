@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self addContentView];
 
     [self configirePropertys];
@@ -62,16 +62,30 @@
     _curIndex = 0;
 }
 
+- (void)reloadData
+{
+    [_memoryCache removeAllObjects];
+    [_visibleControllers removeAllObjects];
+    _curIndex = 0;
+    
+    [self updateContentView];
+}
+
+- (void)updateContentView
+{
+    _needLayoutContentView = YES;
+    _countOfControllers = [_dataSource numberOfControllersInPagerController];
+    // size changed
+    [self reSizeContentView];
+    
+    [self layoutContentView];
+}
+
 #pragma mark - layout content
 - (void)layoutContentViewIfNeed
 {
     if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging))) {
-        _needLayoutContentView = YES;
-        _countOfControllers = [_dataSource numberOfControllersInPagerController];
-        // size changed
-        [self reSizeContentView];
-        
-        [self layoutContentView];
+        [self updateContentView];
     }
 }
 
@@ -195,7 +209,6 @@
 - (void)dealloc
 {
     [_memoryCache removeAllObjects];
-    
     [_visibleControllers removeAllObjects];
 }
 

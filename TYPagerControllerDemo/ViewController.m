@@ -11,7 +11,7 @@
 #import "CustomViewController.h"
 
 @interface ViewController ()<TYPagerControllerDataSource>
-
+@property (nonatomic, strong) TYPagerController *pagerController;
 @end
 
 @implementation ViewController
@@ -19,16 +19,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self addPagerController];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:_pagerController action:@selector(reloadData)];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _pagerController.view.frame = self.view.bounds;
 }
 
 - (void)addPagerController
 {
-    TYPagerController *VC = [[TYPagerController alloc]init];
-    VC.dataSource = self;
-    [self addChildViewController:VC];
-    VC.view.frame = self.view.bounds;
-    [self.view addSubview:VC.view];
+    TYPagerController *pagerController = [[TYPagerController alloc]init];
+    pagerController.dataSource = self;
+    pagerController.view.frame = self.view.bounds;
+    [self addChildViewController:pagerController];
+    [self.view addSubview:pagerController.view];
+    _pagerController = pagerController;
 }
 
 - (NSInteger)numberOfControllersInPagerController
