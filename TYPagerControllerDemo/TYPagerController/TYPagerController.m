@@ -12,6 +12,8 @@
 
 @property (nonatomic, weak) UIScrollView *contentView;
 
+@property (nonatomic, strong) NSMutableDictionary *visibleControllers;
+
 @property (nonatomic, strong) NSCache *memoryCache;
 
 @property (nonatomic, assign) NSInteger countOfControllers;
@@ -53,6 +55,7 @@
 
 - (void)configirePropertys
 {
+    _visibleControllers = [NSMutableDictionary dictionary];
     _memoryCache = [[NSCache alloc]init];
     _curIndex = -1;
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B5589201CC7469300A21F85 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55891F1CC7469300A21F85 /* CustomViewController.m */; };
 		B0B0F9731CBE727000020FAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9721CBE727000020FAD /* main.m */; };
 		B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9751CBE727000020FAD /* AppDelegate.m */; };
 		B0B0F9791CBE727000020FAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9781CBE727000020FAD /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B55891E1CC7469300A21F85 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		2B55891F1CC7469300A21F85 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYPagerControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B0F9721CBE727000020FAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B0B0F9741CBE727000020FAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				B0B0F9751CBE727000020FAD /* AppDelegate.m */,
 				B0B0F9771CBE727000020FAD /* ViewController.h */,
 				B0B0F9781CBE727000020FAD /* ViewController.m */,
+				2B55891E1CC7469300A21F85 /* CustomViewController.h */,
+				2B55891F1CC7469300A21F85 /* CustomViewController.m */,
 				B0B0F97A1CBE727000020FAD /* Main.storyboard */,
 				B0B0F97D1CBE727000020FAD /* Assets.xcassets */,
 				B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */,
@@ -227,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0B0F9791CBE727000020FAD /* ViewController.m in Sources */,
+				2B5589201CC7469300A21F85 /* CustomViewController.m in Sources */,
 				B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */,
 				B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */,
 				B0B0F9731CBE727000020FAD /* main.m in Sources */,
