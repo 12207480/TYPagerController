@@ -14,6 +14,8 @@
 		B0B0F97E1CBE727000020FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97D1CBE727000020FAD /* Assets.xcassets */; };
 		B0B0F9811CBE727000020FAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */; };
 		B0B0F98C1CBE727100020FAD /* TYPagerControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */; };
+		B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9981CBE72AF00020FAD /* TYPagerController.m */; };
+		B0FE9FBE1CC684FA009A594B /* CustomPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE9FBD1CC684FA009A594B /* CustomPagerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		B0B0F9871CBE727100020FAD /* TYPagerControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TYPagerControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYPagerControllerDemoTests.m; sourceTree = "<group>"; };
 		B0B0F98D1CBE727100020FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0B0F9971CBE72AF00020FAD /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
+		B0B0F9981CBE72AF00020FAD /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
+		B0FE9FBC1CC684FA009A594B /* CustomPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPagerController.h; sourceTree = "<group>"; };
+		B0FE9FBD1CC684FA009A594B /* CustomPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPagerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +87,13 @@
 		B0B0F9701CBE727000020FAD /* TYPagerControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B0B0F9961CBE728900020FAD /* TYPagerController */,
 				B0B0F9741CBE727000020FAD /* AppDelegate.h */,
 				B0B0F9751CBE727000020FAD /* AppDelegate.m */,
 				B0B0F9771CBE727000020FAD /* ViewController.h */,
 				B0B0F9781CBE727000020FAD /* ViewController.m */,
+				B0FE9FBC1CC684FA009A594B /* CustomPagerController.h */,
+				B0FE9FBD1CC684FA009A594B /* CustomPagerController.m */,
 				B0B0F97A1CBE727000020FAD /* Main.storyboard */,
 				B0B0F97D1CBE727000020FAD /* Assets.xcassets */,
 				B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */,
@@ -109,6 +118,15 @@
 				B0B0F98D1CBE727100020FAD /* Info.plist */,
 			);
 			path = TYPagerControllerDemoTests;
+			sourceTree = "<group>";
+		};
+		B0B0F9961CBE728900020FAD /* TYPagerController */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0F9971CBE72AF00020FAD /* TYPagerController.h */,
+				B0B0F9981CBE72AF00020FAD /* TYPagerController.m */,
+			);
+			path = TYPagerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +233,8 @@
 			files = (
 				B0B0F9791CBE727000020FAD /* ViewController.m in Sources */,
 				B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */,
+				B0FE9FBE1CC684FA009A594B /* CustomPagerController.m in Sources */,
+				B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */,
 				B0B0F9731CBE727000020FAD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -333,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,6 +366,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,6 +378,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,6 +428,7 @@
 				B0B0F9921CBE727100020FAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0B0F9931CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +437,7 @@
 				B0B0F9951CBE727100020FAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

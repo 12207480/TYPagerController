@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CustomPagerController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self addPagerController];
+}
+
+- (void)addPagerController
+{
+    CustomPagerController *VC = [[CustomPagerController alloc]init];
+    [self addChildViewController:VC];
+    VC.view.frame = self.view.bounds;
+    [self.view addSubview:VC.view];
 }
 
 - (void)didReceiveMemoryWarning {
