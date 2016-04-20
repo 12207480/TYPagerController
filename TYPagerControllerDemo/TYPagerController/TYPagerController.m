@@ -186,17 +186,6 @@
     [self layoutContentView];
 }
 
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-//{
-//    NSLog(@"scrollViewDidEndDecelerating");
-//    [self layoutContentView];
-//}
-//
-//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-//{
-//    NSLog(@"scrollViewDidEndScrollingAnimation");
-//    [self layoutContentView];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
