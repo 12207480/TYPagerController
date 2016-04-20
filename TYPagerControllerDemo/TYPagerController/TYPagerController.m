@@ -81,6 +81,11 @@
     [_contentView setContentOffset:CGPointMake(index * CGRectGetWidth(_contentView.frame),0) animated:animated];
 }
 
+- (NSArray *)visibleViewControllers
+{
+    return [_visibleControllers allValues];
+}
+
 #pragma mark - layout content
 
 - (void)layoutContentViewIfNeed

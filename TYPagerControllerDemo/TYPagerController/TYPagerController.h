@@ -23,12 +23,14 @@
 
 @property (nonatomic, strong, readonly) NSCache *memoryCache;
 
-@property (nonatomic, assign, readonly) NSInteger curIndex; 
+@property (nonatomic, assign, readonly) NSInteger curIndex;
 
 @property (nonatomic, weak) id<TYPagerControllerDataSource> dataSource;
 
 - (void)reloadData;
 
 - (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
+
+- (NSArray *)visibleViewControllers;
 
 @end
