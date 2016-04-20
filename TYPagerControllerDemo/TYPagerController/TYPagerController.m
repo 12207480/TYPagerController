@@ -62,6 +62,8 @@
     _curIndex = 0;
 }
 
+#pragma mark - public method
+
 - (void)reloadData
 {
     [_memoryCache removeAllObjects];
@@ -69,6 +71,23 @@
     _curIndex = 0;
     
     [self updateContentView];
+}
+
+- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated
+{
+    if (index < 0 || index >= _countOfControllers) {
+        return;
+    }
+    [_contentView setContentOffset:CGPointMake(index * CGRectGetWidth(_contentView.frame),0) animated:animated];
+}
+
+#pragma mark - layout content
+
+- (void)layoutContentViewIfNeed
+{
+    if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging))) {
+        [self updateContentView];
+    }
 }
 
 - (void)updateContentView
@@ -79,14 +98,6 @@
     [self reSizeContentView];
     
     [self layoutContentView];
-}
-
-#pragma mark - layout content
-- (void)layoutContentViewIfNeed
-{
-    if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging))) {
-        [self updateContentView];
-    }
 }
 
 - (void)reSizeContentView

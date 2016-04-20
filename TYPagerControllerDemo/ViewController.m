@@ -21,7 +21,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self addPagerController];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:_pagerController action:@selector(reloadData)];
+    UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc]initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:_pagerController action:@selector(reloadData)];
+    UIBarButtonItem *scrollItem = [[UIBarButtonItem alloc]initWithTitle:@"scroll" style:UIBarButtonItemStylePlain target:self action:@selector(scrollToRamdomIndex)];
+    self.navigationItem.rightBarButtonItems = @[reloadItem,scrollItem];
 }
 
 - (void)viewWillLayoutSubviews
@@ -38,6 +40,11 @@
     [self addChildViewController:pagerController];
     [self.view addSubview:pagerController.view];
     _pagerController = pagerController;
+}
+
+- (void)scrollToRamdomIndex
+{
+    [_pagerController scrollToIndex:arc4random()%30 animated:NO];
 }
 
 - (NSInteger)numberOfControllersInPagerController

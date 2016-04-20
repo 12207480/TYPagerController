@@ -27,4 +27,8 @@
 
 @property (nonatomic, weak) id<TYPagerControllerDataSource> dataSource;
 
+- (void)reloadData;
+
+- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
+
 @end
