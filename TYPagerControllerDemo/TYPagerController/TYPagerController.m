@@ -129,10 +129,10 @@
         [viewController willMoveToParentViewController:nil];
         [viewController.view removeFromSuperview];
         [viewController removeFromParentViewController];
-    }
-    
-    if (![_memoryCache objectForKey:@(index)]) {
-        [_memoryCache setObject:viewController forKey:@(index)];
+        
+        if (![_memoryCache objectForKey:@(index)]) {
+            [_memoryCache setObject:viewController forKey:@(index)];
+        }
     }
 }
 
