@@ -20,7 +20,7 @@
 
 @property (nonatomic, assign) NSInteger curIndex;
 
-@property (nonatomic, assign) BOOL needLayout;
+@property (nonatomic, assign) BOOL needLayoutContentView;
 
 @end
 
@@ -59,15 +59,15 @@
 {
     _visibleControllers = [NSMutableDictionary dictionary];
     _memoryCache = [[NSCache alloc]init];
-    _curIndex = -1;
+    _curIndex = 0;
 }
 
 #pragma mark - layout content
 - (void)layoutContentViewIfNeed
 {
     if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging))) {
-        _needLayout = YES;
-         _countOfControllers = [_dataSource numberOfControllersInPagerController];
+        _needLayoutContentView = YES;
+        _countOfControllers = [_dataSource numberOfControllersInPagerController];
         // size changed
         [self reSizeContentView];
         
@@ -86,12 +86,17 @@
 {
     NSInteger curIndex = _contentView.contentOffset.x/CGRectGetWidth(_contentView.frame);
     
-    if (curIndex == _curIndex && !_needLayout) {
+    if (curIndex < 0) {
+        curIndex = 0;
+    }else if(curIndex >= _countOfControllers){
+        curIndex = _countOfControllers - 1;
+    }
+    if (curIndex == _curIndex && !_needLayoutContentView) {
         return;
     }
-    _needLayout = NO;
-    NSLog(@"cur index %ld count %ld",curIndex,self.childViewControllers.count);
+    _needLayoutContentView = NO;
     _curIndex = curIndex;
+    //NSLog(@"cur index %ld count %ld",curIndex,self.childViewControllers.count);
     
     [self removeUnVisibleControllersAtIndex:curIndex];
     
@@ -101,22 +106,26 @@
 #pragma mark - remove controller
 - (void)removeUnVisibleControllersAtIndex:(NSInteger)index
 {
+    NSMutableArray *deleteArray = [NSMutableArray array];
     [_visibleControllers enumerateKeysAndObjectsUsingBlock:^(NSNumber *key, UIViewController *viewController, BOOL * stop) {
         NSInteger indexOfController = [key integerValue];
         
         if (indexOfController < index || indexOfController > index+1) {
             // unvisible
-            [self removeViewController:viewController atIndex:index];
+            [self removeViewController:viewController atIndex:indexOfController];
+            [deleteArray addObject:key];
         }else {
-            [self addViewController:viewController atIndex:index];
+            [self addViewController:viewController atIndex:indexOfController];
         }
     }];
+    
+    [_visibleControllers removeObjectsForKeys:deleteArray];
 }
 
 - (void)removeViewController:(UIViewController *)viewController atIndex:(NSInteger)index
 {
     if (viewController.parentViewController) {
-        NSLog(@"removeViewController index %ld",index);
+        //NSLog(@"removeViewController index %ld",index);
         [viewController willMoveToParentViewController:nil];
         [viewController.view removeFromSuperview];
         [viewController removeFromParentViewController];
@@ -151,7 +160,7 @@
 - (void)addViewController:(UIViewController *)viewController atIndex:(NSInteger)index
 {
     if (!viewController.parentViewController) {
-        NSLog(@"addViewController index %ld",index);
+        //NSLog(@"addViewController index %ld",index);
         [self addChildViewController:viewController];
         viewController.view.frame = [self frameForControllerAtIndex:index];
         [_contentView addSubview:viewController.view];

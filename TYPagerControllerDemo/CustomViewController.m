@@ -41,13 +41,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear index %@",_text);
+    //NSLog(@"viewWillAppear index %@",_text);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSLog(@"viewWillDisappear index %@",_text);
+    //NSLog(@"viewWillDisappear index %@",_text);
 }
 
 - (void)didReceiveMemoryWarning {
