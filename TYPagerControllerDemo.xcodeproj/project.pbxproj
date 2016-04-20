@@ -15,7 +15,6 @@
 		B0B0F9811CBE727000020FAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */; };
 		B0B0F98C1CBE727100020FAD /* TYPagerControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */; };
 		B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9981CBE72AF00020FAD /* TYPagerController.m */; };
-		B0FE9FBE1CC684FA009A594B /* CustomPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FE9FBD1CC684FA009A594B /* CustomPagerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +43,6 @@
 		B0B0F98D1CBE727100020FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0B0F9971CBE72AF00020FAD /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
 		B0B0F9981CBE72AF00020FAD /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
-		B0FE9FBC1CC684FA009A594B /* CustomPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPagerController.h; sourceTree = "<group>"; };
-		B0FE9FBD1CC684FA009A594B /* CustomPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPagerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +89,6 @@
 				B0B0F9751CBE727000020FAD /* AppDelegate.m */,
 				B0B0F9771CBE727000020FAD /* ViewController.h */,
 				B0B0F9781CBE727000020FAD /* ViewController.m */,
-				B0FE9FBC1CC684FA009A594B /* CustomPagerController.h */,
-				B0FE9FBD1CC684FA009A594B /* CustomPagerController.m */,
 				B0B0F97A1CBE727000020FAD /* Main.storyboard */,
 				B0B0F97D1CBE727000020FAD /* Assets.xcassets */,
 				B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */,
@@ -233,7 +228,6 @@
 			files = (
 				B0B0F9791CBE727000020FAD /* ViewController.m in Sources */,
 				B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */,
-				B0FE9FBE1CC684FA009A594B /* CustomPagerController.m in Sources */,
 				B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */,
 				B0B0F9731CBE727000020FAD /* main.m in Sources */,
 			);
