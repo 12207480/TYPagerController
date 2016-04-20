@@ -21,10 +21,15 @@
     [self addPageLabel];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _label.center = CGPointMake(CGRectGetWidth(self.view.frame)/2, CGRectGetHeight(self.view.frame)/2);
+}
+
 - (void)addPageLabel
 {
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
-    label.center = self.view.center;
     label.text = _text;
     label.font = [UIFont systemFontOfSize:32];
     label.textAlignment = NSTextAlignmentCenter;
@@ -37,12 +42,6 @@
 {
     [super viewWillAppear:animated];
     NSLog(@"viewWillAppear index %@",_text);
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    NSLog(@"viewDidAppear index %@",_text);
 }
 
 - (void)viewWillDisappear:(BOOL)animated

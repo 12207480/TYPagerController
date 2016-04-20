@@ -20,6 +20,8 @@
 
 @property (nonatomic, assign) NSInteger curIndex;
 
+@property (nonatomic, assign) BOOL needLayout;
+
 @end
 
 @implementation TYPagerController
@@ -64,6 +66,7 @@
 - (void)layoutContentViewIfNeed
 {
     if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging))) {
+        _needLayout = YES;
          _countOfControllers = [_dataSource numberOfControllersInPagerController];
         // size changed
         [self reSizeContentView];
@@ -76,33 +79,32 @@
 {
     _contentView.frame = CGRectMake(0, _topEdging, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging);
     _contentView.contentSize = CGSizeMake(_countOfControllers * CGRectGetWidth(_contentView.frame), 0);
+    _contentView.contentOffset = CGPointMake(MAX(_curIndex, 0)*CGRectGetWidth(_contentView.frame), 0);
 }
 
 - (void)layoutContentView
 {
     NSInteger curIndex = _contentView.contentOffset.x/CGRectGetWidth(_contentView.frame);
     
-    if (curIndex == _curIndex) {
+    if (curIndex == _curIndex && !_needLayout) {
         return;
     }
+    _needLayout = NO;
     NSLog(@"cur index %ld count %ld",curIndex,self.childViewControllers.count);
     _curIndex = curIndex;
     
-    [self removeUnVisibleControllersWithOffset:_contentView.contentOffset.x];
+    [self removeUnVisibleControllersAtIndex:curIndex];
     
-    [self addVisibleControllersWithOffset:_contentView.contentOffset.x];
+    [self addVisibleControllersAtIndex:curIndex];
 }
 
 #pragma mark - remove controller
-- (void)removeUnVisibleControllersWithOffset:(CGFloat)offset
+- (void)removeUnVisibleControllersAtIndex:(NSInteger)index
 {
-    // preload page view
-    CGFloat maxOffset = offset + 2 * CGRectGetWidth(_contentView.frame);
-    maxOffset = MIN(maxOffset, _countOfControllers*CGRectGetWidth(_contentView.frame));
-    [self.childViewControllers enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
-        NSInteger index = CGRectGetMinX(viewController.view.frame)/CGRectGetWidth(_contentView.frame);
-        index = MIN(index, _countOfControllers-1);
-        if (CGRectGetMinX(viewController.view.frame)< offset || CGRectGetMaxX(viewController.view.frame) > maxOffset) {
+    [_visibleControllers enumerateKeysAndObjectsUsingBlock:^(NSNumber *key, UIViewController *viewController, BOOL * stop) {
+        NSInteger indexOfController = [key integerValue];
+        
+        if (indexOfController < index || indexOfController > index+1) {
             // unvisible
             [self removeViewController:viewController atIndex:index];
         }else {
@@ -126,14 +128,17 @@
 }
 
 #pragma mark - add controller
-- (void)addVisibleControllersWithOffset:(CGFloat)offset
+- (void)addVisibleControllersAtIndex:(NSInteger)index
 {
     // preload page +1 view
-    NSInteger startIndex = offset/CGRectGetWidth(_contentView.frame);
-    NSInteger endIndex = MIN(_countOfControllers-1, startIndex+1) ;
-    for (NSInteger idx = startIndex ; idx <= endIndex; ++idx) {
+    NSInteger endIndex = MIN(index+1,_countOfControllers-1);
+    for (NSInteger idx = index ; idx <= endIndex; ++idx) {
         
-        UIViewController *viewController = [_memoryCache objectForKey:@(idx)];
+        UIViewController *viewController = [_visibleControllers objectForKey:@(idx)];
+        
+        if (!viewController) {
+            viewController = [_memoryCache objectForKey:@(idx)];
+        }
         
         if (!viewController) {
             viewController = [_dataSource pagerController:self controllerForIndex:idx];
@@ -151,12 +156,12 @@
         viewController.view.frame = [self frameForControllerAtIndex:index];
         [_contentView addSubview:viewController.view];
         [viewController didMoveToParentViewController:self];
+        
+        if (![_visibleControllers objectForKey:@(index)]) {
+            [_visibleControllers setObject:viewController forKey:@(index)];
+        }
     }else {
         viewController.view.frame = [self frameForControllerAtIndex:index];
-    }
-    
-    if (![_memoryCache objectForKey:@(index)]) {
-        [_memoryCache setObject:viewController forKey:@(index)];
     }
 }
 
@@ -192,6 +197,8 @@
 - (void)dealloc
 {
     [_memoryCache removeAllObjects];
+    
+    [_visibleControllers removeAllObjects];
 }
 
 /*
