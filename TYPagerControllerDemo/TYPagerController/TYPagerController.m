@@ -20,9 +20,31 @@
 
 @property (nonatomic, assign) NSInteger curIndex;
 
+@property (nonatomic, assign) NSRange visibleRange;
+
 @property (nonatomic, assign) BOOL needLayoutContentView;
 
 @end
+
+NS_INLINE CGRect frameForControllerAtIndex(NSInteger index, CGRect frame)
+{
+    return CGRectMake(index * CGRectGetWidth(frame), 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
+}
+
+NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger maxIndex)
+{
+    NSInteger startIndex = offset/width;
+    NSInteger endIndex = ceil((offset + width)/width);
+    
+    if (startIndex < 0) {
+        startIndex = 0;
+    }
+    
+    if (endIndex > maxIndex) {
+        endIndex = maxIndex;
+    }
+    return NSMakeRange(startIndex, endIndex - startIndex);
+}
 
 @implementation TYPagerController
 
@@ -62,13 +84,23 @@
     _curIndex = 0;
 }
 
+- (void)resetPropertys
+{
+    [_memoryCache removeAllObjects];
+    [_visibleControllers removeAllObjects];
+    
+    for (UIViewController *viewController in self.childViewControllers) {
+        [self removeViewController:viewController];
+    }
+    
+    _curIndex = 0;
+}
+
 #pragma mark - public method
 
 - (void)reloadData
 {
-    [_memoryCache removeAllObjects];
-    [_visibleControllers removeAllObjects];
-    _curIndex = 0;
+    [self resetPropertys];
     
     [self updateContentView];
 }
@@ -90,7 +122,7 @@
 
 - (void)layoutContentViewIfNeed
 {
-    if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging))) {
+    if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _contentTopEdging))) {
         [self updateContentView];
     }
 }
@@ -107,40 +139,54 @@
 
 - (void)reSizeContentView
 {
-    _contentView.frame = CGRectMake(0, _topEdging, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _topEdging);
+    _contentView.frame = CGRectMake(0, _contentTopEdging, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _contentTopEdging);
     _contentView.contentSize = CGSizeMake(_countOfControllers * CGRectGetWidth(_contentView.frame), 0);
-    _contentView.contentOffset = CGPointMake(MAX(_curIndex, 0)*CGRectGetWidth(_contentView.frame), 0);
+    _contentView.contentOffset = CGPointMake(_curIndex*CGRectGetWidth(_contentView.frame), 0);
 }
 
 - (void)layoutContentView
 {
-    NSInteger curIndex = _contentView.contentOffset.x/CGRectGetWidth(_contentView.frame);
-    
-    if (curIndex < 0) {
-        curIndex = 0;
-    }else if(curIndex >= _countOfControllers){
-        curIndex = _countOfControllers - 1;
-    }
-    if (curIndex == _curIndex && !_needLayoutContentView) {
+    // 获取可见range
+    NSRange visibleRange = visibleRangWithOffset(_contentView.contentOffset.x, CGRectGetWidth(_contentView.frame), _countOfControllers);
+
+    if (NSEqualRanges(_visibleRange, visibleRange) && !_needLayoutContentView) {
         return;
     }
+    //NSLog(@"visibleRange %@",NSStringFromRange(visibleRange));
     _needLayoutContentView = NO;
-    _curIndex = curIndex;
-    //NSLog(@"cur index %ld count %ld",curIndex,self.childViewControllers.count);
+    _visibleRange = visibleRange;
+    _curIndex = _visibleRange.location;
     
-    [self removeUnVisibleControllersAtIndex:curIndex];
+    [self removeUnVisibleControllersOutOfRange:_visibleRange];
     
-    [self addVisibleControllersAtIndex:curIndex];
+    [self addVisibleControllersOutOfRange:_visibleRange];
+    
+    //NSLog(@"cur index %ld count %ld",_curIndex,self.childViewControllers.count);
+    
+}
+
+- (NSRange)getVisibleRangWithVisibleOrignX:(CGFloat)visibleOrignX visibleEndX:(CGFloat)visibleEndX
+{
+    NSInteger startIndex = visibleOrignX/CGRectGetWidth(_contentView.frame);
+    
+    NSInteger endIndex = ceil(visibleEndX/CGRectGetWidth(_contentView.frame));
+    if (startIndex < 0) {
+        startIndex = 0;
+    }
+    if (endIndex > _countOfControllers) {
+        endIndex = _countOfControllers;
+    }
+    return NSMakeRange(startIndex, endIndex - startIndex);
 }
 
 #pragma mark - remove controller
-- (void)removeUnVisibleControllersAtIndex:(NSInteger)index
+- (void)removeUnVisibleControllersOutOfRange:(NSRange)range
 {
     NSMutableArray *deleteArray = [NSMutableArray array];
     [_visibleControllers enumerateKeysAndObjectsUsingBlock:^(NSNumber *key, UIViewController *viewController, BOOL * stop) {
         NSInteger indexOfController = [key integerValue];
         
-        if (indexOfController < index || indexOfController > index+1) {
+        if (!NSLocationInRange(indexOfController, range)) {
             // unvisible
             [self removeViewController:viewController atIndex:indexOfController];
             [deleteArray addObject:key];
@@ -156,9 +202,7 @@
 {
     if (viewController.parentViewController) {
         //NSLog(@"removeViewController index %ld",index);
-        [viewController willMoveToParentViewController:nil];
-        [viewController.view removeFromSuperview];
-        [viewController removeFromParentViewController];
+        [self removeViewController:viewController];
         
         if (![_memoryCache objectForKey:@(index)]) {
             [_memoryCache setObject:viewController forKey:@(index)];
@@ -166,12 +210,20 @@
     }
 }
 
+- (void)removeViewController:(UIViewController *)viewController
+{
+    [viewController willMoveToParentViewController:nil];
+    [viewController.view removeFromSuperview];
+    [viewController removeFromParentViewController];
+
+}
+
 #pragma mark - add controller
-- (void)addVisibleControllersAtIndex:(NSInteger)index
+- (void)addVisibleControllersOutOfRange:(NSRange)range
 {
     // preload page +1 view
-    NSInteger endIndex = MIN(index+1,_countOfControllers-1);
-    for (NSInteger idx = index ; idx <= endIndex; ++idx) {
+    NSInteger endIndex = range.location + range.length;
+    for (NSInteger idx = range.location ; idx < endIndex; ++idx) {
         
         UIViewController *viewController = [_visibleControllers objectForKey:@(idx)];
         
@@ -192,7 +244,7 @@
     if (!viewController.parentViewController) {
         //NSLog(@"addViewController index %ld",index);
         [self addChildViewController:viewController];
-        viewController.view.frame = [self frameForControllerAtIndex:index];
+        viewController.view.frame = frameForControllerAtIndex(index, _contentView.frame);
         [_contentView addSubview:viewController.view];
         [viewController didMoveToParentViewController:self];
         
@@ -200,13 +252,8 @@
             [_visibleControllers setObject:viewController forKey:@(index)];
         }
     }else {
-        viewController.view.frame = [self frameForControllerAtIndex:index];
+        viewController.view.frame = frameForControllerAtIndex(index, _contentView.frame);
     }
-}
-
-- (CGRect)frameForControllerAtIndex:(NSInteger)index
-{
-    return CGRectMake(index * CGRectGetWidth(_contentView.frame), 0, CGRectGetWidth(_contentView.frame), CGRectGetHeight(_contentView.frame));
 }
 
 #pragma mark - UIScrollViewDelegate

@@ -19,11 +19,15 @@
 
 @interface TYPagerController : UIViewController
 
-@property (nonatomic, assign) CGFloat topEdging;
+@property (nonatomic, assign) CGFloat contentTopEdging; // contentView top edge
+
+@property (nonatomic, weak, readonly) UIScrollView *contentView; // don‘t change the frame
 
 @property (nonatomic, strong, readonly) NSCache *memoryCache;
 
 @property (nonatomic, assign, readonly) NSInteger curIndex;
+
+@property (nonatomic, assign, readonly) NSRange visibleRange;
 
 @property (nonatomic, weak) id<TYPagerControllerDataSource> dataSource;
 
