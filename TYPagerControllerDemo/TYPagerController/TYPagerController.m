@@ -8,7 +8,15 @@
 
 #import "TYPagerController.h"
 
-@interface TYPagerController ()<UIScrollViewDelegate>
+@interface TYPagerController ()<UIScrollViewDelegate> {
+    NSInteger   _countOfControllers;
+    BOOL        _needLayoutContentView;
+    CGFloat     _preOffsetX;
+    
+    struct {
+        unsigned int transitionFromIndexToIndex :1;
+    }_delegateFlags;
+}
 
 @property (nonatomic, weak) UIScrollView *contentView;
 
@@ -16,13 +24,9 @@
 
 @property (nonatomic, strong) NSCache *memoryCache;
 
-@property (nonatomic, assign) NSInteger countOfControllers;
-
 @property (nonatomic, assign) NSInteger curIndex;
 
 @property (nonatomic, assign) NSRange visibleRange;
-
-@property (nonatomic, assign) BOOL needLayoutContentView;
 
 @end
 
@@ -56,7 +60,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self addContentView];
 
-    [self configirePropertys];
+    [self configurePropertys];
 }
 
 - (void)viewWillLayoutSubviews
@@ -77,11 +81,15 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     _contentView = contentView;
 }
 
-- (void)configirePropertys
+- (void)configurePropertys
 {
     _visibleControllers = [NSMutableDictionary dictionary];
     _memoryCache = [[NSCache alloc]init];
     _curIndex = 0;
+    _preOffsetX = 0;
+    _changeIndexWhenScrollProgress = 1.0;
+
+    [self configureDelegate];
 }
 
 - (void)resetPropertys
@@ -94,6 +102,14 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }
     
     _curIndex = 0;
+    _preOffsetX = 0;
+    
+    [self configureDelegate];
+}
+
+- (void)configureDelegate
+{
+    _delegateFlags.transitionFromIndexToIndex = [_delegate respondsToSelector:@selector(pagerController:transitionFromIndex:toIndex:)];
 }
 
 #pragma mark - public method
@@ -123,6 +139,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)layoutContentViewIfNeed
 {
     if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _contentTopEdging))) {
+        // size changed
         [self updateContentView];
     }
 }
@@ -131,7 +148,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 {
     _needLayoutContentView = YES;
     _countOfControllers = [_dataSource numberOfControllersInPagerController];
-    // size changed
+    
     [self reSizeContentView];
     
     [self layoutContentView];
@@ -146,8 +163,9 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 - (void)layoutContentView
 {
+    CGFloat offsetX = _contentView.contentOffset.x;
     // 获取可见range
-    NSRange visibleRange = visibleRangWithOffset(_contentView.contentOffset.x, CGRectGetWidth(_contentView.frame), _countOfControllers);
+    NSRange visibleRange = visibleRangWithOffset(offsetX, CGRectGetWidth(_contentView.frame), _countOfControllers);
 
     if (NSEqualRanges(_visibleRange, visibleRange) && !_needLayoutContentView) {
         return;
@@ -155,32 +173,57 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     //NSLog(@"visibleRange %@",NSStringFromRange(visibleRange));
     _needLayoutContentView = NO;
     _visibleRange = visibleRange;
-    _curIndex = _visibleRange.location;
+    _preOffsetX = _curIndex*CGRectGetWidth(_contentView.frame);
     
-    [self removeUnVisibleControllersOutOfRange:_visibleRange];
+    [self removeControllersOutOfVisibleRange:_visibleRange];
     
-    [self addVisibleControllersOutOfRange:_visibleRange];
+    [self addControllersInVisibleRange:_visibleRange];
     
     //NSLog(@"cur index %ld count %ld",_curIndex,self.childViewControllers.count);
     
 }
 
-- (NSRange)getVisibleRangWithVisibleOrignX:(CGFloat)visibleOrignX visibleEndX:(CGFloat)visibleEndX
+- (void)configurePagerIndex
 {
-    NSInteger startIndex = visibleOrignX/CGRectGetWidth(_contentView.frame);
+    CGFloat offsetX = _contentView.contentOffset.x;
+    CGFloat width = CGRectGetWidth(_contentView.frame);
+    CGFloat percentChangeIndex = 1.0-_changeIndexWhenScrollProgress;
+    NSInteger index = 0;
     
-    NSInteger endIndex = ceil(visibleEndX/CGRectGetWidth(_contentView.frame));
-    if (startIndex < 0) {
-        startIndex = 0;
+    if (offsetX >= _preOffsetX) {
+        index = offsetX/width+percentChangeIndex;
+    }else {
+        index = ceil(offsetX/width-percentChangeIndex);
     }
-    if (endIndex > _countOfControllers) {
-        endIndex = _countOfControllers;
+    
+    if (index < 0) {
+        index = 0;
+    }else if (index >= _countOfControllers) {
+        index = _countOfControllers-1;
     }
-    return NSMakeRange(startIndex, endIndex - startIndex);
+    
+    if (index != _curIndex) {
+        NSInteger fromIndex = _curIndex;
+        _curIndex = index;
+        [self transitionFromIndex:fromIndex toIndex:_curIndex];
+        if (_delegateFlags.transitionFromIndexToIndex) {
+            [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_curIndex];
+        }
+    }
+}
+
+- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex
+{
+    NSLog(@"formIndex %ld toIndex:%ld",fromIndex,toIndex);
+}
+
+- (void)transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
+{
+    
 }
 
 #pragma mark - remove controller
-- (void)removeUnVisibleControllersOutOfRange:(NSRange)range
+- (void)removeControllersOutOfVisibleRange:(NSRange)range
 {
     NSMutableArray *deleteArray = [NSMutableArray array];
     [_visibleControllers enumerateKeysAndObjectsUsingBlock:^(NSNumber *key, UIViewController *viewController, BOOL * stop) {
@@ -219,7 +262,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 }
 
 #pragma mark - add controller
-- (void)addVisibleControllersOutOfRange:(NSRange)range
+- (void)addControllersInVisibleRange:(NSRange)range
 {
     // preload page +1 view
     NSInteger endIndex = range.location + range.length;
@@ -260,6 +303,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    [self configurePagerIndex];
+    
     [self layoutContentView];
 }
 
