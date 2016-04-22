@@ -52,7 +52,7 @@
     return 30;
 }
 
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(CGFloat)index
+- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
 {
     CustomViewController *VC = [[CustomViewController alloc]init];
     VC.text = [@(index) stringValue];

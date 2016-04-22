@@ -13,7 +13,7 @@
 
 - (NSInteger)numberOfControllersInPagerController;
 
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(CGFloat)index;
+- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index;
 
 @end
 
