@@ -23,6 +23,8 @@
 
 - (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex;
 
+- (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
+
 @end
 
 @interface TYPagerController : UIViewController
@@ -44,7 +46,7 @@
 
 - (void)reloadData;
 
-- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
+- (void)moveToControllerAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 - (NSArray *)visibleViewControllers;
 
@@ -54,8 +56,8 @@
 
 // override
 
-- (void)transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex;
+- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
 
-- (void)transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
+- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
 
 @end

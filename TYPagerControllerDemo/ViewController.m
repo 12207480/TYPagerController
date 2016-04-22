@@ -44,7 +44,7 @@
 
 - (void)scrollToRamdomIndex
 {
-    [_pagerController scrollToIndex:arc4random()%30 animated:NO];
+    [_pagerController moveToControllerAtIndex:arc4random()%30 animated:NO];
 }
 
 - (NSInteger)numberOfControllersInPagerController

@@ -8,14 +8,27 @@
 
 #import "TYPagerController.h"
 
+typedef NS_ENUM(NSUInteger, TYPagerControllerDirection) {
+    TYPagerControllerLeft,
+    TYPagerControllerRight,
+    TYPagerControllerNone,
+};
+
 @interface TYPagerController ()<UIScrollViewDelegate> {
     NSInteger   _countOfControllers;
     BOOL        _needLayoutContentView;
+    BOOL        _needUpdateProgress;
     CGFloat     _preOffsetX;
     
     struct {
         unsigned int transitionFromIndexToIndex :1;
+        unsigned int transitionFromIndexToIndexProgress :1;
     }_delegateFlags;
+    
+    struct {
+        unsigned int transitionFromIndexToIndex :1;
+        unsigned int transitionFromIndexToIndexProgress :1;
+    }_methodFlags;
 }
 
 @property (nonatomic, weak) UIScrollView *contentView;
@@ -25,6 +38,8 @@
 @property (nonatomic, strong) NSCache *memoryCache;
 
 @property (nonatomic, assign) NSInteger curIndex;
+
+@property (nonatomic, assign) NSInteger curProgressIndex;
 
 @property (nonatomic, assign) NSRange visibleRange;
 
@@ -86,8 +101,10 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     _visibleControllers = [NSMutableDictionary dictionary];
     _memoryCache = [[NSCache alloc]init];
     _curIndex = 0;
+    _curProgressIndex = 0;
     _preOffsetX = 0;
-    _changeIndexWhenScrollProgress = 1.0;
+    _changeIndexWhenScrollProgress = 0.5;
+    _needUpdateProgress = YES;
 
     [self configureDelegate];
 }
@@ -102,6 +119,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }
     
     _curIndex = 0;
+    _curProgressIndex = 0;
     _preOffsetX = 0;
     
     [self configureDelegate];
@@ -110,6 +128,11 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)configureDelegate
 {
     _delegateFlags.transitionFromIndexToIndex = [_delegate respondsToSelector:@selector(pagerController:transitionFromIndex:toIndex:)];
+    _delegateFlags.transitionFromIndexToIndexProgress = [_delegate respondsToSelector:@selector(pagerController:transitionFromIndex:toIndex:progress:)];
+    
+    _methodFlags.transitionFromIndexToIndex = [self respondsToSelector:@selector(transitionFromIndex:toIndex:)];
+    _methodFlags.transitionFromIndexToIndexProgress = [self respondsToSelector:@selector(transitionFromIndex:toIndex:progress:)];
+    
 }
 
 #pragma mark - public method
@@ -121,7 +144,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     [self updateContentView];
 }
 
-- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated
+- (void)moveToControllerAtIndex:(NSInteger)index animated:(BOOL)animated
 {
     if (index < 0 || index >= _countOfControllers) {
         return;
@@ -187,10 +210,13 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 {
     CGFloat offsetX = _contentView.contentOffset.x;
     CGFloat width = CGRectGetWidth(_contentView.frame);
-    CGFloat percentChangeIndex = 1.0-_changeIndexWhenScrollProgress;
-    NSInteger index = 0;
     
-    if (offsetX >= _preOffsetX) {
+    TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
+    
+    NSInteger index = 0;
+    CGFloat percentChangeIndex = 1.0-_changeIndexWhenScrollProgress;
+    
+    if (direction == TYPagerControllerLeft) {
         index = offsetX/width+percentChangeIndex;
     }else {
         index = ceil(offsetX/width-percentChangeIndex);
@@ -205,11 +231,73 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     if (index != _curIndex) {
         NSInteger fromIndex = _curIndex;
         _curIndex = index;
-        [self transitionFromIndex:fromIndex toIndex:_curIndex];
+        if (_methodFlags.transitionFromIndexToIndex) {
+            [self transitionFromIndex:fromIndex toIndex:_curIndex];
+        }
         if (_delegateFlags.transitionFromIndexToIndex) {
             [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_curIndex];
         }
     }
+}
+
+- (void)configurePagerIndexByProgress
+{
+    CGFloat offsetX = _contentView.contentOffset.x;
+    CGFloat width = CGRectGetWidth(_contentView.frame);
+    
+    TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
+    
+    NSInteger progressIndex = 0;
+    CGFloat scrollPercent = 0.0;
+    if (direction == TYPagerControllerLeft) {
+        progressIndex = offsetX/width;
+        if (fmodf(offsetX, width) == 0.0) {
+            scrollPercent = 1.0;
+        }else {
+            scrollPercent = fmodf(offsetX, width) / width;
+        }
+    }else {
+        progressIndex = ceil(offsetX/width);
+        scrollPercent = 1 - fmodf(offsetX >= 0 ? offsetX : width + offsetX, width) / width;
+        
+    }
+    
+    if (scrollPercent < 0 ) {
+        scrollPercent = 0.0;
+    }else if (scrollPercent > 1) {
+        scrollPercent = 1.0;
+    }
+    
+    if (progressIndex < 0) {
+        progressIndex = 0;
+    }else if (progressIndex >= _countOfControllers) {
+        progressIndex = _countOfControllers-1;
+    }
+    
+    NSInteger fromIndex = _curProgressIndex;
+    NSInteger toIndex = _curProgressIndex;
+    
+    
+    if (progressIndex != _curProgressIndex) {
+        toIndex = progressIndex;
+        _curProgressIndex = progressIndex;
+    }else {
+        if (direction == TYPagerControllerLeft) {
+            toIndex = _curProgressIndex<_countOfControllers-1 ? _curProgressIndex+1:_curProgressIndex;
+            
+        }else {
+            toIndex = _curProgressIndex > 0 ? _curProgressIndex -1:_curProgressIndex;
+        }
+        
+    }
+    if (_methodFlags.transitionFromIndexToIndexProgress) {
+        [self transitionFromIndex:fromIndex toIndex:toIndex progress:scrollPercent];
+    }
+    
+    if (_delegateFlags.transitionFromIndexToIndexProgress) {
+        [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:toIndex progress:scrollPercent];
+    }
+
 }
 
 - (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex
@@ -217,9 +305,9 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     NSLog(@"formIndex %ld toIndex:%ld",fromIndex,toIndex);
 }
 
-- (void)transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
+- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
 {
-    
+    NSLog(@"formIndex %ld toIndex:%ld progress %.2f",fromIndex,toIndex, progress);
 }
 
 #pragma mark - remove controller
@@ -303,6 +391,10 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if ((_delegateFlags.transitionFromIndexToIndexProgress || _methodFlags.transitionFromIndexToIndexProgress) && !_needLayoutContentView) {
+        [self configurePagerIndexByProgress];
+    }
+    
     [self configurePagerIndex];
     
     [self layoutContentView];
