@@ -154,7 +154,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }
     _isTapScrollMoved = YES;
     _scrollAnimated = animated;
-    [_contentView setContentOffset:CGPointMake(index * CGRectGetWidth(_contentView.frame),0) animated:animated];
+    [_contentView setContentOffset:CGPointMake(index * CGRectGetWidth(_contentView.frame),0) animated:NO];
 }
 
 - (NSArray *)visibleViewControllers
@@ -217,6 +217,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
     
     NSInteger index = 0;
+    BOOL animated = _scrollAnimated;
+    _scrollAnimated = YES;
     CGFloat percentChangeIndex = 1.0-_changeIndexWhenScrollProgress;
     
     if (direction == TYPagerControllerLeft) {
@@ -235,13 +237,12 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
         NSInteger fromIndex = _curIndex;
         _curIndex = index;
         if (_methodFlags.transitionFromIndexToIndex) {
-            [self transitionFromIndex:fromIndex toIndex:_curIndex animated:_scrollAnimated];
+            [self transitionFromIndex:fromIndex toIndex:_curIndex animated:animated];
         }
         if (_delegateFlags.transitionFromIndexToIndex) {
-            [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_scrollAnimated animated:_scrollAnimated];
+            [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_curIndex animated:animated];
         }
     }
-    _scrollAnimated = YES;
 }
 
 - (void)configurePagerIndexByProgress

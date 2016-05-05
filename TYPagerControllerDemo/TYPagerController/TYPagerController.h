@@ -56,6 +56,8 @@
 
 - (NSArray *)visibleViewControllers;
 
+- (BOOL)isProgressScrollEnabel;
+
 @end
 
 @interface TYPagerController (TransitionOverride)

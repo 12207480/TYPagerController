@@ -57,19 +57,30 @@ static NSString *const cellId = @"TYTabTitleViewCell";
     NSLog(@"formIndex %ld toIndex:%ld",fromIndex,toIndex);
     TYTabTitleViewCell *fromCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromIndex inSection:0]];
     TYTabTitleViewCell *toCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0]];
-    if (animated) {
-//        [UIView animateWithDuration:0.2 animations:^{
-//            fromCell.titleLabel.textColor = [UIColor darkTextColor];
-//            toCell.titleLabel.textColor = [UIColor redColor];
-//        }];
-    }else {
-        fromCell.titleLabel.textColor = [UIColor darkTextColor];
-        toCell.titleLabel.textColor = [UIColor redColor];
-        fromCell.transform = CGAffineTransformIdentity;
-        toCell.transform = CGAffineTransformMakeScale(1.3, 1.3);
-        CGRect toCellFrame = [_pagerTabBar cellFrameWithIndex:toIndex];
-        _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
+    CGRect toCellFrame = [_pagerTabBar cellFrameWithIndex:toIndex];
+    if (![self isProgressScrollEnabel]) {
+        if (animated) {
+            [UIView animateWithDuration:0.2 animations:^{
+                fromCell.titleLabel.textColor = [UIColor darkTextColor];
+                toCell.titleLabel.textColor = [UIColor redColor];
+                fromCell.transform = CGAffineTransformIdentity;
+                toCell.transform = CGAffineTransformMakeScale(1.3, 1.3);
+                if (fromCell) {
+                    _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
+                }
+            }];
+            if (!fromCell) {
+                _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
+            }
+        }else{
+            fromCell.titleLabel.textColor = [UIColor darkTextColor];
+            toCell.titleLabel.textColor = [UIColor redColor];
+            fromCell.transform = CGAffineTransformIdentity;
+            toCell.transform = CGAffineTransformMakeScale(1.3, 1.3);
+            _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
+        }
     }
+
     [_pagerTabBar.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
@@ -130,7 +141,7 @@ static NSString *const cellId = @"TYTabTitleViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self moveToControllerAtIndex:indexPath.item animated:NO];
+    [self moveToControllerAtIndex:indexPath.item animated:YES];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
