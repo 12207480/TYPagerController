@@ -50,28 +50,48 @@ static NSString *const cellId = @"TYTabTitleViewCell";
     _pagerTabBar = pagerTabBar;
 }
 
+#pragma mark - override
+
 - (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated
 {
+    NSLog(@"formIndex %ld toIndex:%ld",fromIndex,toIndex);
     TYTabTitleViewCell *fromCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromIndex inSection:0]];
     TYTabTitleViewCell *toCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0]];
     if (animated) {
-        [UIView animateWithDuration:0.2 animations:^{
-            fromCell.titleLabel.textColor = [UIColor darkTextColor];
-            fromCell.titleLabel.font = [UIFont systemFontOfSize:15];
-            toCell.titleLabel.textColor = [UIColor redColor];
-            toCell.titleLabel.font = [UIFont systemFontOfSize:18];
-        }];
+//        [UIView animateWithDuration:0.2 animations:^{
+//            fromCell.titleLabel.textColor = [UIColor darkTextColor];
+//            toCell.titleLabel.textColor = [UIColor redColor];
+//        }];
     }else {
         fromCell.titleLabel.textColor = [UIColor darkTextColor];
-        fromCell.titleLabel.font = [UIFont systemFontOfSize:15];
         toCell.titleLabel.textColor = [UIColor redColor];
-        toCell.titleLabel.font = [UIFont systemFontOfSize:18];
+        fromCell.transform = CGAffineTransformIdentity;
+        toCell.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        CGRect toCellFrame = [_pagerTabBar cellFrameWithIndex:toIndex];
+        _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
     }
     [_pagerTabBar.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
 - (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
 {
+    NSLog(@"formIndex %ld toIndex:%ld progress %.2f",fromIndex,toIndex, progress);
+    TYTabTitleViewCell *fromCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromIndex inSection:0]];
+    TYTabTitleViewCell *toCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0]];
+    
+    CGFloat currentTransform = (1.3 - 1.0)*progress;
+    fromCell.transform = CGAffineTransformMakeScale(1.3-currentTransform, 1.3-currentTransform);
+    toCell.transform = CGAffineTransformMakeScale(1.0+currentTransform, 1.0+currentTransform);
+    
+    CGFloat narR,narG,narB;
+    [[UIColor darkTextColor] getRed:&narR green:&narG blue:&narB alpha:nil];
+    CGFloat selR,selG,selB;
+    [[UIColor redColor] getRed:&selR green:&selG blue:&selB alpha:nil];
+    CGFloat detalR = narR - selR ,detalG = narG - selG,detalB = narB - selB;
+    
+    fromCell.titleLabel.textColor = [UIColor colorWithRed:selR+detalR*progress green:selG+detalG*progress blue:selB+detalB*progress alpha:1];
+    toCell.titleLabel.textColor = [UIColor colorWithRed:narR-detalR*progress green:narG-detalG*progress blue:narB-detalB*progress alpha:1];
+    
     CGRect fromCellFrame = [_pagerTabBar cellFrameWithIndex:fromIndex];
     CGRect toCellFrame = [_pagerTabBar cellFrameWithIndex:toIndex];
     
@@ -91,16 +111,16 @@ static NSString *const cellId = @"TYTabTitleViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TYTabTitleViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-
+    cell.titleLabel.font = [UIFont systemFontOfSize:15];
     if (_dataSuorceFlags.titleForIndex) {
         NSString *title = [self.dataSource pagerController:self titleForIndex:indexPath.item];
         cell.titleLabel.text = title;
         if (indexPath.item == self.curIndex) {
             cell.titleLabel.textColor = [UIColor redColor];
-            cell.titleLabel.font = [UIFont systemFontOfSize:18];
+            cell.transform = CGAffineTransformMakeScale(1.3,1.3);
         }else {
             cell.titleLabel.textColor = [UIColor darkTextColor];
-            cell.titleLabel.font = [UIFont systemFontOfSize:15];
+            cell.transform = CGAffineTransformIdentity;
         }
     }
     return cell;

@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, TYPagerControllerDirection) {
     BOOL        _needLayoutContentView;
     BOOL        _needUpdateProgress;
     BOOL        _scrollAnimated;
+    BOOL        _isTapScrollMoved;
     CGFloat     _preOffsetX;
     
     struct {
@@ -151,6 +152,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     if (index < 0 || index >= _countOfControllers) {
         return;
     }
+    _isTapScrollMoved = YES;
     _scrollAnimated = animated;
     [_contentView setContentOffset:CGPointMake(index * CGRectGetWidth(_contentView.frame),0) animated:animated];
 }
@@ -236,10 +238,10 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
             [self transitionFromIndex:fromIndex toIndex:_curIndex animated:_scrollAnimated];
         }
         if (_delegateFlags.transitionFromIndexToIndex) {
-            [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_curIndex animated:_scrollAnimated];
+            [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_scrollAnimated animated:_scrollAnimated];
         }
-        _scrollAnimated = YES;
     }
+    _scrollAnimated = YES;
 }
 
 - (void)configurePagerIndexByProgress
@@ -272,6 +274,11 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     if (_delegateFlags.transitionFromIndexToIndexProgress) {
         [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:toIndex progress:progress];
     }
+}
+
+- (BOOL)isProgressScrollEnabel
+{
+    return (_delegateFlags.transitionFromIndexToIndexProgress || _methodFlags.transitionFromIndexToIndexProgress) && !_isTapScrollMoved && !_needLayoutContentView;
 }
 
 //- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated
@@ -366,14 +373,16 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == _contentView) {
-        
-        if ((_delegateFlags.transitionFromIndexToIndexProgress || _methodFlags.transitionFromIndexToIndexProgress) && !_needLayoutContentView) {
+        if ([self isProgressScrollEnabel]) {
+            // 计算scroll progress
             [self configurePagerIndexByProgress];
         }
         
         [self configurePagerIndex];
         
         [self layoutContentView];
+        
+        _isTapScrollMoved = NO;
     }
 }
 

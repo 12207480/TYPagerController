@@ -44,9 +44,11 @@
 
 @property (nonatomic, assign, readonly) NSRange visibleRange;
 
-
 @property (nonatomic, assign) CGFloat contentTopEdging; // contentView top edge
+
 @property (nonatomic, assign) CGFloat changeIndexWhenScrollProgress; // default 1.0
+
+//@property (nonatomic, assign) BOOL scrollProgressEnable;
 
 - (void)reloadData;
 
