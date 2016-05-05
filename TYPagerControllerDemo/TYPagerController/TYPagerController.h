@@ -15,13 +15,17 @@
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index;
 
+@optional
+
+- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index;
+
 @end
 
 @protocol TYPagerControllerDelegate <NSObject>
 
 @optional
 
-- (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex;
+- (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated;
 
 - (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
 
@@ -56,7 +60,7 @@
 
 // override
 
-- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
+- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated;
 
 - (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
 

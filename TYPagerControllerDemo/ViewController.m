@@ -8,10 +8,11 @@
 
 #import "ViewController.h"
 #import "TYPagerController.h"
+#import "TYTabPagerController.h"
 #import "CustomViewController.h"
 
 @interface ViewController ()<TYPagerControllerDataSource>
-@property (nonatomic, strong) TYPagerController *pagerController;
+@property (nonatomic, strong) TYTabPagerController *pagerController;
 @end
 
 @implementation ViewController
@@ -34,8 +35,9 @@
 
 - (void)addPagerController
 {
-    TYPagerController *pagerController = [[TYPagerController alloc]init];
+    TYTabPagerController *pagerController = [[TYTabPagerController alloc]init];
     pagerController.dataSource = self;
+    pagerController.cellWidth = 66;
     pagerController.view.frame = self.view.bounds;
     [self addChildViewController:pagerController];
     [self.view addSubview:pagerController.view];
@@ -57,6 +59,11 @@
     CustomViewController *VC = [[CustomViewController alloc]init];
     VC.text = [@(index) stringValue];
     return VC;
+}
+
+- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
+{
+    return [NSString stringWithFormat:@"Tab %ld",index];
 }
 
 - (void)didReceiveMemoryWarning {
