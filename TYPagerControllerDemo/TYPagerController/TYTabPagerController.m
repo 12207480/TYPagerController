@@ -7,7 +7,6 @@
 //
 
 #import "TYTabPagerController.h"
-#import "TYPagerTabBar.h"
 #import "TYTabTitleViewCell.h"
 
 @interface TYTabPagerController ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -15,98 +14,242 @@
     struct {
         unsigned int titleForIndex :1;
     }_dataSuorceFlags;
+    
+    CGFloat _selectFontScale;
 }
-@property (nonatomic, weak) TYPagerTabBar *pagerTabBar;
+@property (nonatomic, weak) UICollectionView *collectionViewBar;
+@property (nonatomic, weak) UIView *underLineView;
 @end
 
-#define kPagerTabBarHieght 36
+#define kCollectionViewBarHieght 36
+#define kUnderLineViewHeight 2
+
 static NSString *const cellId = @"TYTabTitleViewCell";
 
 @implementation TYTabPagerController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        
+        [self configireInitPropertys];
+        
+        [self configureTransitionBlocks];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self addCollectionViewBar];
     
-    [self addTabBar];
+    [self addUnderLineView];
     
-    self.contentTopEdging = CGRectGetHeight(_pagerTabBar.frame);
-    _dataSuorceFlags.titleForIndex = [self.dataSource respondsToSelector:@selector(pagerController:titleForIndex:)];
+    [self configurePagerData];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _collectionViewBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging);
+    [self setUnderLineFrameWithIndex:self.curIndex animated:NO];
+}
+
+- (void)addCollectionViewBar
+{
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging) collectionViewLayout:layout];
+    collectionView.backgroundColor = _pagerBarColor;
+    collectionView.showsHorizontalScrollIndicator = NO;
+    collectionView.showsVerticalScrollIndicator = NO;
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    
+    [self.view addSubview:collectionView];
+    _collectionViewBar = collectionView;
+    
+    [collectionView registerClass:[TYTabTitleViewCell class] forCellWithReuseIdentifier:cellId];
+}
+
+- (void)addUnderLineView
+{
+    UIView *underLineView = [[UIView alloc]init];
+    underLineView.hidden = _progressViewHiden;
+    underLineView.backgroundColor = _progressColor;
+    if (_progressRadius > 0) {
+        underLineView.layer.cornerRadius = _progressRadius;
+        underLineView.layer.masksToBounds = YES;
+    }
+    [_collectionViewBar addSubview:underLineView];
+    _underLineView = underLineView;
 }
 
 - (void)reloadData
 {
     [super reloadData];
-    [_pagerTabBar reloadData];
+    
+    [self configurePagerData];
+    
+    [_collectionViewBar reloadData];
+    [_collectionViewBar setContentOffset:CGPointZero];
+    
+    [self setUnderLineFrameWithIndex:self.curIndex animated:NO];
 }
 
-- (void)addTabBar
+#pragma mark - private
+
+- (void)configireInitPropertys
 {
-    TYPagerTabBar *pagerTabBar = [[TYPagerTabBar alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kPagerTabBarHieght)];
-    pagerTabBar.collectionView.delegate = self;
-    pagerTabBar.collectionView.dataSource = self;
-    [pagerTabBar.collectionView registerClass:[TYTabTitleViewCell class] forCellWithReuseIdentifier:cellId];
-    [self.view addSubview:pagerTabBar];
-    _pagerTabBar = pagerTabBar;
+    _pagerBarColor = [UIColor whiteColor];
+    _normalTextFont = [UIFont systemFontOfSize:15];
+    _selectedTextFont = [UIFont systemFontOfSize:18];
+    _normalTextColor = [UIColor darkTextColor];
+    _selectedTextColor = [UIColor redColor];
+    _progressColor = [UIColor redColor];
+    _progressRadius = 1;
+    _progressViewHiden = NO;
+    _animateDuration = 0.25;
+    _progressHeight = kUnderLineViewHeight;
+    self.contentTopEdging = kCollectionViewBarHieght;
 }
 
-#pragma mark - override
+- (void)configureTransitionBlocks
+{
+    __weak typeof(self) weakSelf = self;
+    
+    [self setTransitionCellAnimatedBlock:^(UICollectionViewCell *fromCell, UICollectionViewCell *toCell, BOOL animated) {
+        if (animated) {
+            [UIView animateWithDuration:weakSelf.animateDuration animations:^{
+                [weakSelf transitionFromCell:(TYTabTitleViewCell *)fromCell toCell:(TYTabTitleViewCell *)toCell];
+            }];
+        }else{
+            [weakSelf transitionFromCell:(TYTabTitleViewCell *)fromCell toCell:(TYTabTitleViewCell *)toCell];
+        }
+    }];
+    
+    [self setTransitionCellProgressBlock:^(UICollectionViewCell *fromCell, UICollectionViewCell *toCell, CGFloat progress) {
+        [weakSelf transitionFromCell:(TYTabTitleViewCell *)fromCell toCell:(TYTabTitleViewCell *)toCell progress:progress];
+    }];
+    
+    [self setConfigreCellForItemBlock:^(UICollectionViewCell *cell, NSString *title,NSIndexPath *indexPath) {
+        TYTabTitleViewCell *titleCell = (TYTabTitleViewCell *)cell;
+        titleCell.titleLabel.text = title;
+        titleCell.titleLabel.font = weakSelf.normalTextFont;
+    }];
+}
+
+- (void)configurePagerData
+{
+    _selectFontScale = _selectedTextFont.pointSize/_normalTextFont.pointSize;
+    
+    _dataSuorceFlags.titleForIndex = [self.dataSource respondsToSelector:@selector(pagerController:titleForIndex:)];
+    NSAssert(_dataSuorceFlags.titleForIndex, @"TYPagerControllerDataSource pagerController:titleForIndex: not impletement!");
+}
+
+- (CGRect)cellFrameWithIndex:(NSInteger)index
+{
+    UICollectionViewLayoutAttributes * cellAttrs = [_collectionViewBar layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    return cellAttrs.frame;
+}
+
+- (TYTabTitleViewCell *)cellForIndex:(NSInteger)index
+{
+    return (TYTabTitleViewCell *)[_collectionViewBar cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+}
+
+- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated
+{
+    [_collectionViewBar scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
+}
+
+- (void)setUnderLineFrameWithIndex:(NSInteger)index animated:(BOOL)animated
+{
+    if (_progressViewHiden) {
+        return;
+    }
+    CGRect cellFrame = [self cellFrameWithIndex:index];
+    if (animated) {
+        [UIView animateWithDuration:_animateDuration animations:^{
+            _underLineView.frame = CGRectMake(cellFrame.origin.x, cellFrame.size.height - _progressHeight, cellFrame.size.width, _progressHeight);
+        }];
+    }else {
+        _underLineView.frame = CGRectMake(cellFrame.origin.x, cellFrame.size.height - _progressHeight, cellFrame.size.width, _progressHeight);
+    }
+}
+
+- (void)setUnderLineFrameWithfromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
+{
+    if (_progressViewHiden) {
+        return;
+    }
+    CGRect fromCellFrame = [self cellFrameWithIndex:fromIndex];
+    CGRect toCellFrame = [self cellFrameWithIndex:toIndex];
+    
+    CGFloat progressX = (toCellFrame.origin.x-fromCellFrame.origin.x)*progress+fromCellFrame.origin.x;
+    CGFloat width = toCellFrame.size.width*progress + fromCellFrame.size.width*(1-progress);//toCellFrame.size.width;
+    _underLineView.frame = CGRectMake(progressX, toCellFrame.size.height - _progressHeight, width, _progressHeight);
+}
+
+- (void)transitionFromCell:(TYTabTitleViewCell *)fromCell toCell:(TYTabTitleViewCell *)toCell
+{
+    if (fromCell) {
+        fromCell.titleLabel.textColor = _normalTextColor;
+        fromCell.transform = CGAffineTransformIdentity;
+    }
+    
+    if (toCell) {
+        toCell.titleLabel.textColor = _selectedTextColor;
+        toCell.transform = CGAffineTransformMakeScale(_selectFontScale, _selectFontScale);
+    }
+}
+
+- (void)transitionFromCell:(TYTabTitleViewCell *)fromCell toCell:(TYTabTitleViewCell *)toCell progress:(CGFloat)progress
+{
+    CGFloat currentTransform = (_selectFontScale - 1.0)*progress;
+    fromCell.transform = CGAffineTransformMakeScale(_selectFontScale-currentTransform, _selectFontScale-currentTransform);
+    toCell.transform = CGAffineTransformMakeScale(1.0+currentTransform, 1.0+currentTransform);
+    
+    CGFloat narR,narG,narB,narA;
+    [_normalTextColor getRed:&narR green:&narG blue:&narB alpha:&narA];
+    CGFloat selR,selG,selB,selA;
+    [_selectedTextColor getRed:&selR green:&selG blue:&selB alpha:&selA];
+    CGFloat detalR = narR - selR ,detalG = narG - selG,detalB = narB - selB,detalA = narA - selA;
+    
+    fromCell.titleLabel.textColor = [UIColor colorWithRed:selR+detalR*progress green:selG+detalG*progress blue:selB+detalB*progress alpha:selA+detalA*progress];
+    toCell.titleLabel.textColor = [UIColor colorWithRed:narR-detalR*progress green:narG-detalG*progress blue:narB-detalB*progress alpha:narA-detalA*progress];
+}
+
+#pragma mark - override transition
 
 - (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated
 {
-    TYTabTitleViewCell *fromCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromIndex inSection:0]];
-    TYTabTitleViewCell *toCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0]];
-    CGRect toCellFrame = [_pagerTabBar cellFrameWithIndex:toIndex];
+    TYTabTitleViewCell *fromCell = [self cellForIndex:fromIndex];
+    TYTabTitleViewCell *toCell = [self cellForIndex:toIndex];
+    
     if (![self isProgressScrollEnabel]) {
-        if (animated) {
-            [UIView animateWithDuration:0.2 animations:^{
-                fromCell.titleLabel.textColor = [UIColor darkTextColor];
-                toCell.titleLabel.textColor = [UIColor redColor];
-                fromCell.transform = CGAffineTransformIdentity;
-                toCell.transform = CGAffineTransformMakeScale(1.3, 1.3);
-                if (fromCell) {
-                    _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
-                }
-            }];
-            if (!fromCell) {
-                _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
-            }
-        }else{
-            fromCell.titleLabel.textColor = [UIColor darkTextColor];
-            toCell.titleLabel.textColor = [UIColor redColor];
-            fromCell.transform = CGAffineTransformIdentity;
-            toCell.transform = CGAffineTransformMakeScale(1.3, 1.3);
-            _pagerTabBar.underLineView.frame = CGRectMake(toCellFrame.origin.x, toCellFrame.size.height - 3, toCellFrame.size.width, 3);
+        
+        if (_transitionCellAnimatedBlock) {
+            _transitionCellAnimatedBlock(fromCell,toCell,animated);
         }
+        
+        [self setUnderLineFrameWithIndex:toIndex animated:fromCell && animated ? animated: NO];
     }
 
-    [_pagerTabBar.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self scrollToIndex:toIndex animated:YES];
 }
 
 - (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
 {
-    TYTabTitleViewCell *fromCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:fromIndex inSection:0]];
-    TYTabTitleViewCell *toCell = (TYTabTitleViewCell *)[_pagerTabBar.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0]];
+    TYTabTitleViewCell *fromCell = [self cellForIndex:fromIndex];
+    TYTabTitleViewCell *toCell = [self cellForIndex:toIndex];
     
-    CGFloat currentTransform = (1.3 - 1.0)*progress;
-    fromCell.transform = CGAffineTransformMakeScale(1.3-currentTransform, 1.3-currentTransform);
-    toCell.transform = CGAffineTransformMakeScale(1.0+currentTransform, 1.0+currentTransform);
+    if (_transitionCellProgressBlock) {
+        _transitionCellProgressBlock(fromCell,toCell,progress);
+    }
     
-    CGFloat narR,narG,narB;
-    [[UIColor darkTextColor] getRed:&narR green:&narG blue:&narB alpha:nil];
-    CGFloat selR,selG,selB;
-    [[UIColor redColor] getRed:&selR green:&selG blue:&selB alpha:nil];
-    CGFloat detalR = narR - selR ,detalG = narG - selG,detalB = narB - selB;
-    
-    fromCell.titleLabel.textColor = [UIColor colorWithRed:selR+detalR*progress green:selG+detalG*progress blue:selB+detalB*progress alpha:1];
-    toCell.titleLabel.textColor = [UIColor colorWithRed:narR-detalR*progress green:narG-detalG*progress blue:narB-detalB*progress alpha:1];
-    
-    CGRect fromCellFrame = [_pagerTabBar cellFrameWithIndex:fromIndex];
-    CGRect toCellFrame = [_pagerTabBar cellFrameWithIndex:toIndex];
-    
-    CGFloat progressX = (toCellFrame.origin.x-fromCellFrame.origin.x)*progress+fromCellFrame.origin.x;
-    CGFloat width = toCellFrame.size.width*progress + fromCellFrame.size.width*(1-progress);//toCellFrame.size.width;
-    _pagerTabBar.underLineView.frame = CGRectMake(progressX, toCellFrame.size.height - 3, width, 3);
+    [self setUnderLineFrameWithfromIndex:fromIndex toIndex:toIndex progress:progress];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -120,18 +263,14 @@ static NSString *const cellId = @"TYTabTitleViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TYTabTitleViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    cell.titleLabel.font = [UIFont systemFontOfSize:15];
+    
     if (_dataSuorceFlags.titleForIndex) {
         NSString *title = [self.dataSource pagerController:self titleForIndex:indexPath.item];
-        cell.titleLabel.text = title;
-        if (indexPath.item == self.curIndex) {
-            cell.titleLabel.textColor = [UIColor redColor];
-            cell.transform = CGAffineTransformMakeScale(1.3,1.3);
-        }else {
-            cell.titleLabel.textColor = [UIColor darkTextColor];
-            cell.transform = CGAffineTransformIdentity;
-        }
+        
+        _configreCellForItemBlock(cell,title,indexPath);
+        _transitionCellAnimatedBlock(indexPath.item == self.curIndex ? nil : cell,indexPath.item == self.curIndex ? cell : nil,NO);
     }
+    
     return cell;
 }
 
@@ -145,7 +284,7 @@ static NSString *const cellId = @"TYTabTitleViewCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_cellWidth > 0) {
-        return CGSizeMake(_cellWidth, CGRectGetHeight(_pagerTabBar.frame));
+        return CGSizeMake(_cellWidth, CGRectGetHeight(_collectionViewBar.frame));
     }
     return CGSizeZero;
 }
@@ -154,6 +293,12 @@ static NSString *const cellId = @"TYTabTitleViewCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)dealloc
+{
+    NSLog(@"TYTabPagerController dealloc");
+}
+
 
 /*
 #pragma mark - Navigation

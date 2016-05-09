@@ -17,7 +17,6 @@ typedef NS_ENUM(NSUInteger, TYPagerControllerDirection) {
 @interface TYPagerController ()<UIScrollViewDelegate> {
     NSInteger   _countOfControllers;
     BOOL        _needLayoutContentView;
-    BOOL        _needUpdateProgress;
     BOOL        _scrollAnimated;
     BOOL        _isTapScrollMoved;
     CGFloat     _preOffsetX;
@@ -69,12 +68,26 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 @implementation TYPagerController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        
+        _memoryCache = [[NSCache alloc]init];
+        _changeIndexWhenScrollProgress = 0.5;
+        _curIndex = 0;
+        _contentTopEdging = 0;
+    }
+    return self;
+}
+
 #pragma mark - life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     [self addContentView];
 
     [self configurePropertys];
@@ -101,12 +114,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)configurePropertys
 {
     _visibleControllers = [NSMutableDictionary dictionary];
-    _memoryCache = [[NSCache alloc]init];
-    _curIndex = 0;
     _curProgressIndex = 0;
     _preOffsetX = 0;
-    _changeIndexWhenScrollProgress = 0.5;
-    _needUpdateProgress = YES;
     _scrollAnimated = YES;
 
     [self configureDelegate];
@@ -260,6 +269,9 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     NSInteger fromIndex = 0;
     NSInteger toIndex = 0;
     if (direction == TYPagerControllerLeft) {
+        if (floorIndex >= _countOfControllers -1) {
+            return;
+        }
         fromIndex = floorIndex;
         toIndex = MIN(_countOfControllers-1, fromIndex + 1);
     }else {
