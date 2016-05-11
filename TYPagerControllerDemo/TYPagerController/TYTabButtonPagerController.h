@@ -13,7 +13,7 @@
 
 @interface TYTabButtonPagerController : TYTabPagerController
 
-// pagerBar
+// pagerBar color
 @property (nonatomic, strong) UIColor *pagerBarColor;
 @property (nonatomic, strong) UIColor *collectionViewBarColor;
 

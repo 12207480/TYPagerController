@@ -87,8 +87,10 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     
+    // add horizenl scrollView
     [self addContentView];
 
+    // set up propertys
     [self configurePropertys];
 }
 
@@ -176,6 +178,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 #pragma mark - layout content
 
+// if need layout contentView
 - (void)layoutContentViewIfNeed
 {
     if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _contentTopEdging))) {
@@ -184,6 +187,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }
 }
 
+// update content subViews
 - (void)updateContentView
 {
     _needLayoutContentView = YES;
@@ -194,6 +198,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     [self layoutContentView];
 }
 
+// change content View size
 - (void)reSizeContentView
 {
     _contentView.frame = CGRectMake(0, _contentTopEdging, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _contentTopEdging);
@@ -201,6 +206,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     _contentView.contentOffset = CGPointMake(_curIndex*CGRectGetWidth(_contentView.frame), 0);
 }
 
+// layout content subViews
 - (void)layoutContentView
 {
     CGFloat offsetX = _contentView.contentOffset.x;
@@ -221,16 +227,16 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     //NSLog(@"cur index %ld count %ld",_curIndex,self.childViewControllers.count);
 }
 
+// caculate pager index
 - (void)configurePagerIndex
 {
     CGFloat offsetX = _contentView.contentOffset.x;
     CGFloat width = CGRectGetWidth(_contentView.frame);
 
+    // scroll direction
     TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
     
     NSInteger index = 0;
-    BOOL animated = _scrollAnimated;
-    _scrollAnimated = YES;
     CGFloat percentChangeIndex = 1.0-_changeIndexWhenScrollProgress;
     
     if (direction == TYPagerControllerLeft) {
@@ -249,14 +255,16 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
         NSInteger fromIndex = _curIndex;
         _curIndex = index;
         if (_methodFlags.transitionFromIndexToIndex) {
-            [self transitionFromIndex:fromIndex toIndex:_curIndex animated:animated];
+            [self transitionFromIndex:fromIndex toIndex:_curIndex animated:_scrollAnimated];
         }
         if (_delegateFlags.transitionFromIndexToIndex) {
-            [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_curIndex animated:animated];
+            [_delegate pagerController:self transitionFromIndex:fromIndex toIndex:_curIndex animated:_scrollAnimated];
         }
     }
+    _scrollAnimated = YES;
 }
 
+// caculate pager index and progress
 - (void)configurePagerIndexByProgress
 {
     CGFloat offsetX = _contentView.contentOffset.x;
@@ -269,6 +277,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }
     
     TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
+    
     NSInteger fromIndex = 0;
     NSInteger toIndex = 0;
     if (direction == TYPagerControllerLeft) {
@@ -297,17 +306,9 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     return (_delegateFlags.transitionFromIndexToIndexProgress || _methodFlags.transitionFromIndexToIndexProgress) && !_isTapScrollMoved ;
 }
 
-//- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated
-//{
-//    NSLog(@"formIndex %ld toIndex:%ld",fromIndex,toIndex);
-//}
-//
-//- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
-//{
-//    NSLog(@"formIndex %ld toIndex:%ld progress %.2f",fromIndex,toIndex, progress);
-//}
-
 #pragma mark - remove controller
+
+// remove pager controller if it out of visible range
 - (void)removeControllersOutOfVisibleRange:(NSRange)range
 {
     NSMutableArray *deleteArray = [NSMutableArray array];
@@ -326,10 +327,10 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     [_visibleControllers removeObjectsForKeys:deleteArray];
 }
 
+// remove pager controller at index
 - (void)removeViewController:(UIViewController *)viewController atIndex:(NSInteger)index
 {
     if (viewController.parentViewController) {
-        //NSLog(@"removeViewController index %ld",index);
         [self removeViewController:viewController];
         
         if (![_memoryCache objectForKey:@(index)]) {
@@ -347,6 +348,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 }
 
 #pragma mark - add controller
+
+// add pager controller if it in visible range
 - (void)addControllersInVisibleRange:(NSRange)range
 {
     // preload page +1 view
@@ -367,6 +370,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }
 }
 
+// add pager controller at index
 - (void)addViewController:(UIViewController *)viewController atIndex:(NSInteger)index
 {
     if (!viewController.parentViewController) {
@@ -408,7 +412,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if (scrollView == _contentView) {
-        
+        // save offsetX ,judge scroll direction
         _preOffsetX = scrollView.contentOffset.x;
     }
 }

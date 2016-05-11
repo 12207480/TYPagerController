@@ -41,14 +41,13 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         
-        [self configireInitPropertys];
+        [self configireTabPropertys];
     }
     return self;
 }
 
-- (void)configireInitPropertys
+- (void)configireTabPropertys
 {
-    self.changeIndexWhenScrollProgress = 1.0;
     _animateDuration = 0.25;
     
     _normalTextFont = [UIFont systemFontOfSize:15];
@@ -61,6 +60,7 @@
     _progressEdging = 3;
     _progressBounces = YES;
     
+    self.changeIndexWhenScrollProgress = 1.0;
     self.contentTopEdging = kCollectionViewBarHieght;
 }
 
@@ -69,10 +69,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // add pager bar
     [self addPagerBarView];
     
+    // add title views
     [self addCollectionViewBar];
     
+    // add progress view
     [self addUnderLineView];
 }
 
@@ -140,7 +143,7 @@
 {
     [super updateContentView];
     
-    [self updateTabPagerView];
+    [self layoutTabPagerView];
     
     [self setUnderLineFrameWithIndex:self.curIndex animated:NO];
     
@@ -171,14 +174,15 @@
 }
 
 #pragma mark - private
-
-- (void)updateTabPagerView
+// layout tab view
+- (void)layoutTabPagerView
 {
     CGFloat statusHeight = self.navigationController.isNavigationBarHidden ? 20:0;
     _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+statusHeight);
     _collectionViewBar.frame = CGRectMake(0, statusHeight, CGRectGetWidth(self.view.frame), self.contentTopEdging);
 }
 
+// set up progress view frame
 - (void)setUnderLineFrameWithIndex:(NSInteger)index animated:(BOOL)animated
 {
     if (_progressView.isHidden) {
