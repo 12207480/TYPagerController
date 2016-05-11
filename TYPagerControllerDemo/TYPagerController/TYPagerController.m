@@ -118,7 +118,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     _preOffsetX = 0;
     _scrollAnimated = YES;
 
-    [self configureDelegate];
+    [self configureMethods];
 }
 
 - (void)resetPropertys
@@ -133,15 +133,18 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     _curIndex = 0;
     _curProgressIndex = 0;
     _preOffsetX = 0;
-    
-    [self configureDelegate];
 }
 
-- (void)configureDelegate
+- (void)setDelegate:(id<TYPagerControllerDelegate>)delegate
 {
+    _delegate = delegate;
+    
     _delegateFlags.transitionFromIndexToIndex = [_delegate respondsToSelector:@selector(pagerController:transitionFromIndex:toIndex:animated:)];
     _delegateFlags.transitionFromIndexToIndexProgress = [_delegate respondsToSelector:@selector(pagerController:transitionFromIndex:toIndex:progress:)];
-    
+}
+
+- (void)configureMethods
+{
     _methodFlags.transitionFromIndexToIndex = [self respondsToSelector:@selector(transitionFromIndex:toIndex:animated:)];
     _methodFlags.transitionFromIndexToIndexProgress = [self respondsToSelector:@selector(transitionFromIndex:toIndex:progress:)];
     

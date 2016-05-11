@@ -7,12 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "TYPagerController.h"
-#import "TYTabPagerController.h"
+#import "TYTabButtonPagerController.h"
 #import "CustomViewController.h"
 
 @interface ViewController ()<TYPagerControllerDataSource>
-@property (nonatomic, strong) TYTabPagerController *pagerController;
+@property (nonatomic, strong) TYTabButtonPagerController *pagerController;
 @end
 
 @implementation ViewController
@@ -35,7 +34,7 @@
 
 - (void)addPagerController
 {
-    TYTabPagerController *pagerController = [[TYTabPagerController alloc]init];
+    TYTabButtonPagerController *pagerController = [[TYTabButtonPagerController alloc]init];
     pagerController.dataSource = self;
     //pagerController.cellWidth = 56;
     pagerController.cellSpacing = 8;

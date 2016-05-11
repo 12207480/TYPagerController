@@ -8,38 +8,49 @@
 
 #import "TYPagerController.h"
 
+@class TYTabPagerController;
+
+@protocol TYTabPagerControllerDelegate <TYPagerControllerDelegate>
+
+- (void)pagerController:(TYTabPagerController *)pagerController configreCell:(UICollectionViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath;
+
+- (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell *)fromCell toCell:(UICollectionViewCell *)toCell animated:(BOOL)animated;
+
+- (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell *)fromCell toCell:(UICollectionViewCell *)toCell progress:(CGFloat)progress;
+
+@end
+
 @interface TYTabPagerController : TYPagerController
 
-@property (nonatomic, strong) UIColor *pagerBarColor;
+@property (nonatomic, weak) id<TYTabPagerControllerDelegate> delegate;
+
+// view
+@property (nonatomic, weak, readonly) UIView *pagerBarView;
+@property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
+@property (nonatomic, weak, readonly) UIView *progressView;
+
+// cell
 @property (nonatomic, assign) CGFloat cellWidth;
 @property (nonatomic, assign) CGFloat cellSpacing;
 @property (nonatomic, assign) CGFloat cellEdging;
 
+// progress view
+@property (nonatomic, assign) CGFloat progressHeight;
+@property (nonatomic, assign) CGFloat progressEdging;
+
+// duration
 @property (nonatomic, assign) CGFloat animateDuration;
 
-@property (nonatomic, strong) UIColor *normalTextColor;
-@property (nonatomic, strong) UIColor *selectedTextColor;
-
+// font
 @property (nonatomic, strong) UIFont *normalTextFont;
 @property (nonatomic, strong) UIFont *selectedTextFont;
 
-@property (nonatomic, strong) UIColor *progressColor;
-@property (nonatomic, assign) CGFloat progressHeight;
-@property (nonatomic, assign) CGFloat progressRadius;
-@property (nonatomic, assign) CGFloat progressViewHiden;
-
-// block use __weak typeof(self) weakSelf = self;
-// custom transition cell animated
-@property (nonatomic, copy) void(^transitionCellAnimatedBlock)(UICollectionViewCell *fromCell,UICollectionViewCell *toCell,BOOL animated);
-
-// custom transition cell progress
-@property (nonatomic, copy) void(^transitionCellProgressBlock)(UICollectionViewCell *fromCell,UICollectionViewCell *toCell,CGFloat progress);
-
-// custom configre cellForItemAtIndexPath
-@property (nonatomic, copy) void(^configreCellForItemBlock)(UICollectionViewCell *cell,NSString *title,NSIndexPath *indexPath);
-
 // if you custom cell ,you must register cell
 - (void)registerCellClass:(Class)cellClass isContainXib:(BOOL)isContainXib;
+
+- (UICollectionViewCell *)cellForIndex:(NSInteger)index;
+
+- (CGRect)cellFrameWithIndex:(NSInteger)index;
 
 @end
 
