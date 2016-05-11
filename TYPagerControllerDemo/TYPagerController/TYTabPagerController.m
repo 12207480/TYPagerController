@@ -180,12 +180,13 @@
         return;
     }
     CGRect cellFrame = [self cellFrameWithIndex:index];
+    CGFloat progressEdging = _progressEdging;
     if (animated) {
         [UIView animateWithDuration:_animateDuration animations:^{
-            _progressView.frame = CGRectMake(cellFrame.origin.x+_progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*_progressEdging, _progressHeight);
+            _progressView.frame = CGRectMake(cellFrame.origin.x+progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*progressEdging, _progressHeight);
         }];
     }else {
-        _progressView.frame = CGRectMake(cellFrame.origin.x+_progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*_progressEdging, _progressHeight);
+        _progressView.frame = CGRectMake(cellFrame.origin.x+progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*progressEdging, _progressHeight);
     }
 }
 
@@ -197,8 +198,9 @@
     CGRect fromCellFrame = [self cellFrameWithIndex:fromIndex];
     CGRect toCellFrame = [self cellFrameWithIndex:toIndex];
     
-    CGFloat progressX = (toCellFrame.origin.x-fromCellFrame.origin.x)*progress+fromCellFrame.origin.x+_progressEdging;
-    CGFloat width = (toCellFrame.size.width-2*_progressEdging)*progress + (fromCellFrame.size.width-2*_progressEdging)*(1-progress);//toCellFrame.size.width;
+    CGFloat progressEdging = _progressEdging;
+    CGFloat progressX = (toCellFrame.origin.x-fromCellFrame.origin.x)*progress+fromCellFrame.origin.x+progressEdging;
+    CGFloat width = (toCellFrame.size.width-2*progressEdging)*progress + (fromCellFrame.size.width-2*progressEdging)*(1-progress);//toCellFrame.size.width;
     _progressView.frame = CGRectMake(progressX, toCellFrame.size.height - _progressHeight, width, _progressHeight);
 }
 

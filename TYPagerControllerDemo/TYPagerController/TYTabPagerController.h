@@ -22,7 +22,10 @@
 
 @interface TYTabPagerController : TYPagerController
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wobjc-property-synthesis"
 @property (nonatomic, weak) id<TYTabPagerControllerDelegate> delegate;
+#pragma clang diagnostic pop
 
 // view
 @property (nonatomic, weak, readonly) UIView *pagerBarView;
@@ -30,7 +33,7 @@
 @property (nonatomic, weak, readonly) UIView *progressView;
 
 // cell
-@property (nonatomic, assign) CGFloat cellWidth;
+@property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal
 @property (nonatomic, assign) CGFloat cellSpacing;
 @property (nonatomic, assign) CGFloat cellEdging;
 
