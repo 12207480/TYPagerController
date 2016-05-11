@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) UIColor *pagerBarColor;
 @property (nonatomic, assign) CGFloat cellWidth;
+@property (nonatomic, assign) CGFloat cellSpacing;
+@property (nonatomic, assign) CGFloat cellEdging;
 
 @property (nonatomic, assign) CGFloat animateDuration;
 
@@ -35,6 +37,9 @@
 
 // custom configre cellForItemAtIndexPath
 @property (nonatomic, copy) void(^configreCellForItemBlock)(UICollectionViewCell *cell,NSString *title,NSIndexPath *indexPath);
+
+// if you custom cell ,you must register cell
+- (void)registerCellClass:(Class)cellClass isContainXib:(BOOL)isContainXib;
 
 @end
 

@@ -48,9 +48,10 @@
 
 @property (nonatomic, assign) CGFloat changeIndexWhenScrollProgress; // default 1.0
 
-//@property (nonatomic, assign) BOOL scrollProgressEnable;
-
 - (void)reloadData;
+
+// override must call super
+- (void)updateContentView;
 
 - (void)moveToControllerAtIndex:(NSInteger)index animated:(BOOL)animated;
 

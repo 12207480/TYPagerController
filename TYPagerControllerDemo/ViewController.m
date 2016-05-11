@@ -37,7 +37,8 @@
 {
     TYTabPagerController *pagerController = [[TYTabPagerController alloc]init];
     pagerController.dataSource = self;
-    pagerController.cellWidth = 66;
+    //pagerController.cellWidth = 56;
+    pagerController.cellSpacing = 8;
     pagerController.view.frame = self.view.bounds;
     [self addChildViewController:pagerController];
     [self.view addSubview:pagerController.view];
@@ -63,7 +64,7 @@
 
 - (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
 {
-    return [NSString stringWithFormat:@"Tab %ld",index];
+    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
 }
 
 - (void)didReceiveMemoryWarning {

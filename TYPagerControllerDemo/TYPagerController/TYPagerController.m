@@ -74,7 +74,6 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
         
         _memoryCache = [[NSCache alloc]init];
         _changeIndexWhenScrollProgress = 0.5;
-        _curIndex = 0;
         _contentTopEdging = 0;
     }
     return self;
@@ -114,6 +113,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)configurePropertys
 {
     _visibleControllers = [NSMutableDictionary dictionary];
+    _curIndex = 0;
     _curProgressIndex = 0;
     _preOffsetX = 0;
     _scrollAnimated = YES;
@@ -222,7 +222,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 {
     CGFloat offsetX = _contentView.contentOffset.x;
     CGFloat width = CGRectGetWidth(_contentView.frame);
-    
+
     TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
     
     NSInteger index = 0;
@@ -241,7 +241,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }else if (index >= _countOfControllers) {
         index = _countOfControllers-1;
     }
-    
+
     if (index != _curIndex) {
         NSInteger fromIndex = _curIndex;
         _curIndex = index;
@@ -291,7 +291,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 - (BOOL)isProgressScrollEnabel
 {
-    return (_delegateFlags.transitionFromIndexToIndexProgress || _methodFlags.transitionFromIndexToIndexProgress) && !_isTapScrollMoved && !_needLayoutContentView;
+    return (_delegateFlags.transitionFromIndexToIndexProgress || _methodFlags.transitionFromIndexToIndexProgress) && !_isTapScrollMoved ;
 }
 
 //- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated
@@ -386,12 +386,15 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView == _contentView) {
-        if ([self isProgressScrollEnabel]) {
+        if ([self isProgressScrollEnabel] && !_needLayoutContentView) {
             // 计算scroll progress
             [self configurePagerIndexByProgress];
         }
         
-        [self configurePagerIndex];
+        if (!_needLayoutContentView) {
+            // 计算scroll index
+            [self configurePagerIndex];
+        }
         
         [self layoutContentView];
         
