@@ -50,12 +50,17 @@
 {
     self.changeIndexWhenScrollProgress = 1.0;
     _animateDuration = 0.25;
+    
     _normalTextFont = [UIFont systemFontOfSize:15];
-    _selectedTextFont = [UIFont systemFontOfSize:18];
+    _selectedTextFont = [UIFont systemFontOfSize:20];
+    
     _cellSpacing = 0;
     _cellEdging = 3;
+    
     _progressHeight = kUnderLineViewHeight;
     _progressEdging = 3;
+    _progressBounces = YES;
+    
     self.contentTopEdging = kCollectionViewBarHieght;
 }
 
@@ -199,8 +204,31 @@
     CGRect toCellFrame = [self cellFrameWithIndex:toIndex];
     
     CGFloat progressEdging = _progressEdging;
-    CGFloat progressX = (toCellFrame.origin.x-fromCellFrame.origin.x)*progress+fromCellFrame.origin.x+progressEdging;
-    CGFloat width = (toCellFrame.size.width-2*progressEdging)*progress + (fromCellFrame.size.width-2*progressEdging)*(1-progress);//toCellFrame.size.width;
+    CGFloat progressX, width;
+    
+    if (_progressBounces) {
+        if (fromCellFrame.origin.x < toCellFrame.origin.x) {
+            if (progress <= 0.5) {
+                progressX = fromCellFrame.origin.x + progressEdging;
+                width = (toCellFrame.size.width+_cellSpacing)*2*progress + fromCellFrame.size.width-2*progressEdging;
+            }else {
+                progressX = fromCellFrame.origin.x + progressEdging + (fromCellFrame.size.width+_cellSpacing)*(progress-0.5)*2;
+                width = CGRectGetMaxX(toCellFrame)-progressEdging - progressX;
+            }
+        }else {
+            if (progress <= 0.5) {
+                progressX = fromCellFrame.origin.x + progressEdging - (toCellFrame.size.width+_cellSpacing)*2*progress;
+                width = CGRectGetMaxX(fromCellFrame) - progressEdging - progressX;
+            }else {
+                progressX = toCellFrame.origin.x + progressEdging;
+                width = (fromCellFrame.size.width + _cellSpacing)*(1-progress)*2 + toCellFrame.size.width - 2*progressEdging;
+            }
+        }
+    }else {
+        progressX = (toCellFrame.origin.x-fromCellFrame.origin.x)*progress+fromCellFrame.origin.x+progressEdging;
+        width = (toCellFrame.size.width-2*progressEdging)*progress + (fromCellFrame.size.width-2*progressEdging)*(1-progress);//toCellFrame.size.width;
+    }
+    
     _progressView.frame = CGRectMake(progressX, toCellFrame.size.height - _progressHeight, width, _progressHeight);
 }
 

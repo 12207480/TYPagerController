@@ -24,9 +24,11 @@
         
         _pagerBarColor = [UIColor whiteColor];
         _collectionViewBarColor = _pagerBarColor;
+        
         _progressColor = [UIColor redColor];
         _progressRadius = 1;
         _progressViewHiden = NO;
+        self.progressEdging = 15;
         [self registerCellClass:[TYTabTitleViewCell class] isContainXib:NO];
     }
     return self;
