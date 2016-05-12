@@ -58,7 +58,8 @@
     
     _progressHeight = kUnderLineViewHeight;
     _progressEdging = 3;
-    _progressBounces = NO;
+    _progressWidth = 30;
+    _progressBounces = YES;
     
     self.changeIndexWhenScrollProgress = 1.0;
     self.contentTopEdging = kCollectionViewBarHieght;
@@ -189,7 +190,7 @@
         return;
     }
     CGRect cellFrame = [self cellFrameWithIndex:index];
-    CGFloat progressEdging = _progressEdging;
+    CGFloat progressEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressEdging;
     if (animated) {
         [UIView animateWithDuration:_animateDuration animations:^{
             _progressView.frame = CGRectMake(cellFrame.origin.x+progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*progressEdging, _progressHeight);
@@ -207,30 +208,31 @@
     CGRect fromCellFrame = [self cellFrameWithIndex:fromIndex];
     CGRect toCellFrame = [self cellFrameWithIndex:toIndex];
     
-    CGFloat progressEdging = _progressEdging;
+    CGFloat progressFromEdging = _progressWidth > 0 ? (fromCellFrame.size.width - _progressWidth)/2 : _progressEdging;
+    CGFloat progressToEdging = _progressWidth > 0 ? (toCellFrame.size.width - _progressWidth)/2 : _progressEdging;
     CGFloat progressX, width;
     
     if (_progressBounces) {
         if (fromCellFrame.origin.x < toCellFrame.origin.x) {
             if (progress <= 0.5) {
-                progressX = fromCellFrame.origin.x + progressEdging;
-                width = (toCellFrame.size.width+_cellSpacing)*2*progress + fromCellFrame.size.width-2*progressEdging;
+                progressX = fromCellFrame.origin.x + progressFromEdging;
+                width = (toCellFrame.size.width-progressToEdging+progressFromEdging+_cellSpacing)*2*progress + fromCellFrame.size.width-2*progressFromEdging;
             }else {
-                progressX = fromCellFrame.origin.x + progressEdging + (fromCellFrame.size.width+_cellSpacing)*(progress-0.5)*2;
-                width = CGRectGetMaxX(toCellFrame)-progressEdging - progressX;
+                progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width-progressFromEdging+progressToEdging+_cellSpacing)*(progress-0.5)*2;
+                width = CGRectGetMaxX(toCellFrame)-progressToEdging - progressX;
             }
         }else {
             if (progress <= 0.5) {
-                progressX = fromCellFrame.origin.x + progressEdging - (toCellFrame.size.width+_cellSpacing)*2*progress;
-                width = CGRectGetMaxX(fromCellFrame) - progressEdging - progressX;
+                progressX = fromCellFrame.origin.x + progressFromEdging - (toCellFrame.size.width-progressToEdging+progressFromEdging+_cellSpacing)*2*progress;
+                width = CGRectGetMaxX(fromCellFrame) - progressFromEdging - progressX;
             }else {
-                progressX = toCellFrame.origin.x + progressEdging;
-                width = (fromCellFrame.size.width + _cellSpacing)*(1-progress)*2 + toCellFrame.size.width - 2*progressEdging;
+                progressX = toCellFrame.origin.x + progressToEdging;
+                width = (fromCellFrame.size.width-progressFromEdging+progressToEdging + _cellSpacing)*(1-progress)*2 + toCellFrame.size.width - 2*progressToEdging;
             }
         }
     }else {
-        progressX = (toCellFrame.origin.x-fromCellFrame.origin.x)*progress+fromCellFrame.origin.x+progressEdging;
-        width = (toCellFrame.size.width-2*progressEdging)*progress + (fromCellFrame.size.width-2*progressEdging)*(1-progress);//toCellFrame.size.width;
+        progressX = (toCellFrame.origin.x+progressToEdging-(fromCellFrame.origin.x+progressFromEdging))*progress+fromCellFrame.origin.x+progressFromEdging;
+        width = (toCellFrame.size.width-2*progressToEdging)*progress + (fromCellFrame.size.width-2*progressFromEdging)*(1-progress);
     }
     
     _progressView.frame = CGRectMake(progressX, toCellFrame.size.height - _progressHeight, width, _progressHeight);

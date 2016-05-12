@@ -63,7 +63,7 @@
 
 - (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
 {
-    return index >= 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
+    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
 }
 
 - (void)didReceiveMemoryWarning {

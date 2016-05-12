@@ -40,7 +40,7 @@
 // progress view
 @property (nonatomic, assign) CGFloat progressHeight;
 @property (nonatomic, assign) CGFloat progressEdging; //if>0 progress width is equal
-//@property (nonatomic, assign) CGFloat progressWidth;
+@property (nonatomic, assign) CGFloat progressWidth;
 
 @property (nonatomic, assign) BOOL progressBounces; // default YES
 
