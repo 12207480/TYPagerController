@@ -58,7 +58,7 @@
     
     _progressHeight = kUnderLineViewHeight;
     _progressEdging = 3;
-    _progressBounces = YES;
+    _progressBounces = NO;
     
     self.changeIndexWhenScrollProgress = 1.0;
     self.contentTopEdging = kCollectionViewBarHieght;
