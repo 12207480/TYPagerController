@@ -178,7 +178,7 @@
 // layout tab view
 - (void)layoutTabPagerView
 {
-    CGFloat statusHeight = self.navigationController.isNavigationBarHidden ? 20:0;
+    CGFloat statusHeight = (self.navigationController.isNavigationBarHidden && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
     _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+statusHeight);
     _collectionViewBar.frame = CGRectMake(0, statusHeight, CGRectGetWidth(self.view.frame), self.contentTopEdging);
 }

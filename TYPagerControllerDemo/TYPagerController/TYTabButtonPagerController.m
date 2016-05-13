@@ -19,7 +19,7 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         
-        _normalTextColor = [UIColor darkTextColor];
+        _normalTextColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
         _selectedTextColor = [UIColor redColor];
         
         _pagerBarColor = [UIColor whiteColor];
@@ -29,6 +29,7 @@
         _progressRadius = 1;
         _progressViewHiden = NO;
         self.progressEdging = 15;
+        self.selectedTextFont = self.normalTextFont;
         [self registerCellClass:[TYTabTitleViewCell class] isContainXib:NO];
     }
     return self;

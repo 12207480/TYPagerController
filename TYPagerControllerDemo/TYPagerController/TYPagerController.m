@@ -84,7 +84,9 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     self.view.backgroundColor = [UIColor whiteColor];
     
     // add horizenl scrollView

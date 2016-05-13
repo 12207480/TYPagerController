@@ -19,7 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     [self addPagerController];
     UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc]initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:_pagerController action:@selector(reloadData)];
     UIBarButtonItem *scrollItem = [[UIBarButtonItem alloc]initWithTitle:@"scroll" style:UIBarButtonItemStylePlain target:self action:@selector(scrollToRamdomIndex)];
