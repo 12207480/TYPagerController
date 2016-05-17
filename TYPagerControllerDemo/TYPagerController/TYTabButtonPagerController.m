@@ -29,7 +29,6 @@
         _progressRadius = 1;
         _progressViewHiden = NO;
         
-        self.selectedTextFont = self.normalTextFont;
         [self registerCellClass:[TYTabTitleViewCell class] isContainXib:NO];
     }
     return self;

@@ -13,6 +13,8 @@
 		2B60995A1CE2DECF00BF86C1 /* TYTabButtonPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6099591CE2DECF00BF86C1 /* TYTabButtonPagerController.m */; };
 		2BD7F94F1CEAB38E005C95E2 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F94E1CEAB38E005C95E2 /* TableViewController.m */; };
 		2BD7F9521CEABF61005C95E2 /* CustomPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F9511CEABF61005C95E2 /* CustomPagerController.m */; };
+		2BD7F9551CEAC7F3005C95E2 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F9541CEAC7F3005C95E2 /* ListViewController.m */; };
+		2BD7F9581CEAE2BD005C95E2 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F9571CEAE2BD005C95E2 /* CollectionViewController.m */; };
 		B0B0F9731CBE727000020FAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9721CBE727000020FAD /* main.m */; };
 		B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9751CBE727000020FAD /* AppDelegate.m */; };
 		B0B0F9791CBE727000020FAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9781CBE727000020FAD /* ViewController.m */; };
@@ -47,6 +49,10 @@
 		2BD7F94E1CEAB38E005C95E2 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		2BD7F9501CEABF61005C95E2 /* CustomPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPagerController.h; sourceTree = "<group>"; };
 		2BD7F9511CEABF61005C95E2 /* CustomPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPagerController.m; sourceTree = "<group>"; };
+		2BD7F9531CEAC7F3005C95E2 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		2BD7F9541CEAC7F3005C95E2 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		2BD7F9561CEAE2BD005C95E2 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		2BD7F9571CEAE2BD005C95E2 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYPagerControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B0F9721CBE727000020FAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B0B0F9741CBE727000020FAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +130,10 @@
 				2BD7F9511CEABF61005C95E2 /* CustomPagerController.m */,
 				2B55891E1CC7469300A21F85 /* CustomViewController.h */,
 				2B55891F1CC7469300A21F85 /* CustomViewController.m */,
+				2BD7F9531CEAC7F3005C95E2 /* ListViewController.h */,
+				2BD7F9541CEAC7F3005C95E2 /* ListViewController.m */,
+				2BD7F9561CEAE2BD005C95E2 /* CollectionViewController.h */,
+				2BD7F9571CEAE2BD005C95E2 /* CollectionViewController.m */,
 				B0B0F97A1CBE727000020FAD /* Main.storyboard */,
 				B0B0F97D1CBE727000020FAD /* Assets.xcassets */,
 				B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */,
@@ -268,11 +278,13 @@
 			files = (
 				2B4BC1221CD9977E00B06DA7 /* TYTabTitleViewCell.m in Sources */,
 				2B4BC1151CD9877F00B06DA7 /* TYTabPagerController.m in Sources */,
+				2BD7F9551CEAC7F3005C95E2 /* ListViewController.m in Sources */,
 				2BD7F9521CEABF61005C95E2 /* CustomPagerController.m in Sources */,
 				B0B0F9791CBE727000020FAD /* ViewController.m in Sources */,
 				2B5589201CC7469300A21F85 /* CustomViewController.m in Sources */,
 				2BD7F94F1CEAB38E005C95E2 /* TableViewController.m in Sources */,
 				B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */,
+				2BD7F9581CEAE2BD005C95E2 /* CollectionViewController.m in Sources */,
 				B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */,
 				B0B0F9731CBE727000020FAD /* main.m in Sources */,
 				2B60995A1CE2DECF00BF86C1 /* TYTabButtonPagerController.m in Sources */,

@@ -49,7 +49,7 @@
 - (void)configireTabPropertys
 {
     _animateDuration = 0.25;
-    _adjustStatusBarHeight = YES;
+    //self.adjustStatusBarHeight = YES;
     
     _normalTextFont = [UIFont systemFontOfSize:15];
     _selectedTextFont = [UIFont systemFontOfSize:18];
@@ -71,6 +71,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     // add pager bar
     [self addPagerBarView];
     
@@ -177,13 +178,15 @@
 }
 
 #pragma mark - private
+
+
 // layout tab view
 - (void)layoutTabPagerView
 {
     ((UICollectionViewFlowLayout *)_collectionViewBar.collectionViewLayout).minimumInteritemSpacing = _cellSpacing;
-    CGFloat statusHeight = (_adjustStatusBarHeight && self.navigationController.isNavigationBarHidden && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
-    _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+statusHeight);
-    _collectionViewBar.frame = CGRectMake(0, statusHeight, CGRectGetWidth(self.view.frame), self.contentTopEdging);
+    
+    _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+[self statusBarHeight]);
+    _collectionViewBar.frame = CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging);
 }
 
 // set up progress view frame

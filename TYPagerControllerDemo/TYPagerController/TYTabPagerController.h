@@ -32,8 +32,6 @@
 @property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
 @property (nonatomic, weak, readonly) UIView *progressView;
 
-@property (nonatomic, assign) BOOL adjustStatusBarHeight; // defaut YES
-
 // cell
 @property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal
 @property (nonatomic, assign) CGFloat cellSpacing; // cell space

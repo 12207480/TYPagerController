@@ -51,6 +51,8 @@
 
 @property (nonatomic, assign) CGFloat contentTopEdging; // contentView top edge
 
+@property (nonatomic, assign) BOOL adjustStatusBarHeight; // defaut NO,if YES and navBar is hide,statusBarHeight have value to adjust status
+
 @property (nonatomic, assign) CGFloat changeIndexWhenScrollProgress; // default 1.0
 
 // reload
@@ -67,6 +69,9 @@
 
 // scroll use progress
 - (BOOL)isProgressScrollEnabel;
+
+// see adjustStatusBarHeight ,only layout views ,it is valid.
+- (NSInteger)statusBarHeight;
 
 @end
 

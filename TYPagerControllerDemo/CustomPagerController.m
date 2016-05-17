@@ -8,6 +8,8 @@
 
 #import "CustomPagerController.h"
 #import "CustomViewController.h"
+#import "ListViewController.h"
+#import "CollectionViewController.h"
 
 @interface CustomPagerController ()<TYPagerControllerDataSource>
 
@@ -18,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.adjustStatusBarHeight = YES;
     self.cellSpacing = 8;
     self.dataSource = self;
     if (_variable) {
@@ -51,9 +54,19 @@
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
 {
-    CustomViewController *VC = [[CustomViewController alloc]init];
-    VC.text = [@(index) stringValue];
-    return VC;
+    if (index%3 == 0) {
+        CustomViewController *VC = [[CustomViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else if (index%3 == 1) {
+        ListViewController *VC = [[ListViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else {
+        CollectionViewController *VC = [[CollectionViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }
 }
 
 - (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
