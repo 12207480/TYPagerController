@@ -1,17 +1,16 @@
 //
-//  ViewController.h
+//  CustomPagerController.h
 //  TYPagerControllerDemo
 //
-//  Created by tanyang on 16/4/13.
+//  Created by tany on 16/5/17.
 //  Copyright © 2016年 tanyang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TYTabButtonPagerController.h"
 
-@interface ViewController : UIViewController
+@interface CustomPagerController : TYTabButtonPagerController
 
 @property (nonatomic, assign) BOOL variable;
 @property (nonatomic, assign) BOOL showNavBar;
 
 @end
-

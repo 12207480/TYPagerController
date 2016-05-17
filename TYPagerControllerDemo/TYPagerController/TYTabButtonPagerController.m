@@ -23,12 +23,12 @@
         _selectedTextColor = [UIColor redColor];
         
         _pagerBarColor = [UIColor whiteColor];
-        _collectionViewBarColor = _pagerBarColor;
+        _collectionViewBarColor = [UIColor clearColor];
         
         _progressColor = [UIColor redColor];
         _progressRadius = 1;
         _progressViewHiden = NO;
-        self.progressEdging = 15;
+        
         self.selectedTextFont = self.normalTextFont;
         [self registerCellClass:[TYTabTitleViewCell class] isContainXib:NO];
     }

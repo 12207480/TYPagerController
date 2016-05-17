@@ -28,6 +28,22 @@
     self.navigationItem.rightBarButtonItems = @[reloadItem,scrollItem];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!_showNavBar) {
+        self.navigationController.navigationBarHidden = YES;
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (!_showNavBar) {
+        self.navigationController.navigationBarHidden = NO;
+    }
+}
+
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
@@ -40,6 +56,11 @@
     pagerController.dataSource = self;
     //pagerController.cellWidth = 56;
     pagerController.cellSpacing = 8;
+    if (_variable) {
+        pagerController.progressBounces = NO;
+        pagerController.progressWidth = 0;
+        pagerController.progressEdging = 3;
+    }
     pagerController.view.frame = self.view.bounds;
     [self addChildViewController:pagerController];
     [self.view addSubview:pagerController.view];

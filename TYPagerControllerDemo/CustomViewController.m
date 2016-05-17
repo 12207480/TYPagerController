@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view.
     //NSLog(@"text %@",_text);
     [self addPageLabel];
+    
+    [self addButton];
 }
 
 - (void)viewWillLayoutSubviews
@@ -38,6 +40,16 @@
     self.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:arc4random()%255/255.0];
 }
 
+- (void)addButton
+{
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [cancelBtn setTitle:@"pop back" forState:UIControlStateNormal];
+    [cancelBtn addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
+    cancelBtn.frame = CGRectMake(0, 0, 100, 40);
+    cancelBtn.center = CGPointMake(self.view.center.x, self.view.center.y + 60);
+    [self.view addSubview:cancelBtn];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -48,6 +60,11 @@
 {
     [super viewWillDisappear:animated];
     NSLog(@"viewWillDisappear index %@",_text);
+}
+
+- (void)popBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

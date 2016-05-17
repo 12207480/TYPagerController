@@ -92,7 +92,7 @@
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.minimumInteritemSpacing = _cellSpacing;
+    
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging) collectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
@@ -128,6 +128,7 @@
 - (void)setDataSource:(id<TYPagerControllerDataSource>)dataSource
 {
     [super setDataSource:dataSource];
+    
     _tabDataSourceFlags.titleForIndex = [self.dataSource respondsToSelector:@selector(pagerController:titleForIndex:)];
     NSAssert(_tabDataSourceFlags.titleForIndex, @"TYPagerControllerDataSource pagerController:titleForIndex: not impletement!");
 }
@@ -179,6 +180,7 @@
 // layout tab view
 - (void)layoutTabPagerView
 {
+    ((UICollectionViewFlowLayout *)_collectionViewBar.collectionViewLayout).minimumInteritemSpacing = _cellSpacing;
     CGFloat statusHeight = (_adjustStatusBarHeight && self.navigationController.isNavigationBarHidden && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
     _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+statusHeight);
     _collectionViewBar.frame = CGRectMake(0, statusHeight, CGRectGetWidth(self.view.frame), self.contentTopEdging);
