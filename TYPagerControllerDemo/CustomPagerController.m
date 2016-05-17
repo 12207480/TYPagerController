@@ -50,11 +50,12 @@
     [super setBarStyle:barStyle];
     
     if (barStyle == TYPagerBarStyleCoverView) {
-        
+        self.progressBounces = NO;
         self.progressHeight = self.contentTopEdging-8;
         self.progressEdging = -self.progressHeight/4;
         self.progressColor = [UIColor lightGrayColor];
     }else {
+        self.progressBounces = YES;
         self.progressHeight = 2;
         self.progressEdging = 3;
         self.progressColor = [UIColor redColor];
