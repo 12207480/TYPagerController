@@ -49,7 +49,7 @@
 - (void)configireTabPropertys
 {
     _animateDuration = 0.25;
-    //self.adjustStatusBarHeight = YES;
+    _barStyle = TYPagerBarStyleProgressView;
     
     _normalTextFont = [UIFont systemFontOfSize:15];
     _selectedTextFont = [UIFont systemFontOfSize:18];
@@ -114,7 +114,14 @@
 - (void)addUnderLineView
 {
     UIView *underLineView = [[UIView alloc]init];
-    [_collectionViewBar addSubview:underLineView];
+    underLineView.hidden = (_barStyle == TYPagerBarStyleNoneView);
+    if (_barStyle != TYPagerBarStyleCoverView) {
+        [_collectionViewBar addSubview:underLineView];
+    }else{
+        ((UICollectionViewFlowLayout *)self.collectionViewBar.collectionViewLayout).sectionInset = UIEdgeInsetsMake(0, -self.progressEdging, 0, -self.progressEdging);
+        underLineView.layer.zPosition = -1;
+        [_collectionViewBar insertSubview:underLineView atIndex:0];
+    }
     _progressView = underLineView;
 }
 
@@ -198,13 +205,16 @@
     
     CGRect cellFrame = [self cellFrameWithIndex:index];
     CGFloat progressEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressEdging;
+    CGFloat progressX = cellFrame.origin.x+progressEdging;
+    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (cellFrame.size.height - _progressHeight)/2:(cellFrame.size.height - _progressHeight);
+    CGFloat width = cellFrame.size.width-2*progressEdging;
     
     if (animated) {
         [UIView animateWithDuration:_animateDuration animations:^{
-            _progressView.frame = CGRectMake(cellFrame.origin.x+progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*progressEdging, _progressHeight);
+            _progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
         }];
     }else {
-        _progressView.frame = CGRectMake(cellFrame.origin.x+progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*progressEdging, _progressHeight);
+        _progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
     }
 }
 
@@ -219,6 +229,7 @@
     
     CGFloat progressFromEdging = _progressWidth > 0 ? (fromCellFrame.size.width - _progressWidth)/2 : _progressEdging;
     CGFloat progressToEdging = _progressWidth > 0 ? (toCellFrame.size.width - _progressWidth)/2 : _progressEdging;
+    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (toCellFrame.size.height - _progressHeight)/2:(toCellFrame.size.height - _progressHeight);
     CGFloat progressX, width;
     
     if (_progressBounces) {
@@ -244,7 +255,7 @@
         width = (toCellFrame.size.width-2*progressToEdging)*progress + (fromCellFrame.size.width-2*progressFromEdging)*(1-progress);
     }
     
-    _progressView.frame = CGRectMake(progressX, toCellFrame.size.height - _progressHeight, width, _progressHeight);
+    _progressView.frame = CGRectMake(progressX,progressY, width, _progressHeight);
 }
 
 #pragma mark - override transition

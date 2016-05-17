@@ -26,7 +26,6 @@
     if (_variable) {
         self.progressBounces = NO;
         self.progressWidth = 0;
-        self.progressEdging = 3;
     }
 }
 
@@ -44,6 +43,23 @@
     if (!_showNavBar) {
         self.navigationController.navigationBarHidden = NO;
     }
+}
+
+- (void)setBarStyle:(TYPagerBarStyle)barStyle
+{
+    [super setBarStyle:barStyle];
+    
+    if (barStyle == TYPagerBarStyleCoverView) {
+        
+        self.progressHeight = self.contentTopEdging-8;
+        self.progressEdging = -self.progressHeight/4;
+        self.progressColor = [UIColor lightGrayColor];
+    }else {
+        self.progressHeight = 2;
+        self.progressEdging = 3;
+        self.progressColor = [UIColor redColor];
+    }
+    self.progressRadius = self.progressHeight/2;
 }
 
 

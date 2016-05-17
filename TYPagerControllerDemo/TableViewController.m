@@ -54,11 +54,13 @@
         [self.navigationController pushViewController:VC animated:YES];
     }else if (indexPath.row <= 5) {
         CustomPagerController *VC = [[CustomPagerController alloc]init];
+        VC.barStyle = indexPath.row%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleProgressView;
         VC.variable = indexPath.row%2;
         VC.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }else if (indexPath.row <= 7) {
         CustomPagerController *VC = [[CustomPagerController alloc]init];
+        VC.barStyle = indexPath.row%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleNoneView;
         VC.variable = indexPath.row%2;
         VC.showNavBar = YES;
         [self.navigationController pushViewController:VC animated:YES];

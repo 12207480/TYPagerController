@@ -26,8 +26,7 @@
         _collectionViewBarColor = [UIColor clearColor];
         
         _progressColor = [UIColor redColor];
-        _progressRadius = 1;
-        _progressViewHiden = NO;
+        _progressRadius = self.progressHeight/2;
         
         [self registerCellClass:[TYTabTitleViewCell class] isContainXib:NO];
     }
@@ -47,7 +46,6 @@
 - (void)configureTabViews
 {
     // progress
-    self.progressView.hidden = _progressViewHiden;
     self.progressView.backgroundColor = _progressColor;
     if (_progressRadius > 0) {
         self.progressView.layer.cornerRadius = _progressRadius;

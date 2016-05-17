@@ -19,7 +19,6 @@
 
 // progress view
 @property (nonatomic, assign) CGFloat progressRadius;
-@property (nonatomic, assign) CGFloat progressViewHiden;
 @property (nonatomic, strong) UIColor *progressColor;
 
 // text color

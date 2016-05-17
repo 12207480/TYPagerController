@@ -20,6 +20,12 @@
 
 @end
 
+typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
+    TYPagerBarStyleNoneView,
+    TYPagerBarStyleProgressView,
+    TYPagerBarStyleCoverView
+};
+
 @interface TYTabPagerController : TYPagerController
 
 #pragma clang diagnostic push
@@ -31,6 +37,8 @@
 @property (nonatomic, weak, readonly) UIView *pagerBarView; // pagerBarView height is contentTopEdging
 @property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
 @property (nonatomic, weak, readonly) UIView *progressView;
+
+@property (nonatomic, assign) TYPagerBarStyle barStyle;
 
 // cell
 @property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal
