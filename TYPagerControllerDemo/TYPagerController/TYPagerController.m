@@ -396,12 +396,12 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 {
     if (scrollView == _contentView) {
         if ([self isProgressScrollEnabel] && !_needLayoutContentView) {
-            // 计算scroll progress
+            //  caculate scroll progress
             [self configurePagerIndexByProgress];
         }
         
         if (!_needLayoutContentView) {
-            // 计算scroll index
+            // caculate scroll index
             [self configurePagerIndex];
         }
         

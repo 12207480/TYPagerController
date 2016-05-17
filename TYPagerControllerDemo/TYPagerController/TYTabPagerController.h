@@ -28,9 +28,11 @@
 #pragma clang diagnostic pop
 
 // view ,don't change frame
-@property (nonatomic, weak, readonly) UIView *pagerBarView;
+@property (nonatomic, weak, readonly) UIView *pagerBarView; // pagerBarView height is contentTopEdging
 @property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
 @property (nonatomic, weak, readonly) UIView *progressView;
+
+@property (nonatomic, assign) BOOL adjustStatusBarHeight; // defaut YES
 
 // cell
 @property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal

@@ -49,9 +49,10 @@
 - (void)configireTabPropertys
 {
     _animateDuration = 0.25;
+    _adjustStatusBarHeight = YES;
     
     _normalTextFont = [UIFont systemFontOfSize:15];
-    _selectedTextFont = [UIFont systemFontOfSize:20];
+    _selectedTextFont = [UIFont systemFontOfSize:18];
     
     _cellSpacing = 0;
     _cellEdging = 3;
@@ -178,7 +179,7 @@
 // layout tab view
 - (void)layoutTabPagerView
 {
-    CGFloat statusHeight = (self.navigationController.isNavigationBarHidden && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
+    CGFloat statusHeight = (_adjustStatusBarHeight && self.navigationController.isNavigationBarHidden && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
     _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+statusHeight);
     _collectionViewBar.frame = CGRectMake(0, statusHeight, CGRectGetWidth(self.view.frame), self.contentTopEdging);
 }
@@ -189,8 +190,10 @@
     if (_progressView.isHidden) {
         return;
     }
+    
     CGRect cellFrame = [self cellFrameWithIndex:index];
     CGFloat progressEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressEdging;
+    
     if (animated) {
         [UIView animateWithDuration:_animateDuration animations:^{
             _progressView.frame = CGRectMake(cellFrame.origin.x+progressEdging, cellFrame.size.height - _progressHeight, cellFrame.size.width-2*progressEdging, _progressHeight);
@@ -205,6 +208,7 @@
     if (_progressView.isHidden) {
         return;
     }
+    
     CGRect fromCellFrame = [self cellFrameWithIndex:fromIndex];
     CGRect toCellFrame = [self cellFrameWithIndex:toIndex];
     
@@ -246,7 +250,7 @@
     UICollectionViewCell *toCell = [self cellForIndex:toIndex];
     
     if (![self isProgressScrollEnabel]) {
-        
+        // don‘t progress enable
         if (_tabDelegateFlags.transitionFromeCellAnimated) {
             [self.delegate pagerController:self transitionFromeCell:fromCell toCell:toCell animated:animated];
         }
@@ -305,7 +309,7 @@
         return CGSizeMake(_cellWidth, CGRectGetHeight(_collectionViewBar.frame));
     }else if(_tabDataSourceFlags.titleForIndex){
         NSString *title = [self.dataSource pagerController:self titleForIndex:indexPath.item];
-        CGFloat width = [self boundingSizeWithString:title font:_selectedTextFont constrainedToSize:CGSizeMake(200, 200)].width+_cellEdging*2;
+        CGFloat width = [self boundingSizeWithString:title font:_selectedTextFont constrainedToSize:CGSizeMake(300, 100)].width+_cellEdging*2;
         return CGSizeMake(width, CGRectGetHeight(_collectionViewBar.frame));
     }
     return CGSizeZero;
