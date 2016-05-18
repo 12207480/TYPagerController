@@ -43,7 +43,7 @@
 @property (nonatomic, weak) id<TYPagerControllerDataSource> dataSource;
 @property (nonatomic, weak) id<TYPagerControllerDelegate>   delegate;
 
-@property (nonatomic, strong, readonly) NSCache *memoryCache;// cache pagerController
+@property (nonatomic, strong, readonly) NSCache *memoryCache;// cache pagerController, you can set countLimit
 
 @property (nonatomic, assign, readonly) NSInteger curIndex;
 
@@ -58,7 +58,7 @@
 // reload
 - (void)reloadData;
 
-// override must call super 
+// override must call super , update contentView subviews frame
 - (void)updateContentView;
 
 // move pager controller to index

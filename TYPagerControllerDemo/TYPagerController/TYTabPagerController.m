@@ -150,6 +150,7 @@
     [super reloadData];
 }
 
+// update tab subviews frame
 - (void)updateContentView
 {
     [super updateContentView];
@@ -185,7 +186,6 @@
 }
 
 #pragma mark - private
-
 
 // layout tab view
 - (void)layoutTabPagerView
