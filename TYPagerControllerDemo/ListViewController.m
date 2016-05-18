@@ -20,8 +20,10 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self addTableView];
+    
+    [self addHorHeaderScrollView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,6 +53,24 @@
     [self.view addSubview:tableView];
     _tableView = tableView;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
+}
+
+- (void)addHorHeaderScrollView
+{
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)];
+    scrollView.pagingEnabled = YES;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.contentSize = CGSizeMake(2*CGRectGetWidth(self.view.frame), 0);
+    [self.view addSubview:scrollView];
+    
+    UIView *page1View = [[UIView alloc]initWithFrame:scrollView.bounds];
+    page1View.backgroundColor = [UIColor orangeColor];
+    [scrollView addSubview:page1View];
+    UIView *page2View = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame), 0, CGRectGetWidth(self.view.frame), 200)];
+    page2View.backgroundColor = [UIColor redColor];
+    [scrollView addSubview:page2View];
+    
+    _tableView.tableHeaderView = scrollView;
 }
 
 #pragma mark - delegate
