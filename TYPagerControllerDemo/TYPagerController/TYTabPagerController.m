@@ -54,7 +54,7 @@
     _normalTextFont = [UIFont systemFontOfSize:15];
     _selectedTextFont = [UIFont systemFontOfSize:18];
     
-    _cellSpacing = 0;
+    _cellSpacing = 2;
     _cellEdging = 3;
     
     _progressHeight = kUnderLineViewHeight;
@@ -118,7 +118,7 @@
     if (_barStyle != TYPagerBarStyleCoverView) {
         [_collectionViewBar addSubview:underLineView];
     }else{
-        ((UICollectionViewFlowLayout *)self.collectionViewBar.collectionViewLayout).sectionInset = UIEdgeInsetsMake(0, -self.progressEdging, 0, -self.progressEdging);
+        ((UICollectionViewFlowLayout *)self.collectionViewBar.collectionViewLayout).sectionInset = UIEdgeInsetsMake(0, -_progressEdging+_cellSpacing, 0, -_progressEdging+_cellSpacing);
         underLineView.layer.zPosition = -1;
         [_collectionViewBar insertSubview:underLineView atIndex:0];
     }

@@ -40,10 +40,10 @@
     self.delegate = self;
     _selectFontScale = self.selectedTextFont.pointSize/self.normalTextFont.pointSize;
     
-    [self configureTabViews];
+    [self configureSubViews];
 }
 
-- (void)configureTabViews
+- (void)configureSubViews
 {
     // progress
     self.progressView.backgroundColor = _progressColor;

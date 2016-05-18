@@ -58,7 +58,7 @@
 // reload
 - (void)reloadData;
 
-// override must call super
+// override must call super 
 - (void)updateContentView;
 
 // move pager controller to index
