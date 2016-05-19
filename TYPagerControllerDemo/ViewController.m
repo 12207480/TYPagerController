@@ -75,9 +75,17 @@
     [_pagerController moveToControllerAtIndex:arc4random()%30 animated:NO];
 }
 
+#pragma mark - TYPagerControllerDataSource
+
 - (NSInteger)numberOfControllersInPagerController
 {
     return 30;
+}
+
+
+- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
+{
+    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
 }
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
@@ -95,11 +103,6 @@
         VC.text = [@(index) stringValue];
         return VC;
     }
-}
-
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
-{
-    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
 }
 
 - (void)didReceiveMemoryWarning {

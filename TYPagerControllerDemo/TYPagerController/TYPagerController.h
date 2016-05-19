@@ -67,7 +67,7 @@
 // visible pager controllers
 - (NSArray *)visibleViewControllers;
 
-// scroll use progress
+// scroll is progressing
 - (BOOL)isProgressScrollEnabel;
 
 // see adjustStatusBarHeight ,only layout views ,it is valid.

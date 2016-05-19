@@ -43,6 +43,7 @@
 - (void)addButton
 {
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:21];
     [cancelBtn setTitle:@"pop back" forState:UIControlStateNormal];
     [cancelBtn addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
     cancelBtn.frame = CGRectMake(0, 0, 100, 40);

@@ -266,7 +266,7 @@
     UICollectionViewCell *toCell = [self cellForIndex:toIndex];
     
     if (![self isProgressScrollEnabel]) {
-        // don‘t progress enable
+        // if isn't progressing
         if (_tabDelegateFlags.transitionFromeCellAnimated) {
             [self.delegate pagerController:self transitionFromeCell:fromCell toCell:toCell animated:animated];
         }

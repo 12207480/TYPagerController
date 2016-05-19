@@ -10,8 +10,11 @@
 #import "TYTabButtonPagerController.h"
 #import "ViewController.h"
 #import "CustomPagerController.h"
+#import "CustomViewController.h"
+#import "ListViewController.h"
+#import "CollectionViewController.h"
 
-@interface TableViewController ()
+@interface TableViewController ()<TYPagerControllerDataSource>
 @property (nonatomic, strong) NSArray *dataArray;
 @end
 
@@ -23,7 +26,7 @@
     self.title = @"TYPagerController Demo";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
-    _dataArray = @[@"可变 渐变1 pagerController",@"可变 渐变2 pagerController",@"可变 渐变1 带导航 pagerController",@"可变 渐变2 带导航 pagerController",@"可变 渐变1 customPagerController",@"可变 渐变2 customPagerController",@"可变 渐变1 带导航 customPagerController",@"可变 渐变2 带导航 customPagerController"];
+    _dataArray = @[@"pagerController",@"可变 渐变1 pagerController",@"可变 渐变2 pagerController",@"可变 渐变1 带导航 pagerController",@"可变 渐变2 带导航 pagerController",@"可变 渐变1 customPagerController",@"可变 渐变2 customPagerController",@"可变 渐变1 带导航 customPagerController",@"可变 渐变2 带导航 customPagerController"];
 }
 
 #pragma mark - Table view data source
@@ -42,39 +45,55 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row <= 1) {
+    if (indexPath.row == 0) {
+        TYPagerController *VC = [[TYPagerController alloc]init];
+        VC.dataSource = self;
+        [self.navigationController pushViewController:VC animated:YES];
+    }else if (indexPath.row <= 2) {
         ViewController *VC = [[ViewController alloc]init];
         VC.variable = indexPath.row;
-        VC.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:VC animated:YES];
-    }else if (indexPath.row <= 3) {
+    }else if (indexPath.row <= 4) {
         ViewController *VC = [[ViewController alloc]init];
         VC.variable = indexPath.row;
         VC.showNavBar = YES;
         [self.navigationController pushViewController:VC animated:YES];
-    }else if (indexPath.row <= 5) {
+    }else if (indexPath.row <= 6) {
         CustomPagerController *VC = [[CustomPagerController alloc]init];
-        VC.barStyle = indexPath.row%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleProgressView;
-        VC.variable = indexPath.row%2;
-        VC.navigationController.navigationBarHidden = YES;
+        VC.barStyle = (indexPath.row+1)%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleProgressView;
+        VC.variable = (indexPath.row+1)%2;
         [self.navigationController pushViewController:VC animated:YES];
-    }else if (indexPath.row <= 7) {
+    }else if (indexPath.row <= 8) {
         CustomPagerController *VC = [[CustomPagerController alloc]init];
-        VC.barStyle = indexPath.row%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleNoneView;
-        VC.variable = indexPath.row%2;
+        VC.barStyle = (indexPath.row+1)%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleNoneView;
+        VC.variable = (indexPath.row+1)%2;
         VC.showNavBar = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - TYPagerControllerDataSource
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)numberOfControllersInPagerController
+{
+    return 30;
 }
-*/
+
+- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
+{
+    if (index%3 == 0) {
+        CustomViewController *VC = [[CustomViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else if (index%3 == 1) {
+        ListViewController *VC = [[ListViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else {
+        CollectionViewController *VC = [[CollectionViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }
+}
 
 @end
