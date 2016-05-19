@@ -11,7 +11,7 @@
 #import "ListViewController.h"
 #import "CollectionViewController.h"
 
-@interface CustomPagerController ()<TYPagerControllerDataSource>
+@interface CustomPagerController ()
 
 @end
 
@@ -22,7 +22,6 @@
     // Do any additional setup after loading the view.
     self.adjustStatusBarHeight = YES;
     self.cellSpacing = 8;
-    self.dataSource = self;
     if (_variable) {
         self.progressBounces = NO;
         self.progressWidth = 0;

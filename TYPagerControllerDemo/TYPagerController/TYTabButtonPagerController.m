@@ -9,7 +9,7 @@
 #import "TYTabButtonPagerController.h"
 #import "TYTabTitleViewCell.h"
 
-@interface TYTabButtonPagerController ()<TYTabPagerControllerDelegate>
+@interface TYTabButtonPagerController ()
 @property (nonatomic, assign) CGFloat selectFontScale;
 @end
 
@@ -38,7 +38,10 @@
     // Do any additional setup after loading the view.
     
     self.delegate = self;
-    _selectFontScale = self.selectedTextFont.pointSize/self.normalTextFont.pointSize;
+    if (!self.dataSource) {
+        self.dataSource = self;
+    }
+    _selectFontScale = self.normalTextFont.pointSize/self.selectedTextFont.pointSize;
     
     [self configureSubViews];
 }
@@ -63,20 +66,20 @@
 {
     if (fromCell) {
         fromCell.titleLabel.textColor = self.normalTextColor;
-        fromCell.transform = CGAffineTransformIdentity;
+        fromCell.transform = CGAffineTransformMakeScale(self.selectFontScale, self.selectFontScale);
     }
     
     if (toCell) {
         toCell.titleLabel.textColor = self.selectedTextColor;
-        toCell.transform = CGAffineTransformMakeScale(self.selectFontScale, self.selectFontScale);
+        toCell.transform = CGAffineTransformIdentity;
     }
 }
 
 - (void)transitionFromCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)toCell progress:(CGFloat)progress
 {
-    CGFloat currentTransform = (self.selectFontScale - 1.0)*progress;
-    fromCell.transform = CGAffineTransformMakeScale(self.selectFontScale-currentTransform, self.selectFontScale-currentTransform);
-    toCell.transform = CGAffineTransformMakeScale(1.0+currentTransform, 1.0+currentTransform);
+    CGFloat currentTransform = (1.0 - self.selectFontScale)*progress;
+    fromCell.transform = CGAffineTransformMakeScale(1.0-currentTransform, 1.0-currentTransform);
+    toCell.transform = CGAffineTransformMakeScale(self.selectFontScale+currentTransform, self.selectFontScale+currentTransform);
     
     CGFloat narR,narG,narB,narA;
     [self.normalTextColor getRed:&narR green:&narG blue:&narB alpha:&narA];
@@ -88,13 +91,27 @@
     toCell.titleLabel.textColor = [UIColor colorWithRed:narR-detalR*progress green:narG-detalG*progress blue:narB-detalB*progress alpha:narA-detalA*progress];
 }
 
+#pragma mark - TYPagerControllerDataSource
+
+- (NSInteger)numberOfControllersInPagerController
+{
+    NSAssert(NO, @"you must impletement method numberOfControllersInPagerController");
+    return 0;
+}
+
+- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
+{
+    NSAssert(NO, @"you must impletement method pagerController:controllerForIndex:");
+    return nil;
+}
+
 #pragma mark - TYTabPagerControllerDelegate
 
 - (void)pagerController:(TYTabPagerController *)pagerController configreCell:(TYTabTitleViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath
 {
     TYTabTitleViewCell *titleCell = (TYTabTitleViewCell *)cell;
     titleCell.titleLabel.text = title;
-    titleCell.titleLabel.font = self.normalTextFont;
+    titleCell.titleLabel.font = self.selectedTextFont;
 }
 
 - (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)toCell animated:(BOOL)animated

@@ -11,7 +11,7 @@
 
 // register cell conforms to TYTabTitleViewCellProtocol
 
-@interface TYTabButtonPagerController : TYTabPagerController
+@interface TYTabButtonPagerController : TYTabPagerController<TYTabPagerControllerDelegate,TYPagerControllerDataSource>
 
 // pagerBar color
 @property (nonatomic, strong) UIColor *pagerBarColor;
