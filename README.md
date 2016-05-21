@@ -1,2 +1,3 @@
 # TYPagerController
-page scroll View controller,have more tabBar styles
+page scroll View controller,have more tabBar styles.
+
