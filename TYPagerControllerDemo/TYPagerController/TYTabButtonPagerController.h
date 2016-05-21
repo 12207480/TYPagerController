@@ -7,7 +7,7 @@
 //
 
 #import "TYTabPagerController.h"
-#import "TYTabTitleViewCellProtocol.h"
+#import "TYTabTitleCellProtocol.h"
 
 // register cell conforms to TYTabTitleViewCellProtocol
 

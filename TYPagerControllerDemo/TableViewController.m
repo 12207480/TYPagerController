@@ -51,22 +51,22 @@
         [self.navigationController pushViewController:VC animated:YES];
     }else if (indexPath.row <= 2) {
         ViewController *VC = [[ViewController alloc]init];
-        VC.variable = indexPath.row;
+        VC.variable = indexPath.row-1;
         [self.navigationController pushViewController:VC animated:YES];
     }else if (indexPath.row <= 4) {
         ViewController *VC = [[ViewController alloc]init];
-        VC.variable = indexPath.row;
+        VC.variable = indexPath.row-1;
         VC.showNavBar = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }else if (indexPath.row <= 6) {
         CustomPagerController *VC = [[CustomPagerController alloc]init];
-        VC.barStyle = (indexPath.row+1)%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleProgressView;
-        VC.variable = (indexPath.row+1)%2;
+        VC.barStyle = (indexPath.row-1)%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleProgressView;
+        VC.variable = (indexPath.row-1)%2;
         [self.navigationController pushViewController:VC animated:YES];
     }else if (indexPath.row <= 8) {
         CustomPagerController *VC = [[CustomPagerController alloc]init];
-        VC.barStyle = (indexPath.row+1)%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleNoneView;
-        VC.variable = (indexPath.row+1)%2;
+        VC.barStyle = (indexPath.row-1)%2 ? TYPagerBarStyleCoverView:TYPagerBarStyleNoneView;
+        VC.variable = (indexPath.row-1)%2;
         VC.showNavBar = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }

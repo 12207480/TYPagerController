@@ -44,7 +44,7 @@
 		2B55891F1CC7469300A21F85 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		2B6099581CE2DECF00BF86C1 /* TYTabButtonPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabButtonPagerController.h; sourceTree = "<group>"; };
 		2B6099591CE2DECF00BF86C1 /* TYTabButtonPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabButtonPagerController.m; sourceTree = "<group>"; };
-		2B60995B1CE3260C00BF86C1 /* TYTabTitleViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabTitleViewCellProtocol.h; sourceTree = "<group>"; };
+		2B60995B1CE3260C00BF86C1 /* TYTabTitleCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabTitleCellProtocol.h; sourceTree = "<group>"; };
 		2BD7F94D1CEAB38E005C95E2 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		2BD7F94E1CEAB38E005C95E2 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		2BD7F9501CEABF61005C95E2 /* CustomPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPagerController.h; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		2B4BC1161CD9878400B06DA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2B60995B1CE3260C00BF86C1 /* TYTabTitleViewCellProtocol.h */,
+				2B60995B1CE3260C00BF86C1 /* TYTabTitleCellProtocol.h */,
 				2B4BC1201CD9977E00B06DA7 /* TYTabTitleViewCell.h */,
 				2B4BC1211CD9977E00B06DA7 /* TYTabTitleViewCell.m */,
 			);
@@ -423,7 +423,7 @@
 				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -438,7 +438,7 @@
 				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TYTabTitleViewCellProtocol.h"
+#import "TYTabTitleCellProtocol.h"
 
-@interface TYTabTitleViewCell : UICollectionViewCell<TYTabTitleViewCellProtocol>
+@interface TYTabTitleViewCell : UICollectionViewCell<TYTabTitleCellProtocol>
 @property (nonatomic, weak,readonly) UILabel *titleLabel;
 @end

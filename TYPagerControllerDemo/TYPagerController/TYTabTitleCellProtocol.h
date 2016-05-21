@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TYTabTitleViewCellProtocol <NSObject>
+@protocol TYTabTitleCellProtocol <NSObject>
 @property (nonatomic, weak,readonly) UILabel *titleLabel;
 @end

@@ -62,7 +62,7 @@
 
 #pragma mark - private
 
-- (void)transitionFromCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)toCell
+- (void)transitionFromCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)toCell
 {
     if (fromCell) {
         fromCell.titleLabel.textColor = self.normalTextColor;
@@ -75,7 +75,7 @@
     }
 }
 
-- (void)transitionFromCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)toCell progress:(CGFloat)progress
+- (void)transitionFromCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)toCell progress:(CGFloat)progress
 {
     CGFloat currentTransform = (1.0 - self.selectFontScale)*progress;
     fromCell.transform = CGAffineTransformMakeScale(1.0-currentTransform, 1.0-currentTransform);
@@ -114,7 +114,7 @@
     titleCell.titleLabel.font = self.selectedTextFont;
 }
 
-- (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)toCell animated:(BOOL)animated
+- (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)toCell animated:(BOOL)animated
 {
     if (animated) {
         [UIView animateWithDuration:self.animateDuration animations:^{
@@ -125,7 +125,7 @@
     }
 }
 
-- (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleViewCellProtocol> *)toCell progress:(CGFloat)progress
+- (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)toCell progress:(CGFloat)progress
 {
     [self transitionFromCell:fromCell toCell:toCell progress:progress];
 }
