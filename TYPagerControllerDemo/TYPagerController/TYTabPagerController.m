@@ -125,6 +125,8 @@
     _progressView = underLineView;
 }
 
+#pragma mark - setter
+
 - (void)setDelegate:(id<TYTabPagerControllerDelegate>)delegate
 {
     [super setDelegate:delegate];

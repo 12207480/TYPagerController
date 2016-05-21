@@ -114,6 +114,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     _contentView = contentView;
 }
 
+#pragma mark - configre propertys
+
 - (void)configurePropertys
 {
     _visibleControllers = [NSMutableDictionary dictionary];
@@ -230,9 +232,6 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     [self removeControllersOutOfVisibleRange:_visibleRange];
     
     [self addControllersInVisibleRange:_visibleRange];
-    
-    //NSLog(@"visibleRange %@",NSStringFromRange(visibleRange));
-    //NSLog(@"cur index %ld count %ld",_curIndex,self.childViewControllers.count);
 }
 
 // caculate pager index
@@ -245,8 +244,10 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
     
     NSInteger index = 0;
+    // when scroll progress percent will change index
     CGFloat percentChangeIndex = 1.0-_changeIndexWhenScrollProgress;
     
+    // caculate cur index
     if (direction == TYPagerControllerLeft) {
         index = offsetX/width+percentChangeIndex;
     }else {
@@ -259,9 +260,11 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
         index = _countOfControllers-1;
     }
 
+    // if index not same,change index
     if (index != _curIndex) {
         NSInteger fromIndex = _curIndex;
         _curIndex = index;
+        
         if (_methodFlags.transitionFromIndexToIndex) {
             [self transitionFromIndex:fromIndex toIndex:_curIndex animated:_scrollAnimated];
         }
@@ -286,8 +289,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     
     TYPagerControllerDirection direction = offsetX >= _preOffsetX ? TYPagerControllerLeft : TYPagerControllerRight;
     
-    NSInteger fromIndex = 0;
-    NSInteger toIndex = 0;
+    NSInteger fromIndex = 0, toIndex = 0;
+    
     if (direction == TYPagerControllerLeft) {
         if (floorIndex >= _countOfControllers -1) {
             return;
@@ -309,6 +312,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     }
 }
 
+// is scrolling and caculate progess ?
 - (BOOL)isProgressScrollEnabel
 {
     return (_delegateFlags.transitionFromIndexToIndexProgress || _methodFlags.transitionFromIndexToIndexProgress) && !_isTapScrollMoved ;
@@ -340,7 +344,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 {
     if (viewController.parentViewController) {
         [self removeViewController:viewController];
-        
+        // remove and cache
         if (![_memoryCache objectForKey:@(index)]) {
             [_memoryCache setObject:viewController forKey:@(index)];
         }
@@ -360,17 +364,18 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 // add pager controller if it in visible range
 - (void)addControllersInVisibleRange:(NSRange)range
 {
-    // preload page +1 view
     NSInteger endIndex = range.location + range.length;
     for (NSInteger idx = range.location ; idx < endIndex; ++idx) {
         
         UIViewController *viewController = [_visibleControllers objectForKey:@(idx)];
         
         if (!viewController) {
+            // if cache have VC
             viewController = [_memoryCache objectForKey:@(idx)];
         }
         
         if (!viewController) {
+            // from datasource get VC
             viewController = [_dataSource pagerController:self controllerForIndex:idx];
         }
         
@@ -382,7 +387,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)addViewController:(UIViewController *)viewController atIndex:(NSInteger)index
 {
     if (!viewController.parentViewController) {
-        //NSLog(@"addViewController index %ld",index);
+        // addChildViewController
         [self addChildViewController:viewController];
         viewController.view.frame = frameForControllerAtIndex(index, _contentView.frame);
         [_contentView addSubview:viewController.view];
@@ -392,6 +397,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
             [_visibleControllers setObject:viewController forKey:@(index)];
         }
     }else {
+        // if VC have parentViewController，change the frame
         viewController.view.frame = frameForControllerAtIndex(index, _contentView.frame);
     }
 }
@@ -411,6 +417,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
             [self configurePagerIndex];
         }
         
+        // layout
         [self layoutContentView];
         
         _isTapScrollMoved = NO;
