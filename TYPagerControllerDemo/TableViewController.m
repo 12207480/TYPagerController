@@ -64,8 +64,8 @@
         [self.navigationController pushViewController:VC animated:YES];
     }else if (indexPath.row <= 8) {
         CustomPagerController *VC = [[CustomPagerController alloc]init];
-        VC.barStyle = indexPath.row%2 ? TYPagerBarStyleNoneView:TYPagerBarStyleCoverView;
         VC.showNavBar = YES;
+        VC.barStyle = indexPath.row%2 ? TYPagerBarStyleNoneView:TYPagerBarStyleCoverView;
         [self.navigationController pushViewController:VC animated:YES];
     }
 }

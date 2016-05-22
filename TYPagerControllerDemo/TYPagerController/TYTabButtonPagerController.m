@@ -50,10 +50,8 @@
 {
     // progress
     self.progressView.backgroundColor = _progressColor;
-    if (_progressRadius > 0) {
-        self.progressView.layer.cornerRadius = _progressRadius;
-        self.progressView.layer.masksToBounds = YES;
-    }
+    self.progressView.layer.cornerRadius = _progressRadius;
+    self.progressView.layer.masksToBounds = YES;
     
     // tabBar
     self.pagerBarView.backgroundColor = _pagerBarColor;

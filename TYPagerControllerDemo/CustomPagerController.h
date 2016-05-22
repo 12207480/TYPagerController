@@ -10,7 +10,6 @@
 
 @interface CustomPagerController : TYTabButtonPagerController
 
-@property (nonatomic, assign) BOOL variable;
 @property (nonatomic, assign) BOOL showNavBar;
 
 @end

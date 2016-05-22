@@ -44,13 +44,6 @@
 //- (void)setBarStyle:(TYPagerBarStyle)barStyle
 //{
 //    [super setBarStyle:barStyle];
-//    
-//    if (barStyle == TYPagerBarStyleCoverView) {
-//        self.progressColor = [UIColor lightGrayColor];
-//    }else {
-//        self.progressColor = [UIColor redColor];
-//    }
-//    self.progressRadius = self.progressHeight/2;
 //}
 
 #pragma mark - TYPagerControllerDataSource

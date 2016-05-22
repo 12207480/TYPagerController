@@ -146,7 +146,7 @@
         case TYPagerBarStyleCoverView:
             _progressWidth = 0;
             _progressHeight = self.contentTopEdging-8;
-            _progressEdging = -self.progressHeight/4;
+            _progressEdging = -_progressHeight/4;
             break;
         default:
             break;
