@@ -39,7 +39,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 @property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
 @property (nonatomic, weak, readonly) UIView *progressView;
 
-@property (nonatomic, assign) TYPagerBarStyle barStyle;
+@property (nonatomic, assign) TYPagerBarStyle barStyle; // set style will reset progress propertys
 
 // cell
 @property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal,if=0 cell will caculate all titles width
