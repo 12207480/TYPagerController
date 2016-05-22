@@ -49,7 +49,6 @@
 - (void)configireTabPropertys
 {
     _animateDuration = 0.25;
-    _barStyle = TYPagerBarStyleProgressView;
     
     _normalTextFont = [UIFont systemFontOfSize:15];
     _selectedTextFont = [UIFont systemFontOfSize:18];
@@ -60,10 +59,10 @@
     _progressHeight = kUnderLineViewHeight;
     _progressEdging = 3;
     _progressWidth = 30;
-    _progressBounces = YES;
     
     self.changeIndexWhenScrollProgress = 1.0;
     self.contentTopEdging = kCollectionViewBarHieght;
+    self.barStyle = TYPagerBarStyleProgressView;
 }
 
 #pragma mark - life cycle
@@ -126,6 +125,33 @@
 }
 
 #pragma mark - setter
+
+- (void)setBarStyle:(TYPagerBarStyle)barStyle
+{
+    _barStyle = barStyle;
+    
+    switch (barStyle) {
+        case TYPagerBarStyleNoneView:
+            _progressView.hidden = YES;
+            break;
+        case TYPagerBarStyleProgressView:
+            _progressWidth = 0;
+            _progressHeight = kUnderLineViewHeight;
+            _progressEdging = 3;
+            break;
+        case TYPagerBarStyleProgressBounceView:
+            _progressHeight = kUnderLineViewHeight;
+            _progressWidth = 30;
+            break;
+        case TYPagerBarStyleCoverView:
+            _progressWidth = 0;
+            _progressHeight = self.contentTopEdging-8;
+            _progressEdging = -self.progressHeight/4;
+            break;
+        default:
+            break;
+    }
+}
 
 - (void)setDelegate:(id<TYTabPagerControllerDelegate>)delegate
 {
@@ -234,7 +260,7 @@
     CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (toCellFrame.size.height - _progressHeight)/2:(toCellFrame.size.height - _progressHeight);
     CGFloat progressX, width;
     
-    if (_progressBounces) {
+    if (_barStyle == TYPagerBarStyleProgressBounceView) {
         if (fromCellFrame.origin.x < toCellFrame.origin.x) {
             if (progress <= 0.5) {
                 progressX = fromCellFrame.origin.x + progressFromEdging;

@@ -23,6 +23,7 @@
 typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
     TYPagerBarStyleNoneView,
     TYPagerBarStyleProgressView,
+    TYPagerBarStyleProgressBounceView,
     TYPagerBarStyleCoverView
 };
 
@@ -49,8 +50,6 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 @property (nonatomic, assign) CGFloat progressHeight;
 @property (nonatomic, assign) CGFloat progressEdging; // if < 0 width + edge ,if >0 width - edge
 @property (nonatomic, assign) CGFloat progressWidth; //if>0 progress width is equal
-
-@property (nonatomic, assign) BOOL progressBounces; // default YES
 
 //   animate duration
 @property (nonatomic, assign) CGFloat animateDuration;

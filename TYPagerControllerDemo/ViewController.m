@@ -59,11 +59,8 @@
     pagerController.adjustStatusBarHeight = YES;
     //pagerController.cellWidth = 56;
     pagerController.cellSpacing = 8;
-    if (_variable) {
-        pagerController.progressBounces = NO;
-        pagerController.progressWidth = 0;
-        pagerController.progressEdging = 3;
-    }
+    pagerController.barStyle = _variable ? TYPagerBarStyleProgressBounceView: TYPagerBarStyleProgressView;
+    
     pagerController.view.frame = self.view.bounds;
     [self addChildViewController:pagerController];
     [self.view addSubview:pagerController.view];

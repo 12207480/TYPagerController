@@ -60,6 +60,18 @@
     self.collectionViewBar.backgroundColor = _collectionViewBarColor;
 }
 
+- (void)setBarStyle:(TYPagerBarStyle)barStyle
+{
+    [super setBarStyle:barStyle];
+    
+    if (barStyle == TYPagerBarStyleCoverView) {
+        self.progressColor = [UIColor lightGrayColor];
+    }else {
+        self.progressColor = [UIColor redColor];
+    }
+    self.progressRadius = self.progressHeight/2;
+}
+
 #pragma mark - private
 
 - (void)transitionFromCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)toCell
