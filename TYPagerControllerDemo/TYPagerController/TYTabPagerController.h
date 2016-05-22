@@ -41,15 +41,15 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 @property (nonatomic, assign) TYPagerBarStyle barStyle; // set style will reset progress propertys
 
-// cell
-@property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal,if=0 cell will caculate all titles width
-@property (nonatomic, assign) CGFloat cellSpacing; // cell space
-@property (nonatomic, assign) CGFloat cellEdging;  // cell left right edge
-
 // progress view
 @property (nonatomic, assign) CGFloat progressHeight;
 @property (nonatomic, assign) CGFloat progressEdging; // if < 0 width + edge ,if >0 width - edge
 @property (nonatomic, assign) CGFloat progressWidth; //if>0 progress width is equal
+
+// cell
+@property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal,if=0 cell will caculate all titles width
+@property (nonatomic, assign) CGFloat cellSpacing; // cell space
+@property (nonatomic, assign) CGFloat cellEdging;  // cell left right edge
 
 //   animate duration
 @property (nonatomic, assign) CGFloat animateDuration;
