@@ -1,5 +1,6 @@
 # TYPagerController
-page View controller,simple,high custom,and have tabBar styles.
+page View controller,simple,high custom,and have tabBar styles.<br>
+TYPagerController 简单，支持定制，页面控制器,可以滚动内容和标题栏,包含多种style
 
 ### Requirements
 * Xcode 5 or higher
