@@ -2,17 +2,18 @@
 page View controller,simple,high custom,and have tabBar styles.
 
 ## ScreenShot
+####TYPagerBarStyle
 
-TYPagerBarStyleProgressBounceView<br>
+1 TYPagerBarStyleProgressBounceView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController1.gif)
 
-TYPagerBarStyleProgressView<br>
+2 TYPagerBarStyleProgressView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController2.gif)
 
-TYPagerBarStyleCoverView<br>
+3 TYPagerBarStyleCoverView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController3.gif)
 
-TYPagerBarStyleNoneView<br>
+4 TYPagerBarStyleNoneView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController4.gif)
 
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController5.gif)
