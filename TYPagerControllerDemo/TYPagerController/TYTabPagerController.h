@@ -12,10 +12,13 @@
 
 @protocol TYTabPagerControllerDelegate <TYPagerControllerDelegate>
 
+// configre collectionview cell
 - (void)pagerController:(TYTabPagerController *)pagerController configreCell:(UICollectionViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath;
 
+// transition frome cell to cell with animated
 - (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell *)fromCell toCell:(UICollectionViewCell *)toCell animated:(BOOL)animated;
 
+// transition frome cell to cell with progress
 - (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell *)fromCell toCell:(UICollectionViewCell *)toCell progress:(CGFloat)progress;
 
 @end
@@ -39,7 +42,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 @property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
 @property (nonatomic, weak, readonly) UIView *progressView;
 
-@property (nonatomic, assign) TYPagerBarStyle barStyle; // set style will reset progress propertys
+@property (nonatomic, assign) TYPagerBarStyle barStyle; // set style will reset progress propertys, set it behind [super viewdidload]
 
 // progress view
 @property (nonatomic, assign) CGFloat progressHeight;

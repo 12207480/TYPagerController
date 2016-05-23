@@ -11,15 +11,15 @@
 @class TYPagerController;
 @protocol TYPagerControllerDataSource <NSObject>
 
-// pagerController count
+// viewController count in pagerController
 - (NSInteger)numberOfControllersInPagerController;
 
-// pagerController at index
+// viewController at index in pagerController
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index;
 
 @optional
 
-// pagerController title
+// viewController title in pagerController
 - (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index;
 
 @end
