@@ -52,10 +52,13 @@ page View controller,simple,high custom,and have tabBar styles.
 ```objc
 @protocol TYTabPagerControllerDelegate <TYPagerControllerDelegate>
 
+// configre collectionview cell
 - (void)pagerController:(TYTabPagerController *)pagerController configreCell:(UICollectionViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath;
 
+// transition frome cell to cell animated
 - (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell *)fromCell toCell:(UICollectionViewCell *)toCell animated:(BOOL)animated;
 
+// transition frome cell to cell progress
 - (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell *)fromCell toCell:(UICollectionViewCell *)toCell progress:(CGFloat)progress;
 
 @end
