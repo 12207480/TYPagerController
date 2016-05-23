@@ -125,6 +125,8 @@ page View controller,simple,high custom,and have tabBar styles.
 @implementation CustomPagerController
 
 - (void)viewDidLoad {
+   // set bar style will reset progress propertys, set it behind [super viewdidload]
+    self.barStyle = TYPagerBarStyleProgressBounceView;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.adjustStatusBarHeight = YES;
