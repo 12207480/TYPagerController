@@ -78,10 +78,6 @@ page View controller,simple,high custom,and have tabBar styles.
     pagerController.cellSpacing = 8;
     pagerController.barStyle = _variable ? TYPagerBarStyleProgressBounceView: TYPagerBarStyleProgressView;
     
-    if (_showNavBar) {
-        pagerController.progressWidth = _variable ? 0 : 36;
-    }
-    
     pagerController.view.frame = self.view.bounds;
     [self addChildViewController:pagerController];
     [self.view addSubview:pagerController.view];
@@ -141,7 +137,6 @@ page View controller,simple,high custom,and have tabBar styles.
 {
     return 30;
 }
-
 
 - (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
 {
