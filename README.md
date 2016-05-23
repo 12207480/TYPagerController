@@ -63,4 +63,108 @@ page View controller,simple,high custom,and have tabBar styles.
 
 @end
 ```
+##Usage Demo
 
+* **第一种方法**
+
+```objc
+// add pagerController
+- (void)addPagerController
+{
+    TYTabButtonPagerController *pagerController = [[TYTabButtonPagerController alloc]init];
+    pagerController.dataSource = self;
+    pagerController.adjustStatusBarHeight = YES;
+    //pagerController.cellWidth = 56;
+    pagerController.cellSpacing = 8;
+    pagerController.barStyle = _variable ? TYPagerBarStyleProgressBounceView: TYPagerBarStyleProgressView;
+    
+    if (_showNavBar) {
+        pagerController.progressWidth = _variable ? 0 : 36;
+    }
+    
+    pagerController.view.frame = self.view.bounds;
+    [self addChildViewController:pagerController];
+    [self.view addSubview:pagerController.view];
+    _pagerController = pagerController;
+}
+
+#pragma mark - TYPagerControllerDataSource
+
+- (NSInteger)numberOfControllersInPagerController
+{
+    return 30;
+}
+
+- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
+{
+    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
+}
+
+- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
+{
+    if (index%3 == 0) {
+        CustomViewController *VC = [[CustomViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else if (index%3 == 1) {
+         ListViewController *VC = [[ListViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else {
+        CollectionViewController *VC = [[CollectionViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }
+}
+
+```
+
+* **第二种方法**
+
+```objc
+@interface CustomPagerController : TYTabButtonPagerController
+
+@end
+
+@implementation CustomPagerController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.adjustStatusBarHeight = YES;
+    self.cellSpacing = 8;
+}
+
+#pragma mark - TYPagerControllerDataSource
+
+- (NSInteger)numberOfControllersInPagerController
+{
+    return 30;
+}
+
+
+- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
+{
+    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
+}
+
+- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
+{
+    if (index%3 == 0) {
+        CustomViewController *VC = [[CustomViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else if (index%3 == 1) {
+        ListViewController *VC = [[ListViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }else {
+        CollectionViewController *VC = [[CollectionViewController alloc]init];
+        VC.text = [@(index) stringValue];
+        return VC;
+    }
+}
+
+@end
+
+```
