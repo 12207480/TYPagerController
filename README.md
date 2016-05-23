@@ -65,7 +65,7 @@ page View controller,simple,high custom,and have tabBar styles.
 ```
 ##Usage Demo
 
-* **第一种方法**
+* **first method**
 
 ```objc
 // add pagerController
@@ -115,7 +115,7 @@ page View controller,simple,high custom,and have tabBar styles.
 
 ```
 
-* **第二种方法**
+* **second method**
 
 ```objc
 @interface CustomPagerController : TYTabButtonPagerController
