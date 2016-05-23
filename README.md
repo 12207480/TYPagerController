@@ -65,6 +65,12 @@ page View controller,simple,high custom,and have tabBar styles.
 ```
 ##Usage Demo
 
+if you want to add coustom TabBar, you can inherit TYPagerController，and set contentTopEdging,else  you can inherit TYTabPagerController or TYTabButtonPagerController,set contentTopEdging(TabBar height) and custom cell(conform TYTabTitleCellProtocol), call registerCellClass, change cell on delegate.<br>
+
+如果你想自己添加TabBar，你可以继承TYPagerController 然后设置 contentTopEdging ，留出高度添加TabBar,你也可以 直接继承 TYTabPagerController或者TYTabButtonPagerController 设置contentTopEdging(TabBar height) ，我帮你创建了Tabbar,你只要调用registerCellClass 注册cell（遵守TYTabTitleCellProtocol），然后在代理方法里改变cell。<br>
+
+更多的使用方法 请查看 demo。
+
 * **first method**
 
 ```objc
