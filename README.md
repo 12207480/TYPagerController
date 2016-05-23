@@ -1,6 +1,11 @@
 # TYPagerController
 page View controller,simple,high custom,and have tabBar styles.
 
+### Requirements
+* Xcode 5 or higher
+* iOS 6.0 or higher
+* ARC
+
 ## ScreenShot
 ####TYPagerBarStyle
 
@@ -171,3 +176,7 @@ if you want to add coustom TabBar, you can inherit TYPagerController，and set c
 @end
 
 ```
+### Contact
+如果你发现bug，please pull reqeust me <br>
+如果你有更好的改进，please pull reqeust me <br>
+如果你有更好的想法或者建议可以联系我，Email:122074809@qq.com
