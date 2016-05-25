@@ -85,6 +85,11 @@
     // configure cell
 }
 
+- (void)pagerController:(TYTabPagerController *)pagerController didSelectAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"didSelectAtIndexPath %@",indexPath);
+}
+
 /*
 #pragma mark - Navigation
 

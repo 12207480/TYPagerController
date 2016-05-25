@@ -16,6 +16,7 @@
     
     struct {
         unsigned int configreReusableCell :1;
+        unsigned int didSelectAtIndexPath :1;
         unsigned int transitionFromeCellAnimated :1;
         unsigned int transitionFromeCellProgress :1;
     }_tabDelegateFlags;
@@ -135,6 +136,7 @@
 {
     [super setDelegate:delegate];
     _tabDelegateFlags.configreReusableCell = [self.delegate respondsToSelector:@selector(pagerController:configreCell:forItemTitle:atIndexPath:)];
+    _tabDelegateFlags.didSelectAtIndexPath = [self.delegate respondsToSelector:@selector(pagerController:didSelectAtIndexPath:)];
     _tabDelegateFlags.transitionFromeCellAnimated = [self.delegate respondsToSelector:@selector(pagerController:transitionFromeCell:toCell:animated:)];
     _tabDelegateFlags.transitionFromeCellProgress = [self.delegate respondsToSelector:@selector(pagerController:transitionFromeCell:toCell:progress:)];
 }
@@ -325,6 +327,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self moveToControllerAtIndex:indexPath.item animated:YES];
+    if (_tabDelegateFlags.didSelectAtIndexPath) {
+        [self.delegate pagerController:self didSelectAtIndexPath:indexPath];
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

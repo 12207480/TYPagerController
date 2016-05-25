@@ -12,8 +12,12 @@
 
 @protocol TYTabPagerControllerDelegate <TYPagerControllerDelegate>
 
+@optional
 // configre collectionview cell
 - (void)pagerController:(TYTabPagerController *)pagerController configreCell:(UICollectionViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath;
+
+// did select indexPath
+- (void)pagerController:(TYTabPagerController *)pagerController didSelectAtIndexPath:(NSIndexPath *)indexPath;
 
 // transition frome cell to cell with animated
 - (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell *)fromCell toCell:(UICollectionViewCell *)toCell animated:(BOOL)animated;
