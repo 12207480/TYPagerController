@@ -44,6 +44,8 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 @property (nonatomic, assign) TYPagerBarStyle barStyle; // set style will reset progress propertys, set it behind [super viewdidload]
 
+@property (nonatomic, assign) CGFloat collectionLayoutEdging; // collectionLayout left right edging
+
 // progress view
 @property (nonatomic, assign) CGFloat progressHeight;
 @property (nonatomic, assign) CGFloat progressEdging; // if < 0 width + edge ,if >0 width - edge
