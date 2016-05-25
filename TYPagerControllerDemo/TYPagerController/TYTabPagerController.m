@@ -117,7 +117,6 @@
     if (_barStyle != TYPagerBarStyleCoverView) {
         [_collectionViewBar addSubview:underLineView];
     }else{
-        ((UICollectionViewFlowLayout *)self.collectionViewBar.collectionViewLayout).sectionInset = UIEdgeInsetsMake(0, -_progressEdging+_cellSpacing, 0, -_progressEdging+_cellSpacing);
         underLineView.layer.zPosition = -1;
         [_collectionViewBar insertSubview:underLineView atIndex:0];
     }
@@ -219,6 +218,8 @@
 - (void)layoutTabPagerView
 {
     ((UICollectionViewFlowLayout *)_collectionViewBar.collectionViewLayout).minimumLineSpacing = _cellSpacing;
+    CGFloat collectionViewEaging = _barStyle != TYPagerBarStyleCoverView ? _collectionLayoutEdging : (_collectionLayoutEdging > 0 ? _collectionLayoutEdging : -_progressEdging+_cellSpacing);
+    ((UICollectionViewFlowLayout *)self.collectionViewBar.collectionViewLayout).sectionInset = UIEdgeInsetsMake(0, collectionViewEaging, 0, collectionViewEaging);
     
     _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+[self statusBarHeight]);
     _collectionViewBar.frame = CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging);
