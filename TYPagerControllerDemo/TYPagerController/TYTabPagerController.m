@@ -218,7 +218,7 @@
 // layout tab view
 - (void)layoutTabPagerView
 {
-    ((UICollectionViewFlowLayout *)_collectionViewBar.collectionViewLayout).minimumInteritemSpacing = _cellSpacing;
+    ((UICollectionViewFlowLayout *)_collectionViewBar.collectionViewLayout).minimumLineSpacing = _cellSpacing;
     
     _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+[self statusBarHeight]);
     _collectionViewBar.frame = CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging);
