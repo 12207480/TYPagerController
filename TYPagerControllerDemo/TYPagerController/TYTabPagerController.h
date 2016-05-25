@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 @property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
 @property (nonatomic, weak, readonly) UIView *progressView;
 
-@property (nonatomic, assign) TYPagerBarStyle barStyle; // // be careful!!! set style will reset progress propertys, set it behind [super viewdidload] and set cell property that you want
+@property (nonatomic, assign) TYPagerBarStyle barStyle; // // be careful!!! set style will reset progress propertys, set it (behind [super viewdidload]) or (in init) and set cell property that you want
 
 @property (nonatomic, assign) CGFloat collectionLayoutEdging; // collectionLayout left right edging
 
