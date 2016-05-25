@@ -57,10 +57,11 @@
     TYTabButtonPagerController *pagerController = [[TYTabButtonPagerController alloc]init];
     pagerController.dataSource = self;
     pagerController.adjustStatusBarHeight = YES;
+    // set barstyle will reset cell propertys
+    pagerController.barStyle = _variable ? TYPagerBarStyleProgressBounceView: TYPagerBarStyleProgressView;
+    // after set barstyle,you need set cell propertys that you want
     //pagerController.cellWidth = 56;
     pagerController.cellSpacing = 8;
-    pagerController.barStyle = _variable ? TYPagerBarStyleProgressBounceView: TYPagerBarStyleProgressView;
-    
     if (_showNavBar) {
         pagerController.progressWidth = _variable ? 0 : 36;
     }
