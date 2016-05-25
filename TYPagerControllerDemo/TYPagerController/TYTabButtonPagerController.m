@@ -7,17 +7,23 @@
 //
 
 #import "TYTabButtonPagerController.h"
-#import "TYTabTitleViewCell.h"
 
 @interface TYTabButtonPagerController ()
 @property (nonatomic, assign) CGFloat selectFontScale;
 @end
+
+#define kUnderLineViewHeight 2
 
 @implementation TYTabButtonPagerController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        
+        self.cellSpacing = 2;
+        self.cellEdging = 3;
+        
+        self.barStyle = TYPagerBarStyleProgressView;
         
         _normalTextColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
         _selectedTextColor = [UIColor redColor];
@@ -61,6 +67,25 @@
 - (void)setBarStyle:(TYPagerBarStyle)barStyle
 {
     [super setBarStyle:barStyle];
+    
+    switch (barStyle) {
+        case TYPagerBarStyleProgressView:
+            self.progressWidth = 0;
+            self.progressHeight = kUnderLineViewHeight;
+            self.progressEdging = 3;
+            break;
+        case TYPagerBarStyleProgressBounceView:
+            self.progressHeight = kUnderLineViewHeight;
+            self.progressWidth = 30;
+            break;
+        case TYPagerBarStyleCoverView:
+            self.progressWidth = 0;
+            self.progressHeight = self.contentTopEdging-8;
+            self.progressEdging = -self.progressHeight/4;
+            break;
+        default:
+            break;
+    }
     
     if (barStyle == TYPagerBarStyleCoverView) {
         self.progressColor = [UIColor lightGrayColor];

@@ -7,11 +7,13 @@
 //
 
 #import "TYTabPagerController.h"
-#import "TYTabTitleCellProtocol.h"
+#import "TYTabTitleViewCell.h"
 
 // register cell conforms to TYTabTitleViewCellProtocol
 
 @interface TYTabButtonPagerController : TYTabPagerController<TYTabPagerControllerDelegate,TYPagerControllerDataSource>
+
+// be carefull!!! the barStyle set style will reset progress propertys, set it (behind [super viewdidload]) or (in init) and set cell property that you want
 
 // pagerBar color
 @property (nonatomic, strong) UIColor *pagerBarColor;

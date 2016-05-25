@@ -41,10 +41,10 @@
 }
 
 // if you costom progress property  ovrride this
-//- (void)setBarStyle:(TYPagerBarStyle)barStyle
-//{
-//    [super setBarStyle:barStyle];
-//}
+- (void)setBarStyle:(TYPagerBarStyle)barStyle
+{
+    [super setBarStyle:barStyle];
+}
 
 #pragma mark - TYPagerControllerDataSource
 
@@ -74,6 +74,15 @@
         VC.text = [@(index) stringValue];
         return VC;
     }
+}
+
+#pragma mark - override delegate
+
+// configure cell need call super
+- (void)pagerController:(TYTabPagerController *)pagerController configreCell:(TYTabTitleViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath
+{
+    [super pagerController:pagerController configreCell:cell forItemTitle:title atIndexPath:indexPath];
+    // configure cell
 }
 
 /*

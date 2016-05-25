@@ -49,20 +49,20 @@
 - (void)configireTabPropertys
 {
     _animateDuration = 0.25;
+    _barStyle = TYPagerBarStyleProgressView;
     
     _normalTextFont = [UIFont systemFontOfSize:15];
     _selectedTextFont = [UIFont systemFontOfSize:18];
     
-    _cellSpacing = 2;
-    _cellEdging = 3;
+    _cellSpacing = 0;
+    _cellEdging = 0;
     
     _progressHeight = kUnderLineViewHeight;
-    _progressEdging = 3;
-    _progressWidth = 30;
+    _progressEdging = 0;
+    _progressWidth = 0;
     
     self.changeIndexWhenScrollProgress = 1.0;
     self.contentTopEdging = kCollectionViewBarHieght;
-    self.barStyle = TYPagerBarStyleProgressView;
 }
 
 #pragma mark - life cycle
@@ -128,28 +128,7 @@
 - (void)setBarStyle:(TYPagerBarStyle)barStyle
 {
     _barStyle = barStyle;
-    
-    switch (barStyle) {
-        case TYPagerBarStyleNoneView:
-            _progressView.hidden = YES;
-            break;
-        case TYPagerBarStyleProgressView:
-            _progressWidth = 0;
-            _progressHeight = kUnderLineViewHeight;
-            _progressEdging = 3;
-            break;
-        case TYPagerBarStyleProgressBounceView:
-            _progressHeight = kUnderLineViewHeight;
-            _progressWidth = 30;
-            break;
-        case TYPagerBarStyleCoverView:
-            _progressWidth = 0;
-            _progressHeight = self.contentTopEdging-8;
-            _progressEdging = -_progressHeight/4;
-            break;
-        default:
-            break;
-    }
+    _progressView.hidden = (_barStyle == TYPagerBarStyleNoneView);
 }
 
 - (void)setDelegate:(id<TYTabPagerControllerDelegate>)delegate
