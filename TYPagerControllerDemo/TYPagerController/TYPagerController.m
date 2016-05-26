@@ -435,6 +435,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [_memoryCache removeAllObjects];
 }
 
 - (void)dealloc
