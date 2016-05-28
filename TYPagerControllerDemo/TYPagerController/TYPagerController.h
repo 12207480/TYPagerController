@@ -45,6 +45,8 @@
 
 @property (nonatomic, strong, readonly) NSCache *memoryCache;// cache pagerController, you can set countLimit
 
+@property (nonatomic, assign, readonly) NSInteger countOfControllers;
+
 @property (nonatomic, assign, readonly) NSInteger curIndex;
 
 @property (nonatomic, assign, readonly) NSRange visibleRange; // visible index range

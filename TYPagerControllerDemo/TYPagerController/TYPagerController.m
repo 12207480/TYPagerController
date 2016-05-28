@@ -15,7 +15,6 @@ typedef NS_ENUM(NSUInteger, TYPagerControllerDirection) {
 };
 
 @interface TYPagerController ()<UIScrollViewDelegate> {
-    NSInteger   _countOfControllers;
     BOOL        _needLayoutContentView;
     BOOL        _scrollAnimated;
     BOOL        _isTapScrollMoved;
@@ -37,6 +36,8 @@ typedef NS_ENUM(NSUInteger, TYPagerControllerDirection) {
 @property (nonatomic, strong) NSMutableDictionary *visibleControllers;
 
 @property (nonatomic, strong) NSCache *memoryCache;
+
+@property (nonatomic, assign) NSInteger countOfControllers;
 
 @property (nonatomic, assign) NSInteger curIndex;
 
