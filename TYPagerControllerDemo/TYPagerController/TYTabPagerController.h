@@ -70,11 +70,5 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 // if you custom cell ,you must register cell
 - (void)registerCellClass:(Class)cellClass isContainXib:(BOOL)isContainXib;
 
-// get cell at index
-- (UICollectionViewCell *)cellForIndex:(NSInteger)index;
-
-// get cell frame at index
-- (CGRect)cellFrameWithIndex:(NSInteger)index;
-
 @end
 
