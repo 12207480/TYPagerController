@@ -38,6 +38,14 @@
 
 @implementation TYTabPagerController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self configireTabPropertys];
+    }
+    return self;
+}
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -179,18 +187,26 @@
 
 - (CGRect)cellFrameWithIndex:(NSInteger)index
 {
+    if (index >= self.countOfControllers) {
+        return CGRectZero;
+    }
     UICollectionViewLayoutAttributes * cellAttrs = [_collectionViewBar layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
     return cellAttrs.frame;
 }
 
 - (UICollectionViewCell *)cellForIndex:(NSInteger)index
 {
+    if (index >= self.countOfControllers) {
+        return nil;
+    }
     return [_collectionViewBar cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
 }
 
 - (void)tabScrollToIndex:(NSInteger)index animated:(BOOL)animated
 {
-    [_collectionViewBar scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
+    if (index < self.countOfControllers) {
+        [_collectionViewBar scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
+    }
 }
 
 #pragma mark - private
@@ -209,7 +225,7 @@
 // set up progress view frame
 - (void)setUnderLineFrameWithIndex:(NSInteger)index animated:(BOOL)animated
 {
-    if (_progressView.isHidden) {
+    if (_progressView.isHidden || self.countOfControllers == 0) {
         return;
     }
     
@@ -230,7 +246,7 @@
 
 - (void)setUnderLineFrameWithfromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
 {
-    if (_progressView.isHidden) {
+    if (_progressView.isHidden || self.countOfControllers == 0) {
         return;
     }
     

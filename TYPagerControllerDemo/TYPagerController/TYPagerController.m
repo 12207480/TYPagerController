@@ -69,15 +69,27 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 @implementation TYPagerController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self configureInitPropertys];
+    }
+    return self;
+}
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        
-        _memoryCache = [[NSCache alloc]init];
-        _changeIndexWhenScrollProgress = 0.5;
-        _contentTopEdging = 0;
+        [self configureInitPropertys];
     }
     return self;
+}
+
+- (void)configureInitPropertys
+{
+    _memoryCache = [[NSCache alloc]init];
+    _changeIndexWhenScrollProgress = 0.5;
+    _contentTopEdging = 0;
 }
 
 #pragma mark - life cycle
@@ -185,7 +197,7 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 - (NSInteger)statusBarHeight
 {
-    return (_adjustStatusBarHeight && self.navigationController.isNavigationBarHidden && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
+    return (_adjustStatusBarHeight && (!self.navigationController || self.navigationController.isNavigationBarHidden) && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
 }
 
 // if need layout contentView
@@ -407,7 +419,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView == _contentView) {
+    if (scrollView == _contentView && _countOfControllers > 0) {
+
         if ([self isProgressScrollEnabel] && !_needLayoutContentView) {
             //  caculate scroll progress
             [self configurePagerIndexByProgress];

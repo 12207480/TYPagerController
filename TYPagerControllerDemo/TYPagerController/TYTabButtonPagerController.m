@@ -16,25 +16,19 @@
 
 @implementation TYTabButtonPagerController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self configureTabButtonPropertys];
+    }
+    return self;
+}
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         
-        self.cellSpacing = 2;
-        self.cellEdging = 3;
-        
-        self.barStyle = TYPagerBarStyleProgressView;
-        
-        _normalTextColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
-        _selectedTextColor = [UIColor redColor];
-        
-        _pagerBarColor = [UIColor whiteColor];
-        _collectionViewBarColor = [UIColor clearColor];
-        
-        _progressColor = [UIColor redColor];
-        _progressRadius = self.progressHeight/2;
-        
-        [self registerCellClass:[TYTabTitleViewCell class] isContainXib:NO];
+        [self configureTabButtonPropertys];
     }
     return self;
 }
@@ -62,6 +56,25 @@
     // tabBar
     self.pagerBarView.backgroundColor = _pagerBarColor;
     self.collectionViewBar.backgroundColor = _collectionViewBarColor;
+}
+
+- (void)configureTabButtonPropertys
+{
+    self.cellSpacing = 2;
+    self.cellEdging = 3;
+    
+    self.barStyle = TYPagerBarStyleProgressView;
+    
+    _normalTextColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+    _selectedTextColor = [UIColor redColor];
+    
+    _pagerBarColor = [UIColor whiteColor];
+    _collectionViewBarColor = [UIColor clearColor];
+    
+    _progressColor = [UIColor redColor];
+    _progressRadius = self.progressHeight/2;
+    
+    [self registerCellClass:[TYTabTitleViewCell class] isContainXib:NO];
 }
 
 - (void)setBarStyle:(TYPagerBarStyle)barStyle
