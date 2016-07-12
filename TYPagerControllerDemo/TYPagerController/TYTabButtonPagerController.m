@@ -178,6 +178,13 @@
     [self transitionFromCell:fromCell toCell:toCell progress:progress];
 }
 
+- (void)pagerController:(TYTabPagerController *)pagerController didSelectAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_didSelectIndexPathHandle) {
+        _didSelectIndexPathHandle(indexPath);
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

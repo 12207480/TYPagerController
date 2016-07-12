@@ -27,4 +27,7 @@
 @property (nonatomic, strong) UIColor *normalTextColor;
 @property (nonatomic, strong) UIColor *selectedTextColor;
 
+// didSelectIndexPath block
+@property (nonatomic, copy) void (^didSelectIndexPathHandle)(NSIndexPath *indexPath);
+
 @end
