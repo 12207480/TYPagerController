@@ -318,6 +318,9 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
         fromIndex = floorIndex;
         toIndex = MIN(_countOfControllers-1, fromIndex + 1);
     }else {
+        if (floorIndex < 0 ) {
+            return;
+        }
         toIndex = floorIndex;
         fromIndex = MIN(_countOfControllers-1, toIndex +1);
         progress = 1.0 - progress;
