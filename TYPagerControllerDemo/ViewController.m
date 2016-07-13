@@ -12,7 +12,7 @@
 #import "ListViewController.h"
 #import "CollectionViewController.h"
 
-@interface ViewController ()<TYPagerControllerDataSource>
+@interface ViewController ()<TYPagerControllerDataSource,TYTabPagerControllerDelegate>
 @property (nonatomic, strong) TYTabButtonPagerController *pagerController;
 @end
 
@@ -57,6 +57,7 @@
     TYTabButtonPagerController *pagerController = [[TYTabButtonPagerController alloc]init];
     pagerController.dataSource = self;
     pagerController.adjustStatusBarHeight = YES;
+    pagerController.delegate = self;
     //TYTabButtonPagerController set barstyle will reset (TYTabPagerController not reset)cell propertys
     pagerController.barStyle = _variable ? TYPagerBarStyleProgressBounceView: TYPagerBarStyleProgressView;
     // after set barstyle,you need set cell propertys that you want
@@ -105,6 +106,18 @@
         VC.text = [@(index) stringValue];
         return VC;
     }
+}
+
+#pragma mark - TYPagerControllerDelegate
+- (void)pagerController:(TYTabPagerController *)pagerController didScrollToTabPageIndex:(NSInteger)index{
+    NSLog(@"didScrollToTabPageIndex: %d",index);
+    [pagerController.collectionViewBar reloadData];
+}
+
+- (void)pagerController:(TYTabPagerController *)pagerController configreCell:(TYTabTitleViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath{
+    TYTabTitleViewCell *titleCell = (TYTabTitleViewCell *)cell;
+    titleCell.titleLabel.text = title;
+    titleCell.titleLabel.font = indexPath.row==pagerController.curIndex?pagerController.selectedTextFont:pagerController.normalTextFont;
 }
 
 - (void)didReceiveMemoryWarning {
