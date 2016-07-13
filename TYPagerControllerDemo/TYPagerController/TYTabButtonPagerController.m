@@ -36,8 +36,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (!self.delegate) {
+        self.delegate = self;
+    }
     
-    self.delegate = self;
     if (!self.dataSource) {
         self.dataSource = self;
     }
@@ -176,13 +178,6 @@
 - (void)pagerController:(TYTabPagerController *)pagerController transitionFromeCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)toCell progress:(CGFloat)progress
 {
     [self transitionFromCell:fromCell toCell:toCell progress:progress];
-}
-
-- (void)pagerController:(TYTabPagerController *)pagerController didSelectAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (_didSelectIndexPathHandle) {
-        _didSelectIndexPathHandle(indexPath);
-    }
 }
 
 - (void)didReceiveMemoryWarning {
