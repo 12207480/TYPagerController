@@ -17,6 +17,7 @@
     struct {
         unsigned int configreReusableCell :1;
         unsigned int didSelectAtIndexPath :1;
+        unsigned int didScrollToTabPageIndex :1;
         unsigned int transitionFromeCellAnimated :1;
         unsigned int transitionFromeCellProgress :1;
     }_tabDelegateFlags;
@@ -145,6 +146,7 @@
     [super setDelegate:delegate];
     _tabDelegateFlags.configreReusableCell = [self.delegate respondsToSelector:@selector(pagerController:configreCell:forItemTitle:atIndexPath:)];
     _tabDelegateFlags.didSelectAtIndexPath = [self.delegate respondsToSelector:@selector(pagerController:didSelectAtIndexPath:)];
+    _tabDelegateFlags.didScrollToTabPageIndex = [self.delegate respondsToSelector:@selector(pagerController:didScrollToTabPageIndex:)];
     _tabDelegateFlags.transitionFromeCellAnimated = [self.delegate respondsToSelector:@selector(pagerController:transitionFromeCell:toCell:animated:)];
     _tabDelegateFlags.transitionFromeCellProgress = [self.delegate respondsToSelector:@selector(pagerController:transitionFromeCell:toCell:progress:)];
 }
@@ -160,7 +162,7 @@
 #pragma mark - public
 
 - (void)reloadData
-{    
+{
     [_collectionViewBar reloadData];
     
     [super reloadData];
@@ -204,6 +206,10 @@
 
 - (void)tabScrollToIndex:(NSInteger)index animated:(BOOL)animated
 {
+    if (_tabDelegateFlags.didScrollToTabPageIndex) {
+        [self.delegate pagerController:self didScrollToTabPageIndex:index];
+    }
+    
     if (index < self.countOfControllers) {
         [_collectionViewBar scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animated];
     }
@@ -299,7 +305,7 @@
         
         [self setUnderLineFrameWithIndex:toIndex animated:fromCell && animated ? animated: NO];
     }
-
+    
     [self tabScrollToIndex:toIndex animated:toCell ? YES : fromCell && animated ? animated: NO];
 }
 
@@ -370,8 +376,8 @@
     if (![string respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
         // below ios7
         textSize = [string sizeWithFont:font
-                    constrainedToSize:size
-                        lineBreakMode:NSLineBreakByWordWrapping];
+                      constrainedToSize:size
+                          lineBreakMode:NSLineBreakByWordWrapping];
     }
     else
 #endif
