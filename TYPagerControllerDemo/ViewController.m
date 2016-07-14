@@ -12,7 +12,7 @@
 #import "ListViewController.h"
 #import "CollectionViewController.h"
 
-@interface ViewController ()<TYPagerControllerDataSource>
+@interface ViewController ()<TYPagerControllerDataSource,TYTabPagerControllerDelegate>
 @property (nonatomic, strong) TYTabButtonPagerController *pagerController;
 @end
 
