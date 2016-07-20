@@ -79,6 +79,12 @@ if you want to add coustom TabBar, you can inherit TYPagerController，and set c
 
 如果你想自己添加TabBar，你可以继承TYPagerController 然后设置 contentTopEdging ，留出高度添加TabBar,你也可以 直接继承 TYTabPagerController或者TYTabButtonPagerController 设置contentTopEdging(TabBar height) ，我帮你创建了Tabbar,你只要调用registerCellClass 注册cell（遵守TYTabTitleCellProtocol），然后在代理方法里改变cell。<br>
 
+关于默认index，可以再viewdidload中调用<br>
+```objc
+ // 默认第2页 注意：pagerController 默认自动调用reloadData的时机，是在viewWillAppear和viewWillLayoutSubviews 而viewDidLoad至此之前，所以需要手动调用reloadData
+[_pagerController reloadData];
+ [_pagerController moveToControllerAtIndex:1 animated:NO];
+```
 更多的使用方法 请查看 demo。
 
 * **first method**
