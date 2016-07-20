@@ -26,7 +26,7 @@
     }
     [self addPagerController];
     
-    // 默认第2页
+    // 默认第2页 注意：pagerController 默认自动调用reloadData的时机，是在viewWillAppear和viewWillLayoutSubviews 而viewDidLoad至此之前，所以需要手动调用reloadData
     [_pagerController reloadData];
     [_pagerController moveToControllerAtIndex:1 animated:NO];
     
