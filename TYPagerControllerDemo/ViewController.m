@@ -25,6 +25,11 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     [self addPagerController];
+    
+    // 默认第2页
+    [_pagerController reloadData];
+    [_pagerController moveToControllerAtIndex:1 animated:NO];
+    
     UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc]initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:_pagerController action:@selector(reloadData)];
     UIBarButtonItem *scrollItem = [[UIBarButtonItem alloc]initWithTitle:@"scroll" style:UIBarButtonItemStylePlain target:self action:@selector(scrollToRamdomIndex)];
     self.navigationItem.rightBarButtonItems = @[reloadItem,scrollItem];
