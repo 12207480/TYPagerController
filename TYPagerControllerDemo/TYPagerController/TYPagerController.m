@@ -210,10 +210,18 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 // if need layout contentView
 - (void)layoutContentViewIfNeed
 {
-    if (!CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _contentTopEdging - [self statusBarHeight]))) {
-        // size changed
-        [self updateContentView];
+    NSInteger topInset = _contentTopEdging - [self statusBarHeight];
+    if (CGSizeEqualToSize(_contentView.frame.size, CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - topInset))) {
+        if (_contentView.frame.origin.y != topInset) {
+            CGRect frame = _contentView.frame;
+            frame.origin.y = topInset;
+            _contentView.frame = frame;
+        }
+        return;
     }
+    
+    // size changed
+    [self updateContentView];
 }
 
 // update content subViews

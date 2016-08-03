@@ -46,6 +46,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 // view ,don't change frame
 @property (nonatomic, weak, readonly) UIView *pagerBarView; // pagerBarView height is contentTopEdging
+@property (nonatomic, weak, readonly) UIImageView *pagerBarImageView;
 @property (nonatomic, weak, readonly) UICollectionView *collectionViewBar;
 @property (nonatomic, weak, readonly) UIView *progressView;
 
@@ -55,8 +56,9 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 // progress view
 @property (nonatomic, assign) CGFloat progressHeight;
-@property (nonatomic, assign) CGFloat progressEdging; // if < 0 width + edge ,if >0 width - edge
 @property (nonatomic, assign) CGFloat progressWidth; //if>0 progress width is equal,else progress width is cell width
+@property (nonatomic, assign) CGFloat progressEdging; // if < 0 width + edge ,if >0 width - edge
+@property (nonatomic, assign) CGFloat progressBottomEdging; // if < 0 width + edge ,if >0 width - edge
 
 // cell
 @property (nonatomic, assign) CGFloat cellWidth; // if>0 cells width is equal,else if=0 cell will caculate all titles width

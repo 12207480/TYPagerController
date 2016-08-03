@@ -10,6 +10,7 @@
 
 @interface CustomViewController ()
 @property (nonatomic, weak) UILabel *label;
+@property (nonatomic, weak) UIButton *cancelBtn;
 @end
 
 @implementation CustomViewController
@@ -27,6 +28,7 @@
 {
     [super viewWillLayoutSubviews];
     _label.center = CGPointMake(CGRectGetWidth(self.view.frame)/2, CGRectGetHeight(self.view.frame)/2);
+     _cancelBtn.center = CGPointMake(_label.center.x,_label.center.y + 100);
 }
 
 - (void)addPageLabel
@@ -49,6 +51,7 @@
     cancelBtn.frame = CGRectMake(0, 0, 100, 40);
     cancelBtn.center = CGPointMake(self.view.center.x, self.view.center.y + 60);
     [self.view addSubview:cancelBtn];
+    _cancelBtn = cancelBtn;
 }
 
 - (void)viewWillAppear:(BOOL)animated

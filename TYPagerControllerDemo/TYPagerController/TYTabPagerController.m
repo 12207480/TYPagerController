@@ -25,6 +25,7 @@
 
 // views
 @property (nonatomic, weak) UIView *pagerBarView;
+@property (nonatomic, weak) UIImageView *pagerBarImageView;
 @property (nonatomic, weak) UICollectionView *collectionViewBar;
 @property (nonatomic, weak) UIView *progressView;
 
@@ -84,6 +85,8 @@
     // add pager bar
     [self addPagerBarView];
     
+    [self addPagerBarBgImageView];
+    
     // add title views
     [self addCollectionViewBar];
     
@@ -91,11 +94,27 @@
     [self addUnderLineView];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+[self statusBarHeight]);
+    _pagerBarImageView.frame = _pagerBarView.bounds;
+    _collectionViewBar.frame = CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging);
+                                     
+}
+
 - (void)addPagerBarView
 {
-    UIView *pagerBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging)];
+    UIView *pagerBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+[self statusBarHeight])];
     [self.view addSubview:pagerBarView];
     _pagerBarView = pagerBarView;
+}
+
+- (void)addPagerBarBgImageView
+{
+    UIImageView *barImageView = [[UIImageView alloc]initWithFrame:_pagerBarView.bounds];
+    [_pagerBarView addSubview:barImageView];
+    _pagerBarImageView = barImageView;
 }
 
 - (void)addCollectionViewBar
@@ -103,7 +122,7 @@
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging) collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging) collectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
     collectionView.delegate = self;
@@ -238,7 +257,7 @@
     CGRect cellFrame = [self cellFrameWithIndex:index];
     CGFloat progressEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressEdging;
     CGFloat progressX = cellFrame.origin.x+progressEdging;
-    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (cellFrame.size.height - _progressHeight)/2:(cellFrame.size.height - _progressHeight);
+    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (cellFrame.size.height - _progressHeight)/2:(cellFrame.size.height - _progressHeight - _progressBottomEdging);
     CGFloat width = cellFrame.size.width-2*progressEdging;
     
     if (animated) {
@@ -261,7 +280,7 @@
     
     CGFloat progressFromEdging = _progressWidth > 0 ? (fromCellFrame.size.width - _progressWidth)/2 : _progressEdging;
     CGFloat progressToEdging = _progressWidth > 0 ? (toCellFrame.size.width - _progressWidth)/2 : _progressEdging;
-    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (toCellFrame.size.height - _progressHeight)/2:(toCellFrame.size.height - _progressHeight);
+    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (toCellFrame.size.height - _progressHeight)/2:(toCellFrame.size.height - _progressHeight - _progressBottomEdging);
     CGFloat progressX, width;
     
     if (_barStyle == TYPagerBarStyleProgressBounceView) {
