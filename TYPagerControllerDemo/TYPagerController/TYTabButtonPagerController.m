@@ -125,7 +125,7 @@
 - (void)setCollectionViewBarColor:(UIColor *)collectionViewBarColor
 {
     _collectionViewBarColor = collectionViewBarColor;
-    self.collectionViewBar.backgroundView = collectionViewBarColor;
+    self.collectionViewBar.backgroundColor = collectionViewBarColor;
 }
 
 #pragma mark - private
