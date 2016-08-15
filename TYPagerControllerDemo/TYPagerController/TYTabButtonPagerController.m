@@ -110,6 +110,24 @@
     self.progressRadius = self.progressHeight/2;
 }
 
+- (void)setProgressColor:(UIColor *)progressColor
+{
+    _progressColor = progressColor;
+    self.progressView.backgroundColor = progressColor;
+}
+
+- (void)setPagerBarColor:(UIColor *)pagerBarColor
+{
+    _pagerBarColor = pagerBarColor;
+    self.pagerBarView.backgroundColor = pagerBarColor;
+}
+
+- (void)setCollectionViewBarColor:(UIColor *)collectionViewBarColor
+{
+    _collectionViewBarColor = collectionViewBarColor;
+    self.collectionViewBar.backgroundView = collectionViewBarColor;
+}
+
 #pragma mark - private
 
 - (void)transitionFromCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabTitleCellProtocol> *)toCell

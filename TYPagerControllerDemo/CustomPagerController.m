@@ -22,6 +22,7 @@
     // Do any additional setup after loading the view.
     self.adjustStatusBarHeight = YES;
     self.cellSpacing = 8;
+    //self.progressColor = [UIColor blueColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
