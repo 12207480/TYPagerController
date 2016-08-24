@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
     TYPagerBarStyleNoneView,
     TYPagerBarStyleProgressView,
     TYPagerBarStyleProgressBounceView,
+    TYPagerBarStyleProgressElasticView,
     TYPagerBarStyleCoverView
 };
 

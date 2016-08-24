@@ -301,6 +301,24 @@
                 width = (fromCellFrame.size.width-progressFromEdging+progressToEdging + _cellSpacing)*(1-progress)*2 + toCellFrame.size.width - 2*progressToEdging;
             }
         }
+    }else if (_barStyle == TYPagerBarStyleProgressElasticView) {
+        if (fromCellFrame.origin.x < toCellFrame.origin.x) {
+            if (progress <= 0.5) {
+                progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width-2*progressFromEdging)*progress;
+                width = (toCellFrame.size.width-progressToEdging+progressFromEdging+_cellSpacing)*2*progress - (toCellFrame.size.width-2*progressToEdging)*progress + fromCellFrame.size.width-2*progressFromEdging-(fromCellFrame.size.width-2*progressFromEdging)*progress;
+            }else {
+                progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width-2*progressFromEdging)*0.5 + (fromCellFrame.size.width-progressFromEdging - (fromCellFrame.size.width-2*progressFromEdging)*0.5 +progressToEdging+_cellSpacing)*(progress-0.5)*2;
+                width = CGRectGetMaxX(toCellFrame)-progressToEdging - progressX - (toCellFrame.size.width-2*progressToEdging)*(1-progress);
+            }
+        }else {
+            if (progress <= 0.5) {
+                progressX = fromCellFrame.origin.x + progressFromEdging - (toCellFrame.size.width-(toCellFrame.size.width-2*progressToEdging)/2-progressToEdging+progressFromEdging+_cellSpacing)*2*progress;
+                width = CGRectGetMaxX(fromCellFrame) - (fromCellFrame.size.width-2*progressFromEdging)*progress - progressFromEdging - progressX;
+            }else {
+                progressX = toCellFrame.origin.x + progressToEdging+(toCellFrame.size.width-2*progressToEdging)*(1-progress);
+                width = (fromCellFrame.size.width-progressFromEdging+progressToEdging-(fromCellFrame.size.width-2*progressFromEdging)/2 + _cellSpacing)*(1-progress)*2 + toCellFrame.size.width - 2*progressToEdging - (toCellFrame.size.width-2*progressToEdging)*(1-progress);
+            }
+        }
     }else {
         progressX = (toCellFrame.origin.x+progressToEdging-(fromCellFrame.origin.x+progressFromEdging))*progress+fromCellFrame.origin.x+progressFromEdging;
         width = (toCellFrame.size.width-2*progressToEdging)*progress + (fromCellFrame.size.width-2*progressFromEdging)*(1-progress);

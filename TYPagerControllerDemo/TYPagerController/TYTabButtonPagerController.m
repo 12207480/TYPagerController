@@ -90,6 +90,7 @@
             self.progressEdging = 3;
             break;
         case TYPagerBarStyleProgressBounceView:
+        case TYPagerBarStyleProgressElasticView:
             self.progressHeight = kUnderLineViewHeight;
             self.progressWidth = 30;
             break;
