@@ -14,6 +14,9 @@ TYPagerController 简单，支持定制，页面控制器,可以滚动内容和�
 ## ScreenShot
 ####TYPagerBarStyle
 
+New TYPagerBarStyleProgressElasticView<br>
+![image](https://github.com/12207480/TYPagerController/blob/master/ScreenShot/TYPagerController6.gif)
+
 1 TYPagerBarStyleProgressBounceView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController1.gif)
 
