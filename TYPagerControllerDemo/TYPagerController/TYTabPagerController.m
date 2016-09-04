@@ -160,6 +160,18 @@
     _progressView.hidden = (_barStyle == TYPagerBarStyleNoneView);
 }
 
+- (void)setProgressWidth:(CGFloat)progressWidth
+{
+    _progressWidth = progressWidth;
+    _progressEdging = 0;
+}
+
+- (void)setProgressEdging:(CGFloat)progressEdging
+{
+    _progressEdging = progressEdging;
+    _progressWidth = 0;
+}
+
 - (void)setDelegate:(id<TYTabPagerControllerDelegate>)delegate
 {
     [super setDelegate:delegate];
