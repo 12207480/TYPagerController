@@ -6,6 +6,8 @@ TYPagerController 简单，支持定制，页面控制器,可以滚动内容和�
 * TYTabPagerController 包含TabBar（我帮你创建了Tabbar），contentTopEdging为TabBar的高度，调用registerCellClass 注册cell（遵守TYTabTitleCellProtocol），然后在代理方法里改变cell。
 * TYTabButtonPagerController 同上，默认注册了TYTabTitleViewCell
 
+更详细的使用请看[LovePlayNews](https://github.com/12207480/LovePlayNews)项目
+
 ## CocoaPods
 ```
 pod 'TYPagerController'
