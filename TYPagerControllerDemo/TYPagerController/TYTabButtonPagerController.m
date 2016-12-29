@@ -160,6 +160,20 @@
     toCell.titleLabel.textColor = [UIColor colorWithRed:narR-detalR*progress green:narG-detalG*progress blue:narB-detalB*progress alpha:narA-detalA*progress];
 }
 
+- (void)pagerController:(TYTabPagerController *)pagerController didSelectAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_didSelectAtIndexPathHandle) {
+        _didSelectAtIndexPathHandle(indexPath);
+    }
+}
+
+- (void)pagerController:(TYTabPagerController *)pagerController didScrollToTabPageIndex:(NSInteger)index
+{
+    if (_didScrollToTabPageIndexHandle) {
+        _didScrollToTabPageIndexHandle(index);
+    }
+}
+
 #pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController

@@ -27,4 +27,9 @@
 @property (nonatomic, strong) UIColor *normalTextColor;
 @property (nonatomic, strong) UIColor *selectedTextColor;
 
+// block handle
+@property (nonatomic, copy) void (^didSelectAtIndexPathHandle)(NSIndexPath *indexPath);
+
+@property (nonatomic, copy) void (^didScrollToTabPageIndexHandle)(NSInteger index);
+
 @end
