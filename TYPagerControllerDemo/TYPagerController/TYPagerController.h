@@ -49,6 +49,8 @@
 
 @property (nonatomic, assign, readonly) NSInteger curIndex;
 
+@property (nonatomic, strong, readonly) NSDictionary *visibleControllers;
+
 @property (nonatomic, assign, readonly) NSRange visibleRange; // visible index range
 
 @property (nonatomic, assign) CGFloat contentTopEdging; // contentView top edge
