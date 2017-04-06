@@ -125,6 +125,9 @@
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging) collectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
+    if ([collectionView respondsToSelector:@selector(setPrefetchingEnabled:)]) {
+        collectionView.prefetchingEnabled = NO;
+    }
     collectionView.delegate = self;
     collectionView.dataSource = self;
     
