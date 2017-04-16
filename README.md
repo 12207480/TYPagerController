@@ -19,7 +19,7 @@ pod 'TYPagerController'
 * ARC
 
 ## ScreenShot
-####TYPagerBarStyle
+#### TYPagerBarStyle
 
 New TYPagerBarStyleProgressElasticView<br>
 ![image](https://github.com/12207480/TYPagerController/blob/master/ScreenShot/TYPagerController6.gif)
@@ -83,7 +83,7 @@ New TYPagerBarStyleProgressElasticView<br>
 
 @end
 ```
-##Usage Demo
+## Usage Demo
 
 if you want to add coustom TabBar, you can inherit TYPagerController，and set contentTopEdging,else  you can inherit TYTabPagerController or TYTabButtonPagerController,set contentTopEdging(TabBar height) and custom cell(conform TYTabTitleCellProtocol), call registerCellClass, change cell on delegate.<br>
 
@@ -116,7 +116,7 @@ if you want to add coustom TabBar, you can inherit TYPagerController，and set c
     _pagerController = pagerController;
 }
 
-#pragma mark - TYPagerControllerDataSource
+# pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController
 {
@@ -165,7 +165,7 @@ if you want to add coustom TabBar, you can inherit TYPagerController，and set c
     self.cellSpacing = 8;
 }
 
-#pragma mark - TYPagerControllerDataSource
+# pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController
 {
