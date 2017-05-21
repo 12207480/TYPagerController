@@ -53,6 +53,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 @property (nonatomic, assign) TYPagerBarStyle barStyle; // you can set or ovrride barStyle
 
+@property (nonatomic, assign) CGFloat collectionViewBarOffsetY; // 0
 @property (nonatomic, assign) CGFloat collectionLayoutEdging; // collectionLayout left right edging
 
 // progress view
