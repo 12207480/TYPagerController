@@ -443,16 +443,19 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
             //  caculate scroll progress
             [self configurePagerIndexByProgress];
         }
-        
-        if (!_needLayoutContentView) {
-            // caculate scroll index
-            [self configurePagerIndex];
-        }
-        
         // layout
         [self layoutContentView];
         
         _isTapScrollMoved = NO;
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (scrollView == _contentView && _countOfControllers > 0) {
+        if (!_needLayoutContentView) {
+            // caculate scroll index
+            [self configurePagerIndex];
+        }
     }
 }
 
@@ -469,6 +472,8 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
     // Dispose of any resources that can be recreated.
     [_memoryCache removeAllObjects];
 }
+
+
 
 - (void)dealloc
 {
