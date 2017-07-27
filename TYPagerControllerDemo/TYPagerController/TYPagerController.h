@@ -81,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 // scroll to index
 - (void)scrollToControllerAtIndex:(NSInteger)index animate:(BOOL)animate;
 
-//  update data and layout, don't reset propertys(curIndex)
+//  update data and layout,but don't reset propertys(curIndex,visibleDatas,prefechDatas)
 - (void)updateData;
 
 // reload data and reset propertys(curIndex)

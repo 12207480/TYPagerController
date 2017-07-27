@@ -170,7 +170,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
 }
 
 - (void)resetPropertys {
-    [self clearMeomoryCache];
+    [self clearMemoryCache];
     [self removeVisibleItems];
     _scrollAnimated = NO;
     _curIndex = -1;
@@ -247,6 +247,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
 
 // update don't reset propertys(curIndex)
 - (void)updateData {
+    [self clearMemoryCache];
     _countOfPagerItems = [_dataSource numberOfItemsInPagerViewLayout];
     [self setNeedLayout];
 }
@@ -625,7 +626,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
 
 #pragma mark - memoryCache
 
-- (void)clearMeomoryCache {
+- (void)clearMemoryCache {
     if (_autoMemoryCache && _memoryCache) {
         [_memoryCache removeAllObjects];
     }
@@ -747,7 +748,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (_reuseIdentifyClassOrNib) {
         [_reuseIdentifyClassOrNib removeAllObjects];
     }
-    [self clearMeomoryCache];
+    [self clearMemoryCache];
 }
 
 @end
