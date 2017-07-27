@@ -7,78 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B4BC1151CD9877F00B06DA7 /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4BC1141CD9877F00B06DA7 /* TYTabPagerController.m */; };
-		2B4BC1221CD9977E00B06DA7 /* TYTabTitleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4BC1211CD9977E00B06DA7 /* TYTabTitleViewCell.m */; };
-		2B5589201CC7469300A21F85 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B55891F1CC7469300A21F85 /* CustomViewController.m */; };
-		2B60995A1CE2DECF00BF86C1 /* TYTabButtonPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6099591CE2DECF00BF86C1 /* TYTabButtonPagerController.m */; };
-		2BD7F94F1CEAB38E005C95E2 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F94E1CEAB38E005C95E2 /* TableViewController.m */; };
-		2BD7F9521CEABF61005C95E2 /* CustomPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F9511CEABF61005C95E2 /* CustomPagerController.m */; };
-		2BD7F9551CEAC7F3005C95E2 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F9541CEAC7F3005C95E2 /* ListViewController.m */; };
-		2BD7F9581CEAE2BD005C95E2 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7F9571CEAE2BD005C95E2 /* CollectionViewController.m */; };
-		B0B0F9731CBE727000020FAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9721CBE727000020FAD /* main.m */; };
-		B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9751CBE727000020FAD /* AppDelegate.m */; };
-		B0B0F9791CBE727000020FAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9781CBE727000020FAD /* ViewController.m */; };
-		B0B0F97C1CBE727000020FAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97A1CBE727000020FAD /* Main.storyboard */; };
-		B0B0F97E1CBE727000020FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97D1CBE727000020FAD /* Assets.xcassets */; };
-		B0B0F9811CBE727000020FAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */; };
-		B0B0F98C1CBE727100020FAD /* TYPagerControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */; };
-		B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B0F9981CBE72AF00020FAD /* TYPagerController.m */; };
+		2B0D5BBC1F15FD1F00A4B8B1 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0D5BB71F15FD1F00A4B8B1 /* CollectionViewController.m */; };
+		2B0D5BBD1F15FD1F00A4B8B1 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0D5BB91F15FD1F00A4B8B1 /* CustomViewController.m */; };
+		2B0D5BC11F15FD5100A4B8B1 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0D5BC01F15FD5100A4B8B1 /* ListViewController.m */; };
+		2B9C0F4D1F0E11E7009BC0BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0F4C1F0E11E7009BC0BD /* main.m */; };
+		2B9C0F501F0E11E7009BC0BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0F4F1F0E11E7009BC0BD /* AppDelegate.m */; };
+		2B9C0F531F0E11E7009BC0BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C0F521F0E11E7009BC0BD /* ViewController.m */; };
+		2B9C0F561F0E11E7009BC0BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B9C0F541F0E11E7009BC0BD /* Main.storyboard */; };
+		2B9C0F581F0E11E7009BC0BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9C0F571F0E11E7009BC0BD /* Assets.xcassets */; };
+		2B9C0F5B1F0E11E7009BC0BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B9C0F591F0E11E7009BC0BD /* LaunchScreen.storyboard */; };
+		2BE6874E1F1EEFF9001FE46D /* TabPagerViewDmeoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6874D1F1EEFF9001FE46D /* TabPagerViewDmeoController.m */; };
+		2BE687EB1F1F5BDD001FE46D /* PagerControllerDmeoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687EA1F1F5BDD001FE46D /* PagerControllerDmeoController.m */; };
+		B0284FE11F1E595D00C733E6 /* TabPagerControllerDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0284FE01F1E595D00C733E6 /* TabPagerControllerDemoController.m */; };
+		B072EC071F1E37B100736A2E /* TYTabPagerBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EBF81F1E37B100736A2E /* TYTabPagerBar.m */; };
+		B072EC081F1E37B100736A2E /* TYTabPagerBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EBFA1F1E37B100736A2E /* TYTabPagerBarCell.m */; };
+		B072EC091F1E37B100736A2E /* TYTabPagerBarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EBFC1F1E37B100736A2E /* TYTabPagerBarLayout.m */; };
+		B072EC0A1F1E37B100736A2E /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EBFE1F1E37B100736A2E /* TYTabPagerController.m */; };
+		B072EC0B1F1E37B100736A2E /* TYTabPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EC001F1E37B100736A2E /* TYTabPagerView.m */; };
+		B072EC0C1F1E37B100736A2E /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EC021F1E37B100736A2E /* TYPagerController.m */; };
+		B072EC0D1F1E37B100736A2E /* TYPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EC041F1E37B100736A2E /* TYPagerView.m */; };
+		B072EC0E1F1E37B100736A2E /* TYPagerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EC061F1E37B100736A2E /* TYPagerViewLayout.m */; };
+		B082E5791F0E79830084C952 /* PagerViewDmeoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B082E5781F0E79830084C952 /* PagerViewDmeoController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B0B0F9881CBE727100020FAD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B0B0F9661CBE727000020FAD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0B0F96D1CBE727000020FAD;
-			remoteInfo = TYPagerControllerDemo;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		2B4BC1131CD9877F00B06DA7 /* TYTabPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerController.h; sourceTree = "<group>"; };
-		2B4BC1141CD9877F00B06DA7 /* TYTabPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerController.m; sourceTree = "<group>"; };
-		2B4BC1201CD9977E00B06DA7 /* TYTabTitleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabTitleViewCell.h; sourceTree = "<group>"; };
-		2B4BC1211CD9977E00B06DA7 /* TYTabTitleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabTitleViewCell.m; sourceTree = "<group>"; };
-		2B55891E1CC7469300A21F85 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
-		2B55891F1CC7469300A21F85 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
-		2B6099581CE2DECF00BF86C1 /* TYTabButtonPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabButtonPagerController.h; sourceTree = "<group>"; };
-		2B6099591CE2DECF00BF86C1 /* TYTabButtonPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabButtonPagerController.m; sourceTree = "<group>"; };
-		2B60995B1CE3260C00BF86C1 /* TYTabTitleCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabTitleCellProtocol.h; sourceTree = "<group>"; };
-		2BD7F94D1CEAB38E005C95E2 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		2BD7F94E1CEAB38E005C95E2 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		2BD7F9501CEABF61005C95E2 /* CustomPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPagerController.h; sourceTree = "<group>"; };
-		2BD7F9511CEABF61005C95E2 /* CustomPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPagerController.m; sourceTree = "<group>"; };
-		2BD7F9531CEAC7F3005C95E2 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		2BD7F9541CEAC7F3005C95E2 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		2BD7F9561CEAE2BD005C95E2 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		2BD7F9571CEAE2BD005C95E2 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYPagerControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0B0F9721CBE727000020FAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B0B0F9741CBE727000020FAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B0B0F9751CBE727000020FAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B0B0F9771CBE727000020FAD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B0B0F9781CBE727000020FAD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B0B0F97B1CBE727000020FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B0B0F97D1CBE727000020FAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B0B0F9801CBE727000020FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B0B0F9821CBE727000020FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0B0F9871CBE727100020FAD /* TYPagerControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TYPagerControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYPagerControllerDemoTests.m; sourceTree = "<group>"; };
-		B0B0F98D1CBE727100020FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0B0F9971CBE72AF00020FAD /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
-		B0B0F9981CBE72AF00020FAD /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
+		2B0D5BB61F15FD1F00A4B8B1 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		2B0D5BB71F15FD1F00A4B8B1 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		2B0D5BB81F15FD1F00A4B8B1 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		2B0D5BB91F15FD1F00A4B8B1 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		2B0D5BBF1F15FD5100A4B8B1 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		2B0D5BC01F15FD5100A4B8B1 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		2B9C0F481F0E11E7009BC0BD /* TYPagerControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYPagerControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B9C0F4C1F0E11E7009BC0BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2B9C0F4E1F0E11E7009BC0BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2B9C0F4F1F0E11E7009BC0BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2B9C0F511F0E11E7009BC0BD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2B9C0F521F0E11E7009BC0BD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2B9C0F551F0E11E7009BC0BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2B9C0F571F0E11E7009BC0BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B9C0F5A1F0E11E7009BC0BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2B9C0F5C1F0E11E7009BC0BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BE6874C1F1EEFF9001FE46D /* TabPagerViewDmeoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabPagerViewDmeoController.h; sourceTree = "<group>"; };
+		2BE6874D1F1EEFF9001FE46D /* TabPagerViewDmeoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabPagerViewDmeoController.m; sourceTree = "<group>"; };
+		2BE687E91F1F5BDD001FE46D /* PagerControllerDmeoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerControllerDmeoController.h; sourceTree = "<group>"; };
+		2BE687EA1F1F5BDD001FE46D /* PagerControllerDmeoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerControllerDmeoController.m; sourceTree = "<group>"; };
+		B0284FDF1F1E595D00C733E6 /* TabPagerControllerDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabPagerControllerDemoController.h; sourceTree = "<group>"; };
+		B0284FE01F1E595D00C733E6 /* TabPagerControllerDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabPagerControllerDemoController.m; sourceTree = "<group>"; };
+		B072EBF71F1E37B100736A2E /* TYTabPagerBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBar.h; sourceTree = "<group>"; };
+		B072EBF81F1E37B100736A2E /* TYTabPagerBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBar.m; sourceTree = "<group>"; };
+		B072EBF91F1E37B100736A2E /* TYTabPagerBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarCell.h; sourceTree = "<group>"; };
+		B072EBFA1F1E37B100736A2E /* TYTabPagerBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarCell.m; sourceTree = "<group>"; };
+		B072EBFB1F1E37B100736A2E /* TYTabPagerBarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarLayout.h; sourceTree = "<group>"; };
+		B072EBFC1F1E37B100736A2E /* TYTabPagerBarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarLayout.m; sourceTree = "<group>"; };
+		B072EBFD1F1E37B100736A2E /* TYTabPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerController.h; sourceTree = "<group>"; };
+		B072EBFE1F1E37B100736A2E /* TYTabPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerController.m; sourceTree = "<group>"; };
+		B072EBFF1F1E37B100736A2E /* TYTabPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerView.h; sourceTree = "<group>"; };
+		B072EC001F1E37B100736A2E /* TYTabPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerView.m; sourceTree = "<group>"; };
+		B072EC011F1E37B100736A2E /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
+		B072EC021F1E37B100736A2E /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
+		B072EC031F1E37B100736A2E /* TYPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerView.h; sourceTree = "<group>"; };
+		B072EC041F1E37B100736A2E /* TYPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerView.m; sourceTree = "<group>"; };
+		B072EC051F1E37B100736A2E /* TYPagerViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerViewLayout.h; sourceTree = "<group>"; };
+		B072EC061F1E37B100736A2E /* TYPagerViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerViewLayout.m; sourceTree = "<group>"; };
+		B082E5771F0E79830084C952 /* PagerViewDmeoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerViewDmeoController.h; sourceTree = "<group>"; };
+		B082E5781F0E79830084C952 /* PagerViewDmeoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerViewDmeoController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B0B0F96B1CBE727000020FAD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0B0F9841CBE727100020FAD /* Frameworks */ = {
+		2B9C0F451F0E11E7009BC0BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -88,102 +84,102 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2B4BC1161CD9878400B06DA7 /* View */ = {
+		2B9C0F3F1F0E11E7009BC0BD = {
 			isa = PBXGroup;
 			children = (
-				2B60995B1CE3260C00BF86C1 /* TYTabTitleCellProtocol.h */,
-				2B4BC1201CD9977E00B06DA7 /* TYTabTitleViewCell.h */,
-				2B4BC1211CD9977E00B06DA7 /* TYTabTitleViewCell.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		B0B0F9651CBE727000020FAD = {
-			isa = PBXGroup;
-			children = (
-				B0B0F9701CBE727000020FAD /* TYPagerControllerDemo */,
-				B0B0F98A1CBE727100020FAD /* TYPagerControllerDemoTests */,
-				B0B0F96F1CBE727000020FAD /* Products */,
+				2B9C0F4A1F0E11E7009BC0BD /* TYPagerControllerDemo */,
+				2B9C0F491F0E11E7009BC0BD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B0B0F96F1CBE727000020FAD /* Products */ = {
+		2B9C0F491F0E11E7009BC0BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */,
-				B0B0F9871CBE727100020FAD /* TYPagerControllerDemoTests.xctest */,
+				2B9C0F481F0E11E7009BC0BD /* TYPagerControllerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B0B0F9701CBE727000020FAD /* TYPagerControllerDemo */ = {
+		2B9C0F4A1F0E11E7009BC0BD /* TYPagerControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				B0B0F9961CBE728900020FAD /* TYPagerController */,
-				B0B0F9741CBE727000020FAD /* AppDelegate.h */,
-				B0B0F9751CBE727000020FAD /* AppDelegate.m */,
-				2BD7F94D1CEAB38E005C95E2 /* TableViewController.h */,
-				2BD7F94E1CEAB38E005C95E2 /* TableViewController.m */,
-				B0B0F9771CBE727000020FAD /* ViewController.h */,
-				B0B0F9781CBE727000020FAD /* ViewController.m */,
-				2BD7F9501CEABF61005C95E2 /* CustomPagerController.h */,
-				2BD7F9511CEABF61005C95E2 /* CustomPagerController.m */,
-				2B55891E1CC7469300A21F85 /* CustomViewController.h */,
-				2B55891F1CC7469300A21F85 /* CustomViewController.m */,
-				2BD7F9531CEAC7F3005C95E2 /* ListViewController.h */,
-				2BD7F9541CEAC7F3005C95E2 /* ListViewController.m */,
-				2BD7F9561CEAE2BD005C95E2 /* CollectionViewController.h */,
-				2BD7F9571CEAE2BD005C95E2 /* CollectionViewController.m */,
-				B0B0F97A1CBE727000020FAD /* Main.storyboard */,
-				B0B0F97D1CBE727000020FAD /* Assets.xcassets */,
-				B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */,
-				B0B0F9821CBE727000020FAD /* Info.plist */,
-				B0B0F9711CBE727000020FAD /* Supporting Files */,
+				B072EBF51F1E37B100736A2E /* TYPagerController */,
+				2B9C0F4E1F0E11E7009BC0BD /* AppDelegate.h */,
+				2B9C0F4F1F0E11E7009BC0BD /* AppDelegate.m */,
+				2B9C0F511F0E11E7009BC0BD /* ViewController.h */,
+				2B9C0F521F0E11E7009BC0BD /* ViewController.m */,
+				B082E5771F0E79830084C952 /* PagerViewDmeoController.h */,
+				B082E5781F0E79830084C952 /* PagerViewDmeoController.m */,
+				2BE687E91F1F5BDD001FE46D /* PagerControllerDmeoController.h */,
+				2BE687EA1F1F5BDD001FE46D /* PagerControllerDmeoController.m */,
+				2BE6874C1F1EEFF9001FE46D /* TabPagerViewDmeoController.h */,
+				2BE6874D1F1EEFF9001FE46D /* TabPagerViewDmeoController.m */,
+				B0284FDF1F1E595D00C733E6 /* TabPagerControllerDemoController.h */,
+				B0284FE01F1E595D00C733E6 /* TabPagerControllerDemoController.m */,
+				2B0D5BB61F15FD1F00A4B8B1 /* CollectionViewController.h */,
+				2B0D5BB71F15FD1F00A4B8B1 /* CollectionViewController.m */,
+				2B0D5BB81F15FD1F00A4B8B1 /* CustomViewController.h */,
+				2B0D5BB91F15FD1F00A4B8B1 /* CustomViewController.m */,
+				2B0D5BBF1F15FD5100A4B8B1 /* ListViewController.h */,
+				2B0D5BC01F15FD5100A4B8B1 /* ListViewController.m */,
+				2B9C0F541F0E11E7009BC0BD /* Main.storyboard */,
+				2B9C0F571F0E11E7009BC0BD /* Assets.xcassets */,
+				2B9C0F591F0E11E7009BC0BD /* LaunchScreen.storyboard */,
+				2B9C0F5C1F0E11E7009BC0BD /* Info.plist */,
+				2B9C0F4B1F0E11E7009BC0BD /* Supporting Files */,
 			);
 			path = TYPagerControllerDemo;
 			sourceTree = "<group>";
 		};
-		B0B0F9711CBE727000020FAD /* Supporting Files */ = {
+		2B9C0F4B1F0E11E7009BC0BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B0B0F9721CBE727000020FAD /* main.m */,
+				2B9C0F4C1F0E11E7009BC0BD /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B0B0F98A1CBE727100020FAD /* TYPagerControllerDemoTests */ = {
+		B072EBF51F1E37B100736A2E /* TYPagerController */ = {
 			isa = PBXGroup;
 			children = (
-				B0B0F98B1CBE727100020FAD /* TYPagerControllerDemoTests.m */,
-				B0B0F98D1CBE727100020FAD /* Info.plist */,
-			);
-			path = TYPagerControllerDemoTests;
-			sourceTree = "<group>";
-		};
-		B0B0F9961CBE728900020FAD /* TYPagerController */ = {
-			isa = PBXGroup;
-			children = (
-				B0B0F9971CBE72AF00020FAD /* TYPagerController.h */,
-				B0B0F9981CBE72AF00020FAD /* TYPagerController.m */,
-				2B4BC1131CD9877F00B06DA7 /* TYTabPagerController.h */,
-				2B4BC1141CD9877F00B06DA7 /* TYTabPagerController.m */,
-				2B6099581CE2DECF00BF86C1 /* TYTabButtonPagerController.h */,
-				2B6099591CE2DECF00BF86C1 /* TYTabButtonPagerController.m */,
-				2B4BC1161CD9878400B06DA7 /* View */,
+				B072EC051F1E37B100736A2E /* TYPagerViewLayout.h */,
+				B072EC061F1E37B100736A2E /* TYPagerViewLayout.m */,
+				B072EC031F1E37B100736A2E /* TYPagerView.h */,
+				B072EC041F1E37B100736A2E /* TYPagerView.m */,
+				B072EC011F1E37B100736A2E /* TYPagerController.h */,
+				B072EC021F1E37B100736A2E /* TYPagerController.m */,
+				B072EBF61F1E37B100736A2E /* TabPager */,
 			);
 			path = TYPagerController;
+			sourceTree = "<group>";
+		};
+		B072EBF61F1E37B100736A2E /* TabPager */ = {
+			isa = PBXGroup;
+			children = (
+				B072EBFF1F1E37B100736A2E /* TYTabPagerView.h */,
+				B072EC001F1E37B100736A2E /* TYTabPagerView.m */,
+				B072EBFD1F1E37B100736A2E /* TYTabPagerController.h */,
+				B072EBFE1F1E37B100736A2E /* TYTabPagerController.m */,
+				B072EBF71F1E37B100736A2E /* TYTabPagerBar.h */,
+				B072EBF81F1E37B100736A2E /* TYTabPagerBar.m */,
+				B072EBF91F1E37B100736A2E /* TYTabPagerBarCell.h */,
+				B072EBFA1F1E37B100736A2E /* TYTabPagerBarCell.m */,
+				B072EBFB1F1E37B100736A2E /* TYTabPagerBarLayout.h */,
+				B072EBFC1F1E37B100736A2E /* TYTabPagerBarLayout.m */,
+			);
+			path = TabPager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B0B0F96D1CBE727000020FAD /* TYPagerControllerDemo */ = {
+		2B9C0F471F0E11E7009BC0BD /* TYPagerControllerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0B0F9901CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo" */;
+			buildConfigurationList = 2B9C0F6A1F0E11E7009BC0BD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo" */;
 			buildPhases = (
-				B0B0F96A1CBE727000020FAD /* Sources */,
-				B0B0F96B1CBE727000020FAD /* Frameworks */,
-				B0B0F96C1CBE727000020FAD /* Resources */,
+				2B9C0F441F0E11E7009BC0BD /* Sources */,
+				2B9C0F451F0E11E7009BC0BD /* Frameworks */,
+				2B9C0F461F0E11E7009BC0BD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -191,48 +187,27 @@
 			);
 			name = TYPagerControllerDemo;
 			productName = TYPagerControllerDemo;
-			productReference = B0B0F96E1CBE727000020FAD /* TYPagerControllerDemo.app */;
+			productReference = 2B9C0F481F0E11E7009BC0BD /* TYPagerControllerDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B0B0F9861CBE727100020FAD /* TYPagerControllerDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B0B0F9931CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemoTests" */;
-			buildPhases = (
-				B0B0F9831CBE727100020FAD /* Sources */,
-				B0B0F9841CBE727100020FAD /* Frameworks */,
-				B0B0F9851CBE727100020FAD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B0B0F9891CBE727100020FAD /* PBXTargetDependency */,
-			);
-			name = TYPagerControllerDemoTests;
-			productName = TYPagerControllerDemoTests;
-			productReference = B0B0F9871CBE727100020FAD /* TYPagerControllerDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B0B0F9661CBE727000020FAD /* Project object */ = {
+		2B9C0F401F0E11E7009BC0BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = tanyang;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = tany;
 				TargetAttributes = {
-					B0B0F96D1CBE727000020FAD = {
-						CreatedOnToolsVersion = 7.3;
+					2B9C0F471F0E11E7009BC0BD = {
+						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = ZW52Q3KXX4;
-					};
-					B0B0F9861CBE727100020FAD = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = ZW52Q3KXX4;
-						TestTargetID = B0B0F96D1CBE727000020FAD;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = B0B0F9691CBE727000020FAD /* Build configuration list for PBXProject "TYPagerControllerDemo" */;
+			buildConfigurationList = 2B9C0F431F0E11E7009BC0BD /* Build configuration list for PBXProject "TYPagerControllerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -240,88 +215,70 @@
 				en,
 				Base,
 			);
-			mainGroup = B0B0F9651CBE727000020FAD;
-			productRefGroup = B0B0F96F1CBE727000020FAD /* Products */;
+			mainGroup = 2B9C0F3F1F0E11E7009BC0BD;
+			productRefGroup = 2B9C0F491F0E11E7009BC0BD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B0B0F96D1CBE727000020FAD /* TYPagerControllerDemo */,
-				B0B0F9861CBE727100020FAD /* TYPagerControllerDemoTests */,
+				2B9C0F471F0E11E7009BC0BD /* TYPagerControllerDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B0B0F96C1CBE727000020FAD /* Resources */ = {
+		2B9C0F461F0E11E7009BC0BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0B0F9811CBE727000020FAD /* LaunchScreen.storyboard in Resources */,
-				B0B0F97E1CBE727000020FAD /* Assets.xcassets in Resources */,
-				B0B0F97C1CBE727000020FAD /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0B0F9851CBE727100020FAD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				2B9C0F5B1F0E11E7009BC0BD /* LaunchScreen.storyboard in Resources */,
+				2B9C0F581F0E11E7009BC0BD /* Assets.xcassets in Resources */,
+				2B9C0F561F0E11E7009BC0BD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B0B0F96A1CBE727000020FAD /* Sources */ = {
+		2B9C0F441F0E11E7009BC0BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B4BC1221CD9977E00B06DA7 /* TYTabTitleViewCell.m in Sources */,
-				2B4BC1151CD9877F00B06DA7 /* TYTabPagerController.m in Sources */,
-				2BD7F9551CEAC7F3005C95E2 /* ListViewController.m in Sources */,
-				2BD7F9521CEABF61005C95E2 /* CustomPagerController.m in Sources */,
-				B0B0F9791CBE727000020FAD /* ViewController.m in Sources */,
-				2B5589201CC7469300A21F85 /* CustomViewController.m in Sources */,
-				2BD7F94F1CEAB38E005C95E2 /* TableViewController.m in Sources */,
-				B0B0F9761CBE727000020FAD /* AppDelegate.m in Sources */,
-				2BD7F9581CEAE2BD005C95E2 /* CollectionViewController.m in Sources */,
-				B0B0F9991CBE72AF00020FAD /* TYPagerController.m in Sources */,
-				B0B0F9731CBE727000020FAD /* main.m in Sources */,
-				2B60995A1CE2DECF00BF86C1 /* TYTabButtonPagerController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0B0F9831CBE727100020FAD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B0B0F98C1CBE727100020FAD /* TYPagerControllerDemoTests.m in Sources */,
+				2B0D5BBC1F15FD1F00A4B8B1 /* CollectionViewController.m in Sources */,
+				B072EC0D1F1E37B100736A2E /* TYPagerView.m in Sources */,
+				2B9C0F531F0E11E7009BC0BD /* ViewController.m in Sources */,
+				B072EC071F1E37B100736A2E /* TYTabPagerBar.m in Sources */,
+				B072EC0A1F1E37B100736A2E /* TYTabPagerController.m in Sources */,
+				B072EC081F1E37B100736A2E /* TYTabPagerBarCell.m in Sources */,
+				B0284FE11F1E595D00C733E6 /* TabPagerControllerDemoController.m in Sources */,
+				B072EC0B1F1E37B100736A2E /* TYTabPagerView.m in Sources */,
+				2B0D5BC11F15FD5100A4B8B1 /* ListViewController.m in Sources */,
+				B072EC0E1F1E37B100736A2E /* TYPagerViewLayout.m in Sources */,
+				2BE687EB1F1F5BDD001FE46D /* PagerControllerDmeoController.m in Sources */,
+				2BE6874E1F1EEFF9001FE46D /* TabPagerViewDmeoController.m in Sources */,
+				B072EC0C1F1E37B100736A2E /* TYPagerController.m in Sources */,
+				2B9C0F501F0E11E7009BC0BD /* AppDelegate.m in Sources */,
+				B072EC091F1E37B100736A2E /* TYTabPagerBarLayout.m in Sources */,
+				2B0D5BBD1F15FD1F00A4B8B1 /* CustomViewController.m in Sources */,
+				B082E5791F0E79830084C952 /* PagerViewDmeoController.m in Sources */,
+				2B9C0F4D1F0E11E7009BC0BD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		B0B0F9891CBE727100020FAD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B0B0F96D1CBE727000020FAD /* TYPagerControllerDemo */;
-			targetProxy = B0B0F9881CBE727100020FAD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		B0B0F97A1CBE727000020FAD /* Main.storyboard */ = {
+		2B9C0F541F0E11E7009BC0BD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B0B0F97B1CBE727000020FAD /* Base */,
+				2B9C0F551F0E11E7009BC0BD /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		B0B0F97F1CBE727000020FAD /* LaunchScreen.storyboard */ = {
+		2B9C0F591F0E11E7009BC0BD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B0B0F9801CBE727000020FAD /* Base */,
+				2B9C0F5A1F0E11E7009BC0BD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -329,11 +286,12 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B0B0F98E1CBE727100020FAD /* Debug */ = {
+		2B9C0F681F0E11E7009BC0BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -341,13 +299,15 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -367,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -375,11 +335,12 @@
 			};
 			name = Debug;
 		};
-		B0B0F98F1CBE727100020FAD /* Release */ = {
+		2B9C0F691F0E11E7009BC0BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -387,10 +348,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -406,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -414,91 +378,59 @@
 			};
 			name = Release;
 		};
-		B0B0F9911CBE727100020FAD /* Debug */ = {
+		2B9C0F6B1F0E11E7009BC0BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = ZW52Q3KXX4;
 				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tany.TYPagerControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		B0B0F9921CBE727100020FAD /* Release */ = {
+		2B9C0F6C1F0E11E7009BC0BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = ZW52Q3KXX4;
 				INFOPLIST_FILE = TYPagerControllerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tany.TYPagerControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		B0B0F9941CBE727100020FAD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = TYPagerControllerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TYPagerControllerDemo.app/TYPagerControllerDemo";
-			};
-			name = Debug;
-		};
-		B0B0F9951CBE727100020FAD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = TYPagerControllerDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanyang.TYPagerControllerDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TYPagerControllerDemo.app/TYPagerControllerDemo";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B0B0F9691CBE727000020FAD /* Build configuration list for PBXProject "TYPagerControllerDemo" */ = {
+		2B9C0F431F0E11E7009BC0BD /* Build configuration list for PBXProject "TYPagerControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B0B0F98E1CBE727100020FAD /* Debug */,
-				B0B0F98F1CBE727100020FAD /* Release */,
+				2B9C0F681F0E11E7009BC0BD /* Debug */,
+				2B9C0F691F0E11E7009BC0BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0B0F9901CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo" */ = {
+		2B9C0F6A1F0E11E7009BC0BD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B0B0F9911CBE727100020FAD /* Debug */,
-				B0B0F9921CBE727100020FAD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B0B0F9931CBE727100020FAD /* Build configuration list for PBXNativeTarget "TYPagerControllerDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B0B0F9941CBE727100020FAD /* Debug */,
-				B0B0F9951CBE727100020FAD /* Release */,
+				2B9C0F6B1F0E11E7009BC0BD /* Debug */,
+				2B9C0F6C1F0E11E7009BC0BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B0B0F9661CBE727000020FAD /* Project object */;
+	rootObject = 2B9C0F401F0E11E7009BC0BD /* Project object */;
 }

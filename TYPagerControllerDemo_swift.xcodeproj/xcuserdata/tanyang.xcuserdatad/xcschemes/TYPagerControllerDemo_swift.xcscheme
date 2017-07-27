@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2B9C0F471F0E11E7009BC0BD"
-               BuildableName = "TYPagerControllerDemo.app"
-               BlueprintName = "TYPagerControllerDemo"
-               ReferencedContainer = "container:TYPagerControllerDemo.xcodeproj">
+               BlueprintIdentifier = "2BE687901F1F3D67001FE46D"
+               BuildableName = "TYPagerControllerDemo_swift.app"
+               BlueprintName = "TYPagerControllerDemo_swift"
+               ReferencedContainer = "container:TYPagerControllerDemo_swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,24 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2B9C0F601F0E11E7009BC0BD"
-               BuildableName = "TYPagerControllerDemoTests.xctest"
-               BlueprintName = "TYPagerControllerDemoTests"
-               ReferencedContainer = "container:TYPagerControllerDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2B9C0F471F0E11E7009BC0BD"
-            BuildableName = "TYPagerControllerDemo.app"
-            BlueprintName = "TYPagerControllerDemo"
-            ReferencedContainer = "container:TYPagerControllerDemo.xcodeproj">
+            BlueprintIdentifier = "2BE687901F1F3D67001FE46D"
+            BuildableName = "TYPagerControllerDemo_swift.app"
+            BlueprintName = "TYPagerControllerDemo_swift"
+            ReferencedContainer = "container:TYPagerControllerDemo_swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2B9C0F471F0E11E7009BC0BD"
-            BuildableName = "TYPagerControllerDemo.app"
-            BlueprintName = "TYPagerControllerDemo"
-            ReferencedContainer = "container:TYPagerControllerDemo.xcodeproj">
+            BlueprintIdentifier = "2BE687901F1F3D67001FE46D"
+            BuildableName = "TYPagerControllerDemo_swift.app"
+            BlueprintName = "TYPagerControllerDemo_swift"
+            ReferencedContainer = "container:TYPagerControllerDemo_swift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -84,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2B9C0F471F0E11E7009BC0BD"
-            BuildableName = "TYPagerControllerDemo.app"
-            BlueprintName = "TYPagerControllerDemo"
-            ReferencedContainer = "container:TYPagerControllerDemo.xcodeproj">
+            BlueprintIdentifier = "2BE687901F1F3D67001FE46D"
+            BuildableName = "TYPagerControllerDemo_swift.app"
+            BlueprintName = "TYPagerControllerDemo_swift"
+            ReferencedContainer = "container:TYPagerControllerDemo_swift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

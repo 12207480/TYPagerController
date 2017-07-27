@@ -1,56 +1,90 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wEY-bZ-bLz">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eaq-4a-DUl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
-        <scene sceneID="kUn-Up-dWa">
+        <!--TYPagerControllerDemo-->
+        <scene sceneID="tne-QT-ifu">
             <objects>
-                <tableViewController id="C4z-Wk-HyE" customClass="TableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kHn-gJ-iil">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GJ0-md-tTg">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJ0-md-tTg" id="i94-Nm-3Ec">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="C4z-Wk-HyE" id="HMW-qc-cgy"/>
-                            <outlet property="delegate" destination="C4z-Wk-HyE" id="4yp-bp-Hhx"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="pI5-8B-qqc"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rr2-fL-rvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8A0-qa-d6d">
+                                <rect key="frame" x="130" y="164" width="114" height="30"/>
+                                <state key="normal" title="PagerViewDemo"/>
+                                <connections>
+                                    <action selector="turnToPageViewDemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="THd-Lh-JVr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ty-h4-JgF">
+                                <rect key="frame" x="113" y="329" width="148" height="30"/>
+                                <state key="normal" title="PagerControllerDemo"/>
+                                <connections>
+                                    <action selector="turnToPageControllerDemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xvi-7T-y8T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7F-iU-5Ra">
+                                <rect key="frame" x="100" y="394" width="174" height="30"/>
+                                <state key="normal" title="TabPagerControllerDemo"/>
+                                <connections>
+                                    <action selector="turnToTabPagerControllerDemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SwD-WA-vPY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-wn-xvM">
+                                <rect key="frame" x="117.5" y="240" width="139" height="30"/>
+                                <state key="normal" title="TabPagerViewDemo"/>
+                                <connections>
+                                    <action selector="turnToTabPagerViewDemo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w7G-9U-SeI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="y7F-iU-5Ra" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Vh-GZ-UcR"/>
+                            <constraint firstItem="8A0-qa-d6d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6e0-E8-3C1"/>
+                            <constraint firstItem="Wwd-wn-xvM" firstAttribute="top" secondItem="8A0-qa-d6d" secondAttribute="bottom" constant="46" id="AVd-Q5-EGK"/>
+                            <constraint firstItem="6Ty-h4-JgF" firstAttribute="top" secondItem="8A0-qa-d6d" secondAttribute="bottom" constant="135" id="HXX-po-pR3"/>
+                            <constraint firstItem="8A0-qa-d6d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="UV5-LD-lMz"/>
+                            <constraint firstItem="y7F-iU-5Ra" firstAttribute="top" secondItem="6Ty-h4-JgF" secondAttribute="bottom" constant="35" id="cHk-Xd-Fzo"/>
+                            <constraint firstItem="Wwd-wn-xvM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eRR-d8-JSo"/>
+                            <constraint firstItem="6Ty-h4-JgF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lgg-A3-M4z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="TYPagerControllerDemo" id="ekm-1o-Y9m"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929" y="272"/>
+            <point key="canvasLocation" x="1004" y="37.331334332833585"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="R3P-ci-R0p">
+        <scene sceneID="jxX-tJ-8pd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wEY-bZ-bLz" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eaq-4a-DUl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mFu-Bb-C8g">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b03-7A-rBf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="C4z-Wk-HyE" kind="relationship" relationship="rootViewController" id="i7s-hD-RIb"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FDn-zF-mOZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="93N-we-geU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gu2-LK-eBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="272"/>
+            <point key="canvasLocation" x="61.600000000000001" y="691.304347826087"/>
         </scene>
     </scenes>
 </document>
