@@ -1,6 +1,6 @@
 # TYPagerController v2.0
 **TYPagerController v2.0 is coming...**<br>
-TYPagerController 简单，支持定制，页面控制器,可以滚动内容和标题栏,包含多种style
+TYPagerController 简单，强大，高度定制，页面控制器,可以滚动内容和标题栏,包含多种style
 
 * TYPagerViewLayout 水平滚动页面的layout类,也是最重要的类，只需要initWithScrollView:即可实现水平滚动页面.
 * TYPagerView 包含TYPagerViewLayout的水平滚动页面View
