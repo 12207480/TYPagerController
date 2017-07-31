@@ -228,7 +228,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    _layout.scrollView.frame = self.bounds;
+    _layout.scrollView.frame = UIEdgeInsetsInsetRect(self.bounds,_contentInset);
 }
 
 - (void)dealloc {

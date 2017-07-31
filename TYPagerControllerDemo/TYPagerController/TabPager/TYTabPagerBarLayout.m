@@ -34,7 +34,7 @@
     _cellSpacing = 2;
     _cellEdging = 3;
     _cellWidth = 0;
-    _progressEdging = 6;
+    _progressHorEdging = 6;
     _progressWidth = 0;
     _animateDuration = 0.25;
     
@@ -52,11 +52,29 @@
     _pagerTabBar.progressView.layer.cornerRadius = progressRadius;
 }
 
+- (void)setProgressBorderWidth:(CGFloat)progressBorderWidth {
+    _progressBorderWidth = progressBorderWidth;
+    _pagerTabBar.progressView.layer.borderWidth = progressBorderWidth;
+}
+
+- (void)setProgressBorderColor:(UIColor *)progressBorderColor {
+    _progressBorderColor = progressBorderColor;
+    if (!_progressColor) {
+        _pagerTabBar.progressView.backgroundColor = [UIColor clearColor];
+    }
+    _pagerTabBar.progressView.layer.borderColor = progressBorderColor.CGColor;
+}
+
+- (void)setProgressColor:(UIColor *)progressColor {
+    _progressColor = progressColor;
+    _pagerTabBar.progressView.backgroundColor = progressColor;
+}
+
 - (void)setProgressHeight:(CGFloat)progressHeight {
     _progressHeight = progressHeight;
     CGRect frame = _pagerTabBar.progressView.frame;
     CGFloat height = CGRectGetHeight(_pagerTabBar.collectionView.frame);
-    frame.origin.y = _barStyle == TYPagerBarStyleCoverView ? (height - _progressHeight)/2:(height - _progressHeight - _progressBottomEdging);
+    frame.origin.y = _barStyle == TYPagerBarStyleCoverView ? (height - _progressHeight)/2:(height - _progressHeight - _progressVerEdging);
     frame.size.height = progressHeight;
     _pagerTabBar.progressView.frame = frame;
 }
@@ -65,7 +83,7 @@
     if (!UIEdgeInsetsEqualToEdgeInsets(_sectionInset, UIEdgeInsetsZero) || _barStyle != TYPagerBarStyleCoverView) {
         return _sectionInset;
     }
-    CGFloat horEdging = -_progressEdging+_cellSpacing;
+    CGFloat horEdging = -_progressHorEdging+_cellSpacing;
     return UIEdgeInsetsMake(0, horEdging, 0, horEdging);
 }
 
@@ -74,25 +92,29 @@
     if (barStyle == _barStyle) {
         return;
     }
+    if (_barStyle == TYPagerBarStyleCoverView) {
+        self.progressBorderWidth = 0;
+        self.progressBorderColor = nil;
+    }
     _barStyle = barStyle;
     switch (barStyle) {
         case TYPagerBarStyleProgressView:
             self.progressWidth = 0;
-            self.progressEdging = 6;
-            self.progressBottomEdging = 0;
+            self.progressHorEdging = 6;
+            self.progressVerEdging = 0;
             self.progressHeight = kUnderLineViewHeight;
             break;
         case TYPagerBarStyleProgressBounceView:
         case TYPagerBarStyleProgressElasticView:
             self.progressWidth = 30;
-            self.progressBottomEdging = 0;
-            self.progressEdging = 0;
+            self.progressVerEdging = 0;
+            self.progressHorEdging = 0;
             self.progressHeight = kUnderLineViewHeight;
             break;
         case TYPagerBarStyleCoverView:
             self.progressWidth = 0;
-            self.progressEdging = -self.progressHeight/4;
-            self.progressBottomEdging = 4;
+            self.progressHorEdging = -self.progressHeight/4;
+            self.progressVerEdging = 3;
             break;
         default:
             break;
@@ -189,10 +211,10 @@
     }
     
     CGRect cellFrame = [self cellFrameWithIndex:index];
-    CGFloat progressEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressEdging;
-    CGFloat progressX = cellFrame.origin.x+progressEdging;
-    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (cellFrame.size.height - _progressHeight)/2:(cellFrame.size.height - _progressHeight - _progressBottomEdging);
-    CGFloat width = cellFrame.size.width-2*progressEdging;
+    CGFloat progressHorEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressHorEdging;
+    CGFloat progressX = cellFrame.origin.x+progressHorEdging;
+    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (cellFrame.size.height - _progressHeight)/2:(cellFrame.size.height - _progressHeight - _progressVerEdging);
+    CGFloat width = cellFrame.size.width-2*progressHorEdging;
     
     if (animated) {
         [UIView animateWithDuration:_animateDuration animations:^{
@@ -213,10 +235,10 @@
     CGRect fromCellFrame = [self cellFrameWithIndex:fromIndex];
     CGRect toCellFrame = [self cellFrameWithIndex:toIndex];
     
-    CGFloat progressFromEdging = _progressWidth > 0 ? (fromCellFrame.size.width - _progressWidth)/2 : _progressEdging;
-    CGFloat progressToEdging = _progressWidth > 0 ? (toCellFrame.size.width - _progressWidth)/2 : _progressEdging;
-    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (toCellFrame.size.height - _progressHeight)/2:(toCellFrame.size.height - _progressHeight - _progressBottomEdging);
-    CGFloat progressX, width;
+    CGFloat progressFromEdging = _progressWidth > 0 ? (fromCellFrame.size.width - _progressWidth)/2 : _progressHorEdging;
+    CGFloat progressToEdging = _progressWidth > 0 ? (toCellFrame.size.width - _progressWidth)/2 : _progressHorEdging;
+    CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (toCellFrame.size.height - _progressHeight)/2:(toCellFrame.size.height - _progressHeight - _progressVerEdging);
+    CGFloat progressX = 0, width = 0;
     
     if (_barStyle == TYPagerBarStyleProgressBounceView) {
         if (fromCellFrame.origin.x < toCellFrame.origin.x) {
@@ -267,7 +289,7 @@
         return;
     }
     if (_barStyle == TYPagerBarStyleCoverView) {
-        self.progressHeight = CGRectGetHeight(_pagerTabBar.collectionView.frame) -self.progressBottomEdging*2;
+        self.progressHeight = CGRectGetHeight(_pagerTabBar.collectionView.frame) -self.progressVerEdging*2;
         self.progressRadius = _progressRadius > 0 ? _progressRadius : self.progressHeight/2;
     }
     [self setUnderLineFrameWithIndex:_pagerTabBar.curIndex animated:NO];

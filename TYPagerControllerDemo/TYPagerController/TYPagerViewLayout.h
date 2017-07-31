@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (TY_PagerReuseIdentify)
-
+// resueId
 @property (nonatomic, strong, readonly, nullable) NSString *ty_pagerReuseIdentify;
 
 @end
@@ -117,7 +117,7 @@ NS_ASSUME_NONNULL_BEGIN
 // update data and layout，the same to relaodData,but don't reset propertys(curIndex,visibleDatas,prefechDatas)
 - (void)updateData;
 
-// reload data and reset propertys(curIndex)
+// reload data and reset propertys
 - (void)reloadData;
 
 @end

@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
     TYPagerBarStyleProgressView,
     TYPagerBarStyleProgressBounceView,
     TYPagerBarStyleProgressElasticView,
-    TYPagerBarStyleCoverView
+    TYPagerBarStyleCoverView,
 };
 
 @class TYTabPagerBar;
@@ -32,10 +32,15 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 // progress view
 @property (nonatomic, assign) CGFloat progressHeight;   // default 2
-@property (nonatomic, assign) CGFloat progressRadius;   // height/2
 @property (nonatomic, assign) CGFloat progressWidth; //if>0 progress width is equal,else progress width is cell width
-@property (nonatomic, assign) CGFloat progressEdging; // default 6, if < 0 width + edge ,if >0 width - edge
-@property (nonatomic, assign) CGFloat progressBottomEdging; // default 0
+@property (nonatomic, strong, nullable) UIColor *progressColor;
+
+@property (nonatomic, assign) CGFloat progressRadius;   // height/2
+@property (nonatomic, assign) CGFloat progressBorderWidth;
+@property (nonatomic, strong, nullable) UIColor *progressBorderColor;
+
+@property (nonatomic, assign) CGFloat progressHorEdging; // default 6, if < 0 width + edge ,if >0 width - edge
+@property (nonatomic, assign) CGFloat progressVerEdging; // default 0, cover style is 3.
 
 // cell frame
 @property (nonatomic, assign) CGFloat cellWidth; // default 0, if>0 cells width is equal,else if=0 cell will caculate all titles width

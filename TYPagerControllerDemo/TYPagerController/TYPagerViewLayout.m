@@ -50,6 +50,7 @@ NS_INLINE CGRect frameForItemAtIndex(NSInteger index, CGRect frame)
     return CGRectMake(index * CGRectGetWidth(frame), 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
 }
 
+// caculate visilble range in offset
 NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger maxIndex)
 {
     if (width <= 0) {
@@ -123,6 +124,7 @@ static const NSInteger kMemoryCountLimit = 16;
 @property (nonatomic, strong) NSDictionary<NSNumber *,ItemType> *visibleIndexItems;
 @property (nonatomic, strong) NSDictionary<NSNumber *,ItemType> *prefetchIndexItems;
 
+//reuse Class and nib
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifyClassOrNib;
 // reuse items
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifyItems;
@@ -344,6 +346,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
 #pragma mark - layout content
 
 - (void)setNeedLayout {
+    // 1. get count Of pager Items
     if (_countOfPagerItems <= 0) {
         _countOfPagerItems = [_dataSource numberOfItemsInPagerViewLayout];
     }
@@ -351,12 +354,12 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (_curIndex >= _countOfPagerItems) {
         _curIndex = _countOfPagerItems - 1;
     }
-    // 1.set contentSize and offset
+    // 2.set contentSize and offset
     CGFloat contentWidth = CGRectGetWidth(_scrollView.frame);
     _scrollView.contentSize = CGSizeMake(_countOfPagerItems * contentWidth, 0);
     _scrollView.contentOffset = CGPointMake(MAX(_curIndex, 0)*contentWidth, _scrollView.contentOffset.y);
     
-    // 2.layout content
+    // 3.layout content
     if (_curIndex < 0) {
         [self scrollViewDidScroll:_scrollView];
     }else {
@@ -372,7 +375,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     CGFloat offsetX = _scrollView.contentOffset.x;
     NSRange visibleRange = visibleRangWithOffset(offsetX, CGRectGetWidth(_scrollView.frame), _countOfPagerItems);
     if (NSEqualRanges(_visibleRange, visibleRange) && !_needLayoutContent) {
-        // don't change visible range
+        // visible range not change
         return;
     }
     _visibleRange = visibleRange;
@@ -551,10 +554,10 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
         _curIndex = -1;
         return;
     }
-    // scrollview width
+    // scrollView width
     CGFloat width = CGRectGetWidth(_scrollView.frame);
     NSInteger index = 0;
-    // when scroll progress percent will change index
+    // when scroll to progress(changeIndexWhenScrollProgress) will change index
     CGFloat percentChangeIndex = _changeIndexWhenScrollProgress;
     if (_changeIndexWhenScrollProgress >= 1.0 || [self progressCaculateEnable]) {
         percentChangeIndex = 0.999999999;
@@ -655,13 +658,17 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (!scrollView.superview) {
         return;
     }
+    // get scrolling direction
     CGFloat offsetX = scrollView.contentOffset.x;
     TYPagerScrollingDirection direction = offsetX >= _preOffsetX ? TYPagerScrollingLeft : TYPagerScrollingRight;
     
+    // caculate index and progress
     if ([self progressCaculateEnable]) {
         [self caculateIndexByProgressWithOffsetX:offsetX direction:direction];
     }
     [self caculateIndexWithOffsetX:offsetX direction:direction];
+    
+    // layout items
     [self layoutIfNeed];
     _isTapScrollMoved = NO;
     

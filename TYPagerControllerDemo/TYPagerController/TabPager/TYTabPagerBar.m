@@ -267,7 +267,11 @@
     [super layoutSubviews];
     _backgroundView.frame = self.bounds;
     CGRect frame = UIEdgeInsetsInsetRect(self.bounds, _contentInset);
+    BOOL needUpdateLayout = frame.size.height > 0 && _collectionView.frame.size.height != frame.size.height;
     _collectionView.frame = frame;
+    if (needUpdateLayout) {
+        [_collectionView.collectionViewLayout invalidateLayout];
+    }
     if (_layout) {
         [_layout layoutSubViews];
     }

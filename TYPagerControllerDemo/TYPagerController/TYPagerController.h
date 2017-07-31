@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, readonly) UIScrollView *scrollView;
 
 @property (nonatomic, assign, readonly) NSInteger countOfControllers;
-@property (nonatomic, assign, readonly) NSInteger curIndex;
+@property (nonatomic, assign, readonly) NSInteger curIndex;// default -1
 
 @property (nonatomic, strong, nullable, readonly) NSArray<UIViewController *> *visibleControllers;
 
@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 //  update data and layout,but don't reset propertys(curIndex,visibleDatas,prefechDatas)
 - (void)updateData;
 
-// reload data and reset propertys(curIndex)
+// reload data and reset propertys
 - (void)reloadData;
 
 @end

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSInteger)numberOfViewsInPagerView;
 
-/* 1.if prefetching is YES, this is prefetch view that not display.
+/* 1.if prefetching is YES, the prefetch view not display.
    2.if view will diaplay,will call willAppearView:forIndex:.
    3.layout.frameForItemAtIndex can get view's frame
    4.you can register && dequeue view, usage like tableView
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 // if you implement the method,also you need implement ↑↑↑transitionFromIndex:toIndex:animated:,deal with tap change index animate
 - (void)pagerView:(TYPagerView *)pagerView  transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
 
-// ScrollViewDelegate
+// scrollView delegate
 
 - (void)pagerViewDidScroll:(TYPagerView *)pageView;
 - (void)pagerViewWillBeginScrolling:(TYPagerView *)pageView animate:(BOOL)animate;

@@ -57,11 +57,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)registerNib:(UINib *)nib forPagerCellWithReuseIdentifier:(NSString *)identifier;
 - (UIView *)dequeueReusablePagerCellWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
 
+
+- (void)scrollToViewAtIndex:(NSInteger)index animate:(BOOL)animate;
+
 - (void)updateData;
 
 - (void)reloadData;
-
-- (void)scrollToViewAtIndex:(NSInteger)index animate:(BOOL)animate;
 
 @end
 
