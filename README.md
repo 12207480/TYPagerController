@@ -5,7 +5,7 @@ TYPagerController 简单，支持定制，页面控制器,可以滚动内容和�
 * TYPagerViewLayout 水平滚动页面的layout类，只需要initWithScrollView:即可实现水平滚动页面.
 * TYPagerView 包含TYPagerViewLayout的水平滚动页面View
 * TYPagerController 包含TYPagerViewLayout的水平滚动页面Controller。
-* TYTabPagerBar
+* TYTabPagerBar Pager的标题 tabBar
 * TYTabPagerView 包含TabBar的TYPagerView
 * TYTabPagerController 包含TabBar的TYPagerController
 
@@ -81,7 +81,7 @@ New TYPagerBarStyleProgressElasticView<br>
 // default 0.5,when scroll progress percent will change index, only progressAnimateEnabel is NO or don't implement delegate transitionFromIndex: toIndex: progress:
 @property (nonatomic, assign) CGFloat changeIndexWhenScrollProgress;
 ```
-*TYPagerView
+* TYPagerView
 ```objc
 @interface TYPagerView : UIView
 
