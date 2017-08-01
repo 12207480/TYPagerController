@@ -41,10 +41,6 @@ New TYPagerBarStyleProgressElasticView<br>
 
 ## API
 
-### DataSource Delegate
-
-
-
 ### Class
 * TYPagerViewLayout
 ```objc
