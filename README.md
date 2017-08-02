@@ -33,6 +33,7 @@ New TYPagerBarStyleProgressElasticView<br>
 
 3 TYPagerBarStyleCoverView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController3.gif)
+![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController7.gif)
 
 4 TYPagerBarStyleNoneView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController4.gif)
