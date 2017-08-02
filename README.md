@@ -20,7 +20,7 @@ TYPagerController v2.0 还未上传
 * ARC
 
 ## ScreenShot
-####TYPagerBarStyle
+### TYPagerBarStyle
 
 New TYPagerBarStyleProgressElasticView<br>
 ![image](https://github.com/12207480/TYPagerController/blob/master/ScreenShot/TYPagerController6.gif)
@@ -37,8 +37,6 @@ New TYPagerBarStyleProgressElasticView<br>
 
 4 TYPagerBarStyleNoneView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController4.gif)
-
-![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController5.gif)
 
 ## API
 
