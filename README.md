@@ -12,7 +12,9 @@ TYPagerController v2.0 重构优化代码，分离出TYPagerViewLayout布局类,
 * TYTabPagerController 包含TabBar的TYPagerController
 
 ## CocoaPods
-TYPagerController v2.0 还未上传
+```
+pod 'TYPagerController'
+```
 
 ## Requirements
 * Xcode 7 or higher
