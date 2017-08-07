@@ -12,7 +12,7 @@ TYPagerController v2.0 重构优化代码，分离出TYPagerViewLayout布局类,
 
 ## CocoaPods
 ```
-pod 'TYPagerController'
+pod 'TYPagerController' , '~> 2.0.0'
 ```
 
 ## Requirements
