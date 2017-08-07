@@ -172,8 +172,8 @@
 }
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
-    UIViewController *viewCpntroller = [_dataSource tabPagerController:self controllerForIndex:index prefetching:prefetching];
-    return viewCpntroller;
+    UIViewController *viewController = [_dataSource tabPagerController:self controllerForIndex:index prefetching:prefetching];
+    return viewController;
 }
 
 #pragma mark - TYPagerControllerDelegate
