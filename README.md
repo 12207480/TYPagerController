@@ -1,6 +1,5 @@
 # TYPagerController v2.0
 TYPagerController 简单，强大，高度定制，页面控制器,水平滚动内容和标题栏,包含多种barStyle。<br>
-**TYPagerController v2.0 is coming...**<br>
 TYPagerController v2.0 重构优化代码，分离出TYPagerViewLayout布局类,添加更多功能，更加强大。<br>
 如果还想使用以前的版本可以查看分支v1.0.6 和 pod 'TYPagerController', '~> 1.0.6' <br>
 
@@ -11,8 +10,12 @@ TYPagerController v2.0 重构优化代码，分离出TYPagerViewLayout布局类,
 * TYTabPagerView 包含TabBar的TYPagerView
 * TYTabPagerController 包含TabBar的TYPagerController
 
+更详细的使用请看[LovePlayNews](https://github.com/12207480/LovePlayNews)项目
+
 ## CocoaPods
-TYPagerController v2.0 还未上传
+```
+pod 'TYPagerController' , '~> 2.0.0'
+```
 
 ## Requirements
 * Xcode 7 or higher
