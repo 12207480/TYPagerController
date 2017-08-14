@@ -277,4 +277,8 @@
     }
 }
 
+- (void)dealloc {
+    _collectionView.delegate = nil;
+}
+
 @end
