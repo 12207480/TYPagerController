@@ -7,20 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYPagerViewLayout.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class TYPagerController;
 @protocol TYPagerControllerDataSource <NSObject>
 
-// viewController count in pagerController
+// viewController's count in pagerController
 - (NSInteger)numberOfControllersInPagerController;
 
-// viewController at index in pagerController
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index;
-
-@optional
-
-// viewController title in pagerController
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index;
+/* 1.viewController at index in pagerController
+   2.if prefetching is YES,the controller is preload,not display.
+   3.if controller will display,will call viewWillAppear.
+   4.register && dequeue controller, usage like tableView
+ */
+- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching;
 
 @end
 
@@ -28,60 +30,63 @@
 
 @optional
 
-// transition from index to index with animated
+// Display customization
+// the same to viewWillAppear, also can use viewController's viewWillAppear
+- (void)pagerController:(TYPagerController *)pagerController viewWillAppear:(UIViewController *)viewController forIndex:(NSInteger)index;
+- (void)pagerController:(TYPagerController *)pagerController viewDidAppear:(UIViewController *)viewController forIndex:(NSInteger)index;
+
+// Disappear customization
+// the same to viewWillDisappear, also can use viewController's viewWillDisappear
+- (void)pagerController:(TYPagerController *)pagerController viewWillDisappear:(UIViewController *)viewController forIndex:(NSInteger)index;
+- (void)pagerController:(TYPagerController *)pagerController viewDidDisappear:(UIViewController *)viewController forIndex:(NSInteger)index;
+
+// Transition animation customization
+
 - (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated;
 
-// transition from index to index with progress
 - (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
+
+
+// ScrollViewDelegate
+
+- (void)pagerControllerDidScroll:(TYPagerController *)pagerController;
+- (void)pagerControllerWillBeginScrolling:(TYPagerController *)pagerController animate:(BOOL)animate;
+- (void)pagerControllerDidEndScrolling:(TYPagerController *)pagerController animate:(BOOL)animate;
 
 @end
 
 @interface TYPagerController : UIViewController
 
-@property (nonatomic, weak, readonly) UIScrollView *contentView; // don‘t change the frame
+@property (nonatomic, weak, nullable) id<TYPagerControllerDataSource> dataSource;
+@property (nonatomic, weak, nullable) id<TYPagerControllerDelegate>   delegate;
+// pagerController's layout,don't set layout's dataSource to other
+@property (nonatomic, strong, readonly) TYPagerViewLayout<UIViewController *> *layout;
+@property (nonatomic, weak, readonly) UIScrollView *scrollView;
 
-@property (nonatomic, weak) id<TYPagerControllerDataSource> dataSource;
-@property (nonatomic, weak) id<TYPagerControllerDelegate>   delegate;
+@property (nonatomic, assign, readonly) NSInteger countOfControllers;
+@property (nonatomic, assign, readonly) NSInteger curIndex;// default -1
 
-@property (nonatomic, strong, readonly) NSCache *memoryCache;// cache pagerController, you can set countLimit
+@property (nonatomic, strong, nullable, readonly) NSArray<UIViewController *> *visibleControllers;
 
-@property (nonatomic, assign, readonly) NSInteger countOfControllers;// after viewdidload or reload have value
+@property (nonatomic, assign) UIEdgeInsets contentInset;
 
-@property (nonatomic, assign, readonly) NSInteger curIndex;
+//if not visible, prefecth, cache view at index, return nil
+- (UIViewController *_Nullable)controllerForIndex:(NSInteger)index;
 
-@property (nonatomic, assign, readonly) NSRange visibleRange; // visible index range
+// register && dequeue's usage like tableView
+- (void)registerClass:(Class)Class forControllerWithReuseIdentifier:(NSString *)identifier;
+- (void)registerNib:(UINib *)nib forControllerWithReuseIdentifier:(NSString *)identifier;
+- (UIViewController *)dequeueReusableControllerWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
 
-@property (nonatomic, assign) CGFloat contentTopEdging; // contentView top edge
+// scroll to index
+- (void)scrollToControllerAtIndex:(NSInteger)index animate:(BOOL)animate;
 
-@property (nonatomic, assign) BOOL adjustStatusBarHeight; // defaut NO,if YES and navBar is hide,statusBarHeight have value to adjust status
+//  update data and layout,but don't reset propertys(curIndex,visibleDatas,prefechDatas)
+- (void)updateData;
 
-@property (nonatomic, assign) CGFloat changeIndexWhenScrollProgress; // default 1.0,when scroll progress percent will change index
-
-// reload
+// reload data and reset propertys
 - (void)reloadData;
 
-// override must call super , update contentView subviews frame
-- (void)updateContentView;
-
-// move pager controller to index
-- (void)moveToControllerAtIndex:(NSInteger)index animated:(BOOL)animated;
-
-// visible pager controllers
-- (NSArray *)visibleViewControllers;
-
-// scroll is progressing
-- (BOOL)isProgressScrollEnabel;
-
-// see adjustStatusBarHeight ,only layout views ,it is valid.
-- (NSInteger)statusBarHeight;
-
 @end
 
-@interface TYPagerController (TransitionOverride)
-
-// subclass override
-- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated;
-
-- (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
-
-@end
+NS_ASSUME_NONNULL_END

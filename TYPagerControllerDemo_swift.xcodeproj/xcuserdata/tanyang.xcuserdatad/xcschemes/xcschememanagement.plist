@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>TYPagerControllerDemo.xcscheme</key>
+		<key>TYPagerControllerDemo_swift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2B9C0F471F0E11E7009BC0BD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2B9C0F601F0E11E7009BC0BD</key>
+		<key>2BE687901F1F3D67001FE46D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
