@@ -7,10 +7,12 @@
 //
 
 #import "CustomViewController.h"
+#import "TestPushViewController.h"
 
 @interface CustomViewController ()
 @property (nonatomic, weak) UILabel *label;
 @property (nonatomic, weak) UIButton *cancelBtn;
+@property (nonatomic, weak) UIButton *pushBtn;
 @end
 
 @implementation CustomViewController
@@ -29,6 +31,7 @@
     [super viewWillLayoutSubviews];
     _label.center = CGPointMake(CGRectGetWidth(self.view.frame)/2, CGRectGetHeight(self.view.frame)/2);
      _cancelBtn.center = CGPointMake(_label.center.x,_label.center.y + 100);
+     _pushBtn.center = CGPointMake(_label.center.x,_label.center.y + 200);
 }
 
 - (void)addPageLabel
@@ -52,6 +55,16 @@
     cancelBtn.center = CGPointMake(self.view.center.x, self.view.center.y + 60);
     [self.view addSubview:cancelBtn];
     _cancelBtn = cancelBtn;
+    
+    //Push another view controller
+    UIButton *pushBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    pushBtn.titleLabel.font = [UIFont systemFontOfSize:21];
+    [pushBtn setTitle:@"push another controller" forState:UIControlStateNormal];
+    [pushBtn addTarget:self action:@selector(pushAnotherController) forControlEvents:UIControlEventTouchUpInside];
+    pushBtn.frame = CGRectMake(0, 0, 100, 40);
+    pushBtn.center = CGPointMake(self.view.center.x, self.view.center.y + 160);
+    [self.view addSubview:pushBtn];
+    _pushBtn = pushBtn;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -74,6 +87,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)pushAnotherController {
+    TestPushViewController *pushCon = [[TestPushViewController alloc] init];
+    [self.navigationController pushViewController:pushCon animated:YES];
 }
 
 /*

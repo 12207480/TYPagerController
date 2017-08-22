@@ -54,6 +54,38 @@
     [self.view addSubview:self.layout.scrollView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.visibleControllers enumerateObjectsUsingBlock:
+     ^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+         [obj beginAppearanceTransition:YES animated:animated];
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.visibleControllers enumerateObjectsUsingBlock:
+     ^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj endAppearanceTransition];
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.visibleControllers enumerateObjectsUsingBlock:
+     ^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+         [obj beginAppearanceTransition:NO animated:animated];
+    }];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.visibleControllers enumerateObjectsUsingBlock:
+     ^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj endAppearanceTransition];
+    }];
+}
+
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
