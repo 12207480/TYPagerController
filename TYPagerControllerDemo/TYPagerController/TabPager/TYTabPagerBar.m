@@ -26,12 +26,15 @@
 
 @property (nonatomic, assign) NSInteger curIndex;
 
+@property (nonatomic, assign) BOOL isFirstLayout;
+
 @end
 
 @implementation TYTabPagerBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        _isFirstLayout = YES;
         self.backgroundColor = [UIColor clearColor];
         [self addFixAutoAdjustInsetScrollView];
         [self addCollectionView];
@@ -42,6 +45,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
+        _isFirstLayout = YES;
         self.backgroundColor = [UIColor clearColor];
         [self addFixAutoAdjustInsetScrollView];
         [self addCollectionView];
@@ -270,11 +274,13 @@
     BOOL needUpdateLayout = frame.size.height > 0 && _collectionView.frame.size.height != frame.size.height;
     _collectionView.frame = frame;
     if (needUpdateLayout) {
-        [_collectionView.collectionViewLayout invalidateLayout];
+        [_layout invalidateLayout];
     }
-    if (_layout) {
-        [_layout layoutSubViews];
+    if (frame.size.height > 0 && (_isFirstLayout || needUpdateLayout)) {
+        [_layout adjustContentCellsCenterInBar];
     }
+    _isFirstLayout = NO;
+    [_layout layoutSubViews];
 }
 
 - (void)dealloc {

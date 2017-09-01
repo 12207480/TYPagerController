@@ -46,6 +46,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 @property (nonatomic, assign) CGFloat cellWidth; // default 0, if>0 cells width is equal,else if=0 cell will caculate all titles width
 @property (nonatomic, assign) CGFloat cellSpacing; // default 2,cell space
 @property (nonatomic, assign) CGFloat cellEdging;  // default 3,cell left right edge ,when cellwidth == 0 valid
+@property (nonatomic, assign) BOOL adjustContentCellsCenter;// default NO, cells center if contentSize < bar's width ,will set sectionInset
 
 // TYTabPagerBarCellProtocol -> cell's label
 @property (nonatomic, strong) UIFont *normalTextFont;       // default 15
@@ -65,7 +66,12 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 - (void)layoutIfNeed;
 
+- (void)invalidateLayout;
+
 - (void)layoutSubViews;
+
+- (void)adjustContentCellsCenterInBar;
+
 
 // override
 - (void)transitionFromCell:(UICollectionViewCell<TYTabPagerBarCellProtocol> *_Nullable)fromCell toCell:(UICollectionViewCell<TYTabPagerBarCellProtocol> *_Nullable)toCell animate:(BOOL)animate;
