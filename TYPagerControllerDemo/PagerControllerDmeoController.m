@@ -58,6 +58,14 @@
     _pagerController = pagerController;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     _tabBar.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), 36);
