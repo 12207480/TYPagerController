@@ -68,6 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable, readonly) NSArray<UIViewController *> *visibleControllers;
 
+@property (nonatomic, assign) BOOL automaticallySystemManagerViewAppearanceMethods;// default YES.if YES system auto call view Appearance Methods(eg. viewWillAppear...)
+
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 
 //if not visible, prefecth, cache view at index, return nil

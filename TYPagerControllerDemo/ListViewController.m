@@ -32,10 +32,22 @@
     NSLog(@"viewWillAppear index %@",_text);
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"viewDidAppear index %@",_text);
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     NSLog(@"viewWillDisappear index %@",_text);
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"viewDidDisappear index %@",_text);
 }
 
 - (void)viewDidLayoutSubviews
