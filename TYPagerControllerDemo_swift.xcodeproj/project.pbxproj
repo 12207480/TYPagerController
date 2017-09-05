@@ -7,25 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B8C4E861F5E570300539B07 /* TYTabPagerBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E771F5E570300539B07 /* TYTabPagerBar.m */; };
+		2B8C4E871F5E570300539B07 /* TYTabPagerBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E791F5E570300539B07 /* TYTabPagerBarCell.m */; };
+		2B8C4E881F5E570300539B07 /* TYTabPagerBarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E7B1F5E570300539B07 /* TYTabPagerBarLayout.m */; };
+		2B8C4E891F5E570300539B07 /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E7D1F5E570300539B07 /* TYTabPagerController.m */; };
+		2B8C4E8A1F5E570300539B07 /* TYTabPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E7F1F5E570300539B07 /* TYTabPagerView.m */; };
+		2B8C4E8B1F5E570300539B07 /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E811F5E570300539B07 /* TYPagerController.m */; };
+		2B8C4E8C1F5E570300539B07 /* TYPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E831F5E570300539B07 /* TYPagerView.m */; };
+		2B8C4E8D1F5E570300539B07 /* TYPagerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E851F5E570300539B07 /* TYPagerViewLayout.m */; };
 		2BE687951F1F3D67001FE46D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687941F1F3D67001FE46D /* AppDelegate.swift */; };
 		2BE687971F1F3D67001FE46D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687961F1F3D67001FE46D /* ViewController.swift */; };
 		2BE6879A1F1F3D67001FE46D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE687981F1F3D67001FE46D /* Main.storyboard */; };
 		2BE6879C1F1F3D67001FE46D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE6879B1F1F3D67001FE46D /* Assets.xcassets */; };
 		2BE6879F1F1F3D67001FE46D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE6879D1F1F3D67001FE46D /* LaunchScreen.storyboard */; };
-		2BE687D81F1F3DD6001FE46D /* TYTabPagerBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687C91F1F3DD6001FE46D /* TYTabPagerBar.m */; };
-		2BE687D91F1F3DD6001FE46D /* TYTabPagerBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687CB1F1F3DD6001FE46D /* TYTabPagerBarCell.m */; };
-		2BE687DA1F1F3DD6001FE46D /* TYTabPagerBarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687CD1F1F3DD6001FE46D /* TYTabPagerBarLayout.m */; };
-		2BE687DB1F1F3DD6001FE46D /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687CF1F1F3DD6001FE46D /* TYTabPagerController.m */; };
-		2BE687DC1F1F3DD6001FE46D /* TYTabPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687D11F1F3DD6001FE46D /* TYTabPagerView.m */; };
-		2BE687DD1F1F3DD6001FE46D /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687D31F1F3DD6001FE46D /* TYPagerController.m */; };
-		2BE687DE1F1F3DD6001FE46D /* TYPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687D51F1F3DD6001FE46D /* TYPagerView.m */; };
-		2BE687DF1F1F3DD6001FE46D /* TYPagerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687D71F1F3DD6001FE46D /* TYPagerViewLayout.m */; };
 		2BE687E21F1F42C5001FE46D /* TabPagerViewDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687E11F1F42C5001FE46D /* TabPagerViewDemoController.swift */; };
 		2BE687E41F1F44CA001FE46D /* TabPagerControllerDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687E31F1F44CA001FE46D /* TabPagerControllerDemoController.swift */; };
 		2BE687E61F1F4BF2001FE46D /* PagerControlerDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687E51F1F4BF2001FE46D /* PagerControlerDemoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B8C4E761F5E570300539B07 /* TYTabPagerBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBar.h; sourceTree = "<group>"; };
+		2B8C4E771F5E570300539B07 /* TYTabPagerBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBar.m; sourceTree = "<group>"; };
+		2B8C4E781F5E570300539B07 /* TYTabPagerBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarCell.h; sourceTree = "<group>"; };
+		2B8C4E791F5E570300539B07 /* TYTabPagerBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarCell.m; sourceTree = "<group>"; };
+		2B8C4E7A1F5E570300539B07 /* TYTabPagerBarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarLayout.h; sourceTree = "<group>"; };
+		2B8C4E7B1F5E570300539B07 /* TYTabPagerBarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarLayout.m; sourceTree = "<group>"; };
+		2B8C4E7C1F5E570300539B07 /* TYTabPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerController.h; sourceTree = "<group>"; };
+		2B8C4E7D1F5E570300539B07 /* TYTabPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerController.m; sourceTree = "<group>"; };
+		2B8C4E7E1F5E570300539B07 /* TYTabPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerView.h; sourceTree = "<group>"; };
+		2B8C4E7F1F5E570300539B07 /* TYTabPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerView.m; sourceTree = "<group>"; };
+		2B8C4E801F5E570300539B07 /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
+		2B8C4E811F5E570300539B07 /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
+		2B8C4E821F5E570300539B07 /* TYPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerView.h; sourceTree = "<group>"; };
+		2B8C4E831F5E570300539B07 /* TYPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerView.m; sourceTree = "<group>"; };
+		2B8C4E841F5E570300539B07 /* TYPagerViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerViewLayout.h; sourceTree = "<group>"; };
+		2B8C4E851F5E570300539B07 /* TYPagerViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerViewLayout.m; sourceTree = "<group>"; };
 		2BE687911F1F3D67001FE46D /* TYPagerControllerDemo_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYPagerControllerDemo_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE687941F1F3D67001FE46D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BE687961F1F3D67001FE46D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,22 +49,6 @@
 		2BE6879B1F1F3D67001FE46D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BE6879E1F1F3D67001FE46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BE687A01F1F3D67001FE46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2BE687C81F1F3DD6001FE46D /* TYTabPagerBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBar.h; sourceTree = "<group>"; };
-		2BE687C91F1F3DD6001FE46D /* TYTabPagerBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBar.m; sourceTree = "<group>"; };
-		2BE687CA1F1F3DD6001FE46D /* TYTabPagerBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarCell.h; sourceTree = "<group>"; };
-		2BE687CB1F1F3DD6001FE46D /* TYTabPagerBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarCell.m; sourceTree = "<group>"; };
-		2BE687CC1F1F3DD6001FE46D /* TYTabPagerBarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarLayout.h; sourceTree = "<group>"; };
-		2BE687CD1F1F3DD6001FE46D /* TYTabPagerBarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarLayout.m; sourceTree = "<group>"; };
-		2BE687CE1F1F3DD6001FE46D /* TYTabPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerController.h; sourceTree = "<group>"; };
-		2BE687CF1F1F3DD6001FE46D /* TYTabPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerController.m; sourceTree = "<group>"; };
-		2BE687D01F1F3DD6001FE46D /* TYTabPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerView.h; sourceTree = "<group>"; };
-		2BE687D11F1F3DD6001FE46D /* TYTabPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerView.m; sourceTree = "<group>"; };
-		2BE687D21F1F3DD6001FE46D /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
-		2BE687D31F1F3DD6001FE46D /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
-		2BE687D41F1F3DD6001FE46D /* TYPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerView.h; sourceTree = "<group>"; };
-		2BE687D51F1F3DD6001FE46D /* TYPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerView.m; sourceTree = "<group>"; };
-		2BE687D61F1F3DD6001FE46D /* TYPagerViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerViewLayout.h; sourceTree = "<group>"; };
-		2BE687D71F1F3DD6001FE46D /* TYPagerViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerViewLayout.m; sourceTree = "<group>"; };
 		2BE687E11F1F42C5001FE46D /* TabPagerViewDemoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPagerViewDemoController.swift; sourceTree = "<group>"; };
 		2BE687E31F1F44CA001FE46D /* TabPagerControllerDemoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPagerControllerDemoController.swift; sourceTree = "<group>"; };
 		2BE687E51F1F4BF2001FE46D /* PagerControlerDemoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerControlerDemoController.swift; sourceTree = "<group>"; };
@@ -66,6 +66,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B8C4E741F5E570300539B07 /* TYPagerController */ = {
+			isa = PBXGroup;
+			children = (
+				2B8C4E751F5E570300539B07 /* TabPager */,
+				2B8C4E801F5E570300539B07 /* TYPagerController.h */,
+				2B8C4E811F5E570300539B07 /* TYPagerController.m */,
+				2B8C4E821F5E570300539B07 /* TYPagerView.h */,
+				2B8C4E831F5E570300539B07 /* TYPagerView.m */,
+				2B8C4E841F5E570300539B07 /* TYPagerViewLayout.h */,
+				2B8C4E851F5E570300539B07 /* TYPagerViewLayout.m */,
+			);
+			name = TYPagerController;
+			path = TYPagerControllerDemo/TYPagerController;
+			sourceTree = SOURCE_ROOT;
+		};
+		2B8C4E751F5E570300539B07 /* TabPager */ = {
+			isa = PBXGroup;
+			children = (
+				2B8C4E761F5E570300539B07 /* TYTabPagerBar.h */,
+				2B8C4E771F5E570300539B07 /* TYTabPagerBar.m */,
+				2B8C4E781F5E570300539B07 /* TYTabPagerBarCell.h */,
+				2B8C4E791F5E570300539B07 /* TYTabPagerBarCell.m */,
+				2B8C4E7A1F5E570300539B07 /* TYTabPagerBarLayout.h */,
+				2B8C4E7B1F5E570300539B07 /* TYTabPagerBarLayout.m */,
+				2B8C4E7C1F5E570300539B07 /* TYTabPagerController.h */,
+				2B8C4E7D1F5E570300539B07 /* TYTabPagerController.m */,
+				2B8C4E7E1F5E570300539B07 /* TYTabPagerView.h */,
+				2B8C4E7F1F5E570300539B07 /* TYTabPagerView.m */,
+			);
+			path = TabPager;
+			sourceTree = "<group>";
+		};
 		2BE687881F1F3D67001FE46D = {
 			isa = PBXGroup;
 			children = (
@@ -85,7 +117,7 @@
 		2BE687931F1F3D67001FE46D /* TYPagerControllerDemo_swift */ = {
 			isa = PBXGroup;
 			children = (
-				2BE687C61F1F3DD6001FE46D /* TYPagerController */,
+				2B8C4E741F5E570300539B07 /* TYPagerController */,
 				2BE687941F1F3D67001FE46D /* AppDelegate.swift */,
 				2BE687961F1F3D67001FE46D /* ViewController.swift */,
 				2BE687E51F1F4BF2001FE46D /* PagerControlerDemoController.swift */,
@@ -98,38 +130,6 @@
 				2BE687A01F1F3D67001FE46D /* Info.plist */,
 			);
 			path = TYPagerControllerDemo_swift;
-			sourceTree = "<group>";
-		};
-		2BE687C61F1F3DD6001FE46D /* TYPagerController */ = {
-			isa = PBXGroup;
-			children = (
-				2BE687C71F1F3DD6001FE46D /* TabPager */,
-				2BE687D21F1F3DD6001FE46D /* TYPagerController.h */,
-				2BE687D31F1F3DD6001FE46D /* TYPagerController.m */,
-				2BE687D41F1F3DD6001FE46D /* TYPagerView.h */,
-				2BE687D51F1F3DD6001FE46D /* TYPagerView.m */,
-				2BE687D61F1F3DD6001FE46D /* TYPagerViewLayout.h */,
-				2BE687D71F1F3DD6001FE46D /* TYPagerViewLayout.m */,
-			);
-			name = TYPagerController;
-			path = ../../TYPagerControllerDemo/TYPagerControllerDemo/TYPagerController;
-			sourceTree = "<group>";
-		};
-		2BE687C71F1F3DD6001FE46D /* TabPager */ = {
-			isa = PBXGroup;
-			children = (
-				2BE687C81F1F3DD6001FE46D /* TYTabPagerBar.h */,
-				2BE687C91F1F3DD6001FE46D /* TYTabPagerBar.m */,
-				2BE687CA1F1F3DD6001FE46D /* TYTabPagerBarCell.h */,
-				2BE687CB1F1F3DD6001FE46D /* TYTabPagerBarCell.m */,
-				2BE687CC1F1F3DD6001FE46D /* TYTabPagerBarLayout.h */,
-				2BE687CD1F1F3DD6001FE46D /* TYTabPagerBarLayout.m */,
-				2BE687CE1F1F3DD6001FE46D /* TYTabPagerController.h */,
-				2BE687CF1F1F3DD6001FE46D /* TYTabPagerController.m */,
-				2BE687D01F1F3DD6001FE46D /* TYTabPagerView.h */,
-				2BE687D11F1F3DD6001FE46D /* TYTabPagerView.m */,
-			);
-			path = TabPager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,19 +205,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B8C4E891F5E570300539B07 /* TYTabPagerController.m in Sources */,
 				2BE687E41F1F44CA001FE46D /* TabPagerControllerDemoController.swift in Sources */,
-				2BE687DE1F1F3DD6001FE46D /* TYPagerView.m in Sources */,
-				2BE687DB1F1F3DD6001FE46D /* TYTabPagerController.m in Sources */,
+				2B8C4E8B1F5E570300539B07 /* TYPagerController.m in Sources */,
+				2B8C4E8C1F5E570300539B07 /* TYPagerView.m in Sources */,
 				2BE687971F1F3D67001FE46D /* ViewController.swift in Sources */,
-				2BE687DF1F1F3DD6001FE46D /* TYPagerViewLayout.m in Sources */,
 				2BE687E21F1F42C5001FE46D /* TabPagerViewDemoController.swift in Sources */,
 				2BE687E61F1F4BF2001FE46D /* PagerControlerDemoController.swift in Sources */,
-				2BE687DA1F1F3DD6001FE46D /* TYTabPagerBarLayout.m in Sources */,
-				2BE687DC1F1F3DD6001FE46D /* TYTabPagerView.m in Sources */,
-				2BE687D81F1F3DD6001FE46D /* TYTabPagerBar.m in Sources */,
-				2BE687D91F1F3DD6001FE46D /* TYTabPagerBarCell.m in Sources */,
-				2BE687DD1F1F3DD6001FE46D /* TYPagerController.m in Sources */,
+				2B8C4E8D1F5E570300539B07 /* TYPagerViewLayout.m in Sources */,
+				2B8C4E861F5E570300539B07 /* TYTabPagerBar.m in Sources */,
 				2BE687951F1F3D67001FE46D /* AppDelegate.swift in Sources */,
+				2B8C4E8A1F5E570300539B07 /* TYTabPagerView.m in Sources */,
+				2B8C4E881F5E570300539B07 /* TYTabPagerBarLayout.m in Sources */,
+				2B8C4E871F5E570300539B07 /* TYTabPagerBarCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
