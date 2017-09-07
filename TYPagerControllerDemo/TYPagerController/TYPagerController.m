@@ -44,6 +44,20 @@
     return _layout;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        _automaticallySystemManagerViewAppearanceMethods = YES;
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        _automaticallySystemManagerViewAppearanceMethods = YES;
+    }
+    return self;
+}
+
 #pragma mark - life cycle
 
 - (void)viewDidLoad {
@@ -52,6 +66,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.layout.scrollView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    _layout.scrollView.frame = UIEdgeInsetsInsetRect(self.view.bounds,_contentInset);
 }
 
 - (void)viewWillLayoutSubviews
@@ -101,7 +120,19 @@
 }
 
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods {
-    return NO;
+    return _automaticallySystemManagerViewAppearanceMethods;
+}
+
+- (void)childViewController:(UIViewController *)childViewController BeginAppearanceTransition:(BOOL)isAppearing animated:(BOOL)animated {
+    if (!_automaticallySystemManagerViewAppearanceMethods) {
+        [childViewController beginAppearanceTransition:isAppearing animated:YES];
+    }
+}
+
+- (void)childViewControllerEndAppearanceTransition:(UIViewController *)childViewController {
+    if (!_automaticallySystemManagerViewAppearanceMethods) {
+        [childViewController endAppearanceTransition];
+    }
 }
 
 #pragma mark - public method
@@ -167,9 +198,9 @@
     }
     // addChildViewController
     [self addChildViewController:viewController];
-    [viewController beginAppearanceTransition:YES animated:YES];
+    [self childViewController:viewController BeginAppearanceTransition:YES animated:YES];
     [pagerViewLayout.scrollView addSubview:viewController.view];
-    [viewController endAppearanceTransition];
+    [self childViewControllerEndAppearanceTransition:viewController];
     [viewController didMoveToParentViewController:self];
     if (_delegateFlags.viewDidAppearForIndex) {
         [_delegate pagerController:self viewDidAppear:viewController forIndex:index];
@@ -183,9 +214,9 @@
     }
     // removeChildViewController
     [viewController willMoveToParentViewController:nil];
-    [viewController beginAppearanceTransition:NO animated:YES];
+    [self childViewController:viewController BeginAppearanceTransition:NO animated:YES];
     [viewController.view removeFromSuperview];
-    [viewController endAppearanceTransition];
+    [self childViewControllerEndAppearanceTransition:viewController];
     [viewController removeFromParentViewController];
     if (_delegateFlags.viewDidDisappearForIndex) {
         [_delegate pagerController:self viewDidDisappear:viewController forIndex:index];

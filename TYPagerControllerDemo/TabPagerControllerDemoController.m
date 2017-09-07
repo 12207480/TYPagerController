@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view.
     self.title = @"TabPagerControllerDemoController";
     self.tabBar.layout.barStyle = TYPagerBarStyleProgressView;
+    self.tabBar.layout.adjustContentCellsCenter = YES;
     self.dataSource = self;
     self.delegate = self;
     
@@ -32,7 +33,7 @@
 
 - (void)loadData {
     NSMutableArray *datas = [NSMutableArray array];
-    for (NSInteger i = 0; i < 20; ++i) {
+    for (NSInteger i = 0; i < 3; ++i) {
         [datas addObject:i%2 == 0 ? [NSString stringWithFormat:@"Tab %ld",i]:[NSString stringWithFormat:@"Tab Tab %ld",i]];
     }
     _datas = [datas copy];

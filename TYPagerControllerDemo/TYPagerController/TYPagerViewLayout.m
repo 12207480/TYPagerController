@@ -315,6 +315,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (!itemClassOrNib) {
         NSString *error = [NSString stringWithFormat:@"you don't register this identifier->%@",identifier];
         NSAssert(NO, error);
+        NSLog(@"%@", error);
         return nil;
     }
     
@@ -328,6 +329,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (!item){
         NSString *error = [NSString stringWithFormat:@"you register identifier->%@ is not class or nib!",identifier];
         NSAssert(NO, error);
+        NSLog(@"%@", error);
         return nil;
     }
     [item setTy_pagerReuseIdentify:identifier];
@@ -558,7 +560,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     CGFloat width = CGRectGetWidth(_scrollView.frame);
     NSInteger index = 0;
     // when scroll to progress(changeIndexWhenScrollProgress) will change index
-    CGFloat percentChangeIndex = _changeIndexWhenScrollProgress;
+    double percentChangeIndex = _changeIndexWhenScrollProgress;
     if (_changeIndexWhenScrollProgress >= 1.0 || [self progressCaculateEnable]) {
         percentChangeIndex = 0.999999999;
     }
