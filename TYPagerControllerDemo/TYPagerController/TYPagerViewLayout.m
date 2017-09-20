@@ -93,6 +93,8 @@ static const NSInteger kMemoryCountLimit = 16;
     BOOL        _scrollAnimated;
     BOOL        _isTapScrollMoved;
     CGFloat     _preOffsetX;
+    NSInteger   _firstScrollToIndex;
+    BOOL        _didLayoutSubViews;
     
     struct {
         unsigned int addVisibleItem :1;
@@ -157,6 +159,8 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     _curIndex = -1;
     _preOffsetX = 0;
     _changeIndexWhenScrollProgress = 0.5;
+    _didLayoutSubViews = NO;
+    _firstScrollToIndex = 0;
     _addVisibleItemOnlyWhenScrollAnimatedEnd = NO;
     _progressAnimateEnabel = YES;
     _adjustScrollViewInset = YES;
@@ -261,6 +265,11 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (index < 0 || index >= _countOfPagerItems) {
         return;
     }
+    
+    if (!_didLayoutSubViews && CGRectIsEmpty(_scrollView.frame)) {
+        _firstScrollToIndex = index;
+    }
+    
     [self scrollViewWillScrollToView:_scrollView animate:animate];
     [_scrollView setContentOffset:CGPointMake(index * CGRectGetWidth(_scrollView.frame),0) animated:NO];
     [self scrollViewDidScrollToView:_scrollView animate:animate];
@@ -356,13 +365,20 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (_curIndex >= _countOfPagerItems) {
         _curIndex = _countOfPagerItems - 1;
     }
+    
+    BOOL needLayoutSubViews = NO;
+    if (!_didLayoutSubViews && !CGRectIsEmpty(_scrollView.frame) && _firstScrollToIndex < _countOfPagerItems) {
+        _didLayoutSubViews = YES;
+        needLayoutSubViews = YES;
+    }
+    
     // 2.set contentSize and offset
     CGFloat contentWidth = CGRectGetWidth(_scrollView.frame);
     _scrollView.contentSize = CGSizeMake(_countOfPagerItems * contentWidth, 0);
-    _scrollView.contentOffset = CGPointMake(MAX(_curIndex, 0)*contentWidth, _scrollView.contentOffset.y);
+    _scrollView.contentOffset = CGPointMake(MAX(needLayoutSubViews ? _firstScrollToIndex : _curIndex, 0)*contentWidth, _scrollView.contentOffset.y);
     
     // 3.layout content
-    if (_curIndex < 0) {
+    if (_curIndex < 0 || needLayoutSubViews) {
         [self scrollViewDidScroll:_scrollView];
     }else {
         [self layoutIfNeed];

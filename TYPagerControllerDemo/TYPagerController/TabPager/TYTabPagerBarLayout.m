@@ -201,7 +201,7 @@
         }
     };
     if (animate) {
-        [UIView animateWithDuration:self.animateDuration animations:^{
+        [UIView animateWithDuration:_animateDuration animations:^{
             animateBlock();
         }];
     }else{

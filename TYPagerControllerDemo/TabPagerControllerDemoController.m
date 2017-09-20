@@ -39,6 +39,7 @@
     _datas = [datas copy];
     
     [self reloadData];
+    [self scrollToControllerAtIndex:1 animate:YES];
 }
 
 #pragma mark - TYTabPagerControllerDataSource

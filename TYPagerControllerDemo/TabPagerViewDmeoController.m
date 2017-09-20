@@ -52,6 +52,7 @@
     _datas = [datas copy];
     
     [_pagerView reloadData];
+    //[_pagerView scrollToViewAtIndex:1 animate:YES];
 }
 
 
