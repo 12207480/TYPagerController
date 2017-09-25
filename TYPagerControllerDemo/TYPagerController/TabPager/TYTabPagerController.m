@@ -19,11 +19,14 @@
 
 @end
 
+#define kTabBarOrignY -999999
+
 @implementation TYTabPagerController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _tabBarHeight = 36;
+        _tabBarOrignY = kTabBarOrignY;
     }
     return self;
 }
@@ -31,7 +34,7 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         _tabBarHeight = 36;
-        _tabBarOrignY = 0;
+        _tabBarOrignY = kTabBarOrignY;
     }
     return self;
 }
@@ -62,9 +65,22 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    CGFloat orignY = _tabBarOrignY > 0 ? _tabBarOrignY :(!self.navigationController ||self.navigationController.navigationBarHidden || !(self.edgesForExtendedLayout&UIRectEdgeTop) ? 0 : 64);
+    CGFloat orignY = [self fixedTabBarOriginY];
     self.tabBar.frame = CGRectMake(0, orignY, CGRectGetWidth(self.view.frame), _tabBarHeight);
     self.pagerController.view.frame = CGRectMake(0, orignY+_tabBarHeight, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - _tabBarHeight-orignY);
+}
+
+- (CGFloat)fixedTabBarOriginY {
+    if (_tabBarOrignY > kTabBarOrignY) {
+        return _tabBarOrignY;
+    }
+    if (!self.navigationController || self.parentViewController != self.navigationController) {
+        return 0;
+    }
+    if (self.navigationController.navigationBarHidden || !(self.edgesForExtendedLayout&UIRectEdgeTop)) {
+        return 0;
+    }
+    return CGRectGetMaxY(self.navigationController.navigationBar.frame);
 }
 
 #pragma mark - getter setter

@@ -29,7 +29,9 @@
     // Do any additional setup after loading the view.
     self.title = @"PagerControllerDmeoController";
     self.view.backgroundColor = [UIColor whiteColor];
+    
     [self addTabPageBar];
+    
     [self addPagerController];
     
     [self loadData];
@@ -68,8 +70,8 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    _tabBar.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), 36);
-    _pagerController.view.frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 100);
+    _tabBar.frame = CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame), CGRectGetWidth(self.view.frame), 36);
+    _pagerController.view.frame = CGRectMake(0, CGRectGetMaxY(_tabBar.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)- CGRectGetMaxY(_tabBar.frame));
 }
 
 - (void)loadData {

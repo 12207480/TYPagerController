@@ -80,8 +80,8 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    _tabBar.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), 36);
-    _pageView.frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), 300);
+    _tabBar.frame = CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame), CGRectGetWidth(self.view.frame), 36);
+    _pageView.frame = CGRectMake(0, CGRectGetMaxY(_tabBar.frame), CGRectGetWidth(self.view.frame), 300);
 }
 
 - (void)reloadData {

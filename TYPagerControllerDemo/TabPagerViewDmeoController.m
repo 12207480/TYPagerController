@@ -41,7 +41,7 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    _pagerView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame)-64);
+    _pagerView.frame = CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame), CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame)-CGRectGetMaxY(self.navigationController.navigationBar.frame));
 }
 
 - (void)loadData {

@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) id<TYTabPagerControllerDataSource> dataSource;
 @property (nonatomic, weak, nullable) id<TYTabPagerControllerDelegate> delegate;
 
+// you can custom tabBar orignY and height.
 @property (nonatomic, assign) CGFloat tabBarOrignY;
 @property (nonatomic, assign) CGFloat tabBarHeight;
 

@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /* 1.viewController at index in pagerController
    2.if prefetching is YES,the controller is preload,not display.
    3.if controller will display,will call viewWillAppear.
-   4.register && dequeue controller, usage like tableView
+   4.you can register && dequeue controller, usage like tableView
  */
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching;
 
