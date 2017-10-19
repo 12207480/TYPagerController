@@ -179,6 +179,9 @@
 
 - (void)pagerTabBar:(TYTabPagerBar *)pagerTabBar didSelectItemAtIndex:(NSInteger)index {
     [_pagerController scrollToControllerAtIndex:index animate:YES];
+    if ([_delegate respondsToSelector:@selector(tabPagerController:didSelectTabBarItemAtIndex:)]) {
+        [_delegate tabPagerController:self didSelectTabBarItemAtIndex:index];
+    }
 }
 
 #pragma mark - TYPagerControllerDataSource

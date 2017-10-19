@@ -26,8 +26,13 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol TYTabPagerControllerDelegate <NSObject>
 @optional
 
+// display cell
 - (void)tabPagerController:(TYTabPagerController *)tabPagerController willDisplayCell:(UICollectionViewCell<TYTabPagerBarCellProtocol> *)cell atIndex:(NSInteger)index;
 
+// did select cell item
+- (void)tabPagerController:(TYTabPagerController *)tabPagerController didSelectTabBarItemAtIndex:(NSInteger)index;
+
+// scrolling
 - (void)tabPagerControllerWillBeginScrolling:(TYTabPagerController *)tabPagerController animate:(BOOL)animate;
 - (void)tabPagerControllerDidEndScrolling:(TYTabPagerController *)tabPagerController animate:(BOOL)animate;
 
