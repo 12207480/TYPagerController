@@ -91,6 +91,14 @@
     return UIEdgeInsetsMake(0, horEdging, 0, horEdging);
 }
 
+- (void)setAdjustContentCellsCenter:(BOOL)adjustContentCellsCenter {
+    BOOL change = _adjustContentCellsCenter != adjustContentCellsCenter;
+    _adjustContentCellsCenter = adjustContentCellsCenter;
+    if (change && _pagerTabBar.superview) {
+        [_pagerTabBar setNeedsLayout];
+    }
+}
+
 - (void)setBarStyle:(TYPagerBarStyle)barStyle
 {
     if (barStyle == _barStyle) {
@@ -155,7 +163,7 @@
 }
 
 - (void)adjustContentCellsCenterInBar {
-    if (!_adjustContentCellsCenter) {
+    if (!_adjustContentCellsCenter && !_pagerTabBar.superview) {
         return;
     }
     UICollectionViewFlowLayout *collectionLayout = (UICollectionViewFlowLayout *)_pagerTabBar.collectionView.collectionViewLayout;

@@ -23,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"TabPagerControllerDemoController";
+    self.tabBarHeight = 50;
     self.tabBar.layout.barStyle = TYPagerBarStyleProgressView;
     self.tabBar.layout.adjustContentCellsCenter = YES;
     self.dataSource = self;

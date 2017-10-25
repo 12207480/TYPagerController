@@ -288,7 +288,7 @@
     if (needUpdateLayout) {
         [_layout invalidateLayout];
     }
-    if (frame.size.height > 0 && (_isFirstLayout || needUpdateLayout)) {
+    if (frame.size.height > 0) {
         [_layout adjustContentCellsCenterInBar];
     }
     _isFirstLayout = NO;
