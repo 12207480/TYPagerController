@@ -25,6 +25,9 @@
     self.title = @"TabPagerControllerDemoController";
     self.tabBarHeight = 50;
     self.tabBar.layout.barStyle = TYPagerBarStyleProgressView;
+    self.tabBar.layout.cellWidth = CGRectGetWidth(self.view.frame)/3;
+    self.tabBar.layout.cellSpacing = 0;
+    self.tabBar.layout.cellEdging = 0;
     self.tabBar.layout.adjustContentCellsCenter = YES;
     self.dataSource = self;
     self.delegate = self;
