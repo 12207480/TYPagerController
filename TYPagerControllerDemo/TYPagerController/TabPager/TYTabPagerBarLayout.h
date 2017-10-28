@@ -45,7 +45,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 // cell frame
 @property (nonatomic, assign) CGFloat cellWidth; // default 0, if>0 cells width is equal,else if=0 cell will caculate all titles width
 @property (nonatomic, assign) CGFloat cellSpacing; // default 2,cell space
-@property (nonatomic, assign) CGFloat cellEdging;  // default 3,cell left right edge ,when cellwidth == 0 valid
+@property (nonatomic, assign) CGFloat cellEdging;  // default 0,cell left right edge
 @property (nonatomic, assign) BOOL adjustContentCellsCenter;// default NO, cells center if contentSize < bar's width ,will set sectionInset
 
 // TYTabPagerBarCellProtocol -> cell's label
