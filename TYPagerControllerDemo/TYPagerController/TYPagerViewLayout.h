@@ -75,6 +75,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL autoMemoryCache; // default YES
 
 @property (nonatomic, assign) NSInteger prefetchItemCount;// preload left and right item's count , default 0
+// because when superview add subview(have tableView) will call relodData,if set Yes will optimize. default NO
+@property (nonatomic, assign) BOOL prefetchItemWillAddToSuperView;
 
 @property (nonatomic, assign, readonly) NSRange prefetchRange;
 @property (nonatomic, assign, readonly) NSRange visibleRange;
