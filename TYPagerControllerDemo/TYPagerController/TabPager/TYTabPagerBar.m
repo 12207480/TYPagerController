@@ -37,6 +37,7 @@
     if (self = [super initWithFrame:frame]) {
         _isFirstLayout = YES;
         _didLayoutSubViews = NO;
+        _autoScrollItemToCenter = YES;
         self.backgroundColor = [UIColor clearColor];
         [self addFixAutoAdjustInsetScrollView];
         [self addCollectionView];
@@ -49,6 +50,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         _isFirstLayout = YES;
         _didLayoutSubViews = NO;
+        _autoScrollItemToCenter = YES;
         self.backgroundColor = [UIColor clearColor];
         [self addFixAutoAdjustInsetScrollView];
         [self addCollectionView];
@@ -188,12 +190,14 @@
     if (toIndex < _countOfItems && toIndex >= 0 && fromIndex < _countOfItems && fromIndex >= 0) {
         _curIndex = toIndex;
         [self transitionFromIndex:fromIndex toIndex:toIndex animated:animate];
-        if (!_didLayoutSubViews) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animate];
-            });
-        }else {
-            [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:toIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animate];
+        if (_autoScrollItemToCenter) {
+            if (!_didLayoutSubViews) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self scrollToItemAtIndex:toIndex atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animate];
+                });
+            }else {
+                [self scrollToItemAtIndex:toIndex atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:animate];
+            }
         }
     }
 }
@@ -202,6 +206,10 @@
     if (toIndex < _countOfItems && toIndex >= 0 && fromIndex < _countOfItems && fromIndex >= 0) {
         [self transitionFromIndex:fromIndex toIndex:toIndex progress:progress];
     }
+}
+
+- (void)scrollToItemAtIndex:(NSInteger)index atScrollPosition:(UICollectionViewScrollPosition)scrollPosition animated:(BOOL)animated {
+    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:scrollPosition animated:animated];
 }
 
 - (CGFloat)cellWidthForTitle:(NSString *)title {

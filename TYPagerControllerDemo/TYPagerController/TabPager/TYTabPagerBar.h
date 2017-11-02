@@ -54,6 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) TYTabPagerBarLayout *layout;
 
+@property (nonatomic, assign) BOOL autoScrollItemToCenter;
+
 @property (nonatomic, assign, readonly) NSInteger countOfItems;
 
 @property (nonatomic, assign, readonly) NSInteger curIndex;
@@ -69,6 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)scrollToItemFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex animate:(BOOL)animate;
 - (void)scrollToItemFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
+- (void)scrollToItemAtIndex:(NSInteger)index atScrollPosition:(UICollectionViewScrollPosition)scrollPosition animated:(BOOL)animated;
 
 - (CGFloat)cellWidthForTitle:(NSString * _Nullable)title;
 - (CGRect)cellFrameWithIndex:(NSInteger)index;
