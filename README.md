@@ -210,6 +210,12 @@ New TYPagerBarStyleProgressElasticView<br>
     [self loadData];
 }
 
+- (void)loadData {
+    _datas = [datas copy];
+    // must call reloadData
+    [self reloadData];
+}
+
 #pragma mark - TYTabPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInTabPagerController {
