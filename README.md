@@ -10,6 +10,7 @@ TYPagerController v2.0 重构优化代码，分离出TYPagerViewLayout布局类,
 * TYTabPagerView 包含TabBar的TYPagerView
 * TYTabPagerController 包含TabBar的TYPagerController
 
+注意：获取数据或者更新后必须调用reloadData.
 更详细的使用请看[LovePlayNews](https://github.com/12207480/LovePlayNews)项目
 
 ## CocoaPods
