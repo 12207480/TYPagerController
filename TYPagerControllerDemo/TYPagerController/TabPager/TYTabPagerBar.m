@@ -150,6 +150,7 @@
     }
     [self.layout layoutIfNeed];
     [_collectionView reloadData];
+    [self.layout adjustContentCellsCenterInBar];
     [self.layout layoutSubViews];
 }
 
@@ -288,7 +289,7 @@
     [super layoutSubviews];
     _backgroundView.frame = self.bounds;
     CGRect frame = UIEdgeInsetsInsetRect(self.bounds, _contentInset);
-    BOOL needUpdateLayout = frame.size.height > 0 && _collectionView.frame.size.height != frame.size.height;
+    BOOL needUpdateLayout = (frame.size.height > 0 && _collectionView.frame.size.height != frame.size.height) || (frame.size.width > 0 && _collectionView.frame.size.width != frame.size.width);
     _collectionView.frame = frame;
     if (!_didLayoutSubViews && !CGRectIsEmpty(_collectionView.frame)) {
         _didLayoutSubViews = YES;
@@ -296,7 +297,7 @@
     if (needUpdateLayout) {
         [_layout invalidateLayout];
     }
-    if (frame.size.height > 0) {
+    if (frame.size.height > 0 && frame.size.width > 0) {
         [_layout adjustContentCellsCenterInBar];
     }
     _isFirstLayout = NO;

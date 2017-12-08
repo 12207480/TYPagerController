@@ -163,22 +163,26 @@
 }
 
 - (void)adjustContentCellsCenterInBar {
-    if (!_adjustContentCellsCenter && !_pagerTabBar.superview) {
+    if (!_adjustContentCellsCenter || !_pagerTabBar.superview) {
         return;
     }
+    CGRect frame = self.pagerTabBar.collectionView.frame;
+    if (CGRectIsEmpty(frame)) {
+        return;
+    }
+    
     UICollectionViewFlowLayout *collectionLayout = (UICollectionViewFlowLayout *)_pagerTabBar.collectionView.collectionViewLayout;
-    if (collectionLayout.collectionViewContentSize.width > CGRectGetWidth(self.pagerTabBar.frame) || CGRectIsEmpty(self.pagerTabBar.frame)) {
-        return;
-    }
-    NSArray *layoutAttribulte = [collectionLayout layoutAttributesForElementsInRect:self.pagerTabBar.bounds];
+    CGSize contentSize = collectionLayout.collectionViewContentSize;
+    NSArray *layoutAttribulte = [collectionLayout layoutAttributesForElementsInRect:CGRectMake(0, 0, MAX(contentSize.width, CGRectGetWidth(frame)), MAX(contentSize.height,CGRectGetHeight(frame)))];
     if (layoutAttribulte.count == 0) {
         return;
     }
+    
     UICollectionViewLayoutAttributes *firstAttribute = layoutAttribulte.firstObject;
     UICollectionViewLayoutAttributes *lastAttribute = layoutAttribulte.lastObject;
     CGFloat left = CGRectGetMinX(firstAttribute.frame);
     CGFloat right = CGRectGetMaxX(lastAttribute.frame);
-    if (right > CGRectGetWidth(self.pagerTabBar.frame)) {
+    if (right - left > CGRectGetWidth(self.pagerTabBar.frame)) {
         return;
     }
     CGFloat sapce = (CGRectGetWidth(self.pagerTabBar.frame) - (right - left))/2;
