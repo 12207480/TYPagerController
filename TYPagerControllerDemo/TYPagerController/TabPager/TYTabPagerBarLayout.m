@@ -204,12 +204,12 @@
         if (fromCell) {
             fromCell.titleLabel.font = _normalTextFont;
             fromCell.titleLabel.textColor = _normalTextColor;
-            fromCell.transform = CGAffineTransformMakeScale(_selectFontScale, _selectFontScale);
+            fromCell.transform = CGAffineTransformIdentity;
         }
         if (toCell) {
             toCell.titleLabel.font = _normalTextFont;
             toCell.titleLabel.textColor = _selectedTextColor ? _selectedTextColor : _normalTextColor;
-            toCell.transform = CGAffineTransformIdentity;
+            toCell.transform = CGAffineTransformMakeScale(1/_selectFontScale,1/ _selectFontScale);
         }
     };
     if (animate) {
