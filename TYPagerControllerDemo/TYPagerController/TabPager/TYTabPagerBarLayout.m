@@ -226,9 +226,9 @@
     if (_pagerTabBar.countOfItems == 0 || !_textColorProgressEnable) {
         return;
     }
-    CGFloat currentTransform = (1.0 - _selectFontScale)*progress;
-    fromCell.transform = CGAffineTransformMakeScale(1.0-currentTransform, 1.0-currentTransform);
-    toCell.transform = CGAffineTransformMakeScale(_selectFontScale+currentTransform, _selectFontScale+currentTransform);
+    
+    fromCell.transform = CGAffineTransformIdentity;
+    toCell.transform = CGAffineTransformIdentity;
     
     if (_normalTextColor == _selectedTextColor || !_selectedTextColor) {
         return;
