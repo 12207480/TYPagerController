@@ -94,6 +94,7 @@ static const NSInteger kMemoryCountLimit = 16;
     BOOL        _isTapScrollMoved;
     CGFloat     _preOffsetX;
     NSInteger   _firstScrollToIndex;
+    BOOL        _didReloadData;
     BOOL        _didLayoutSubViews;
     
     struct {
@@ -159,6 +160,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     _curIndex = -1;
     _preOffsetX = 0;
     _changeIndexWhenScrollProgress = 0.5;
+    _didReloadData = NO;
     _didLayoutSubViews = NO;
     _firstScrollToIndex = 0;
     _prefetchItemWillAddToSuperView = NO;
@@ -255,6 +257,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
 // update don't reset propertys(curIndex)
 - (void)updateData {
     [self clearMemoryCache];
+    _didReloadData = YES;
     _countOfPagerItems = [_dataSource numberOfItemsInPagerViewLayout];
     [self setNeedLayout];
 }
@@ -264,6 +267,9 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
  */
 - (void)scrollToItemAtIndex:(NSInteger)index animate:(BOOL)animate {
     if (index < 0 || index >= _countOfPagerItems) {
+        if (!_didReloadData && index >= 0) {
+            _firstScrollToIndex = index;
+        }
         return;
     }
     

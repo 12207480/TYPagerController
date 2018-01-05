@@ -42,8 +42,13 @@
     }
     _datas = [datas copy];
     
-    [self reloadData];
+    // only add controller at index 1
     [self scrollToControllerAtIndex:1 animate:YES];
+    [self reloadData];
+    
+// first reloadData add controller at index 0,and scroll to index 1
+//    [self reloadData];
+//    [self scrollToControllerAtIndex:1 animate:YES];
 }
 
 #pragma mark - TYTabPagerControllerDataSource
