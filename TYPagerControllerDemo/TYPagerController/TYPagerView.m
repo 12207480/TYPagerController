@@ -158,7 +158,7 @@
     return [_dataSource pagerView:self viewForIndex:index prefetching:prefetching];
 }
 
-- (id)pagerViewLayout:(TYPagerViewLayout *)pagerViewLayout viewForItem:(id)item atIndex:(NSInteger)index {
+- (UIView *)pagerViewLayout:(TYPagerViewLayout *)pagerViewLayout viewForItem:(id)item atIndex:(NSInteger)index {
     return item;
 }
 

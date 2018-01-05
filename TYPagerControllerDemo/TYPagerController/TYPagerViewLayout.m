@@ -302,6 +302,13 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     return view;
 }
 
+- (UIViewController *)viewControllerForItem:(id)item atIndex:(NSInteger)index {
+    if ([_dataSource respondsToSelector:@selector(pagerViewLayout:viewControllerForItem:atIndex:)]) {
+        return [_dataSource pagerViewLayout:self viewControllerForItem:item atIndex:index];
+    }
+    return nil;
+}
+
 - (CGRect)frameForItemAtIndex:(NSInteger)index {
     CGRect frame = frameForItemAtIndex(index, _scrollView.frame);
     if (_adjustScrollViewInset) {
@@ -497,8 +504,15 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     if (!CGRectEqualToRect(view.frame, frame)) {
         view.frame = frame;
     }
-    if (view.superview && !_prefetchItemWillAddToSuperView) {
+    if (!_prefetchItemWillAddToSuperView && view.superview) {
         return;
+    }
+    
+    if (_prefetchItemWillAddToSuperView && view.superview) {
+        UIViewController *viewController = [self viewControllerForItem:visibleItem atIndex:index];
+        if (!viewController || viewController.parentViewController) {
+            return;
+        }
     }
     
     if (_dataSourceFlags.addVisibleItem) {
