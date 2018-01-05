@@ -125,7 +125,7 @@
 
 - (void)childViewController:(UIViewController *)childViewController BeginAppearanceTransition:(BOOL)isAppearing animated:(BOOL)animated {
     if (!_automaticallySystemManagerViewAppearanceMethods) {
-        [childViewController beginAppearanceTransition:isAppearing animated:YES];
+        [childViewController beginAppearanceTransition:isAppearing animated:animated];
     }
 }
 
