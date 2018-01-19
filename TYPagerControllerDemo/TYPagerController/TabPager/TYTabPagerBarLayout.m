@@ -227,8 +227,12 @@
         return;
     }
     
-    fromCell.transform = CGAffineTransformIdentity;
-    toCell.transform = CGAffineTransformIdentity;
+
+    // progress 0 --> 1 // from 1/_selectFontScale -> 1
+    CGFloat scale1 = (1 - 1 / _selectFontScale) * progress + 1 / _selectFontScale;
+    CGFloat scale2 = (1 / _selectFontScale - 1) * progress + 1;
+    fromCell.transform = CGAffineTransformMakeScale(scale1, scale1 );
+    toCell.transform = CGAffineTransformMakeScale(scale2, scale2) ;
     
     if (_normalTextColor == _selectedTextColor || !_selectedTextColor) {
         return;
