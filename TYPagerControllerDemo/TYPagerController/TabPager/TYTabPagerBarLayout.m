@@ -193,6 +193,9 @@
 }
 
 - (CGRect)cellFrameWithIndex:(NSInteger)index {
+    if (index >= self.pagerTabBar.countOfItems || index < 0) {
+        index = 0;
+    }
     return [_pagerTabBar cellFrameWithIndex:index];
 }
 
