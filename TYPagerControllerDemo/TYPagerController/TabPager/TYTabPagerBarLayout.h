@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
     TYPagerBarStyleProgressBounceView,
     TYPagerBarStyleProgressElasticView,
     TYPagerBarStyleCoverView,
+    TYPagerBarStyleHalfArcView,
 };
 
 @class TYTabPagerBar;
@@ -57,6 +58,9 @@ typedef NS_ENUM(NSUInteger, TYPagerBarStyle) {
 
 //   animate duration
 @property (nonatomic, assign) CGFloat animateDuration;  // default 0.3
+
+
+@property (nonatomic, strong) UIColor *HalfArcColor;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

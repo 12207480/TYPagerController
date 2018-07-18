@@ -128,6 +128,8 @@
             self.progressHorEdging = -self.progressHeight/4;
             self.progressVerEdging = 3;
             break;
+        case TYPagerBarStyleHalfArcView:
+            break;
         default:
             break;
     }
@@ -253,22 +255,106 @@
     if (progressView.isHidden || _pagerTabBar.countOfItems == 0) {
         return;
     }
-    
     CGRect cellFrame = [self cellFrameWithIndex:index];
     CGFloat progressHorEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressHorEdging;
     CGFloat progressX = cellFrame.origin.x+progressHorEdging;
     CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (cellFrame.size.height - _progressHeight)/2:(cellFrame.size.height - _progressHeight - _progressVerEdging);
     CGFloat width = cellFrame.size.width-2*progressHorEdging;
     
-    if (animated) {
-        [UIView animateWithDuration:_animateDuration animations:^{
-            progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
-        }];
+    //    if (animated) {
+    //        [UIView animateWithDuration:_animateDuration animations:^{
+    //            progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
+    //        }];
+    //    }else {
+    //        if (_barStyle == TYPagerBarStyleHalfArcView) {
+    //            [self creatHalfArcProgressViewWithIndex:index originView:progressView];
+    //        }else {
+    //            progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
+    //        }
+    //    }
+    if (_barStyle == TYPagerBarStyleHalfArcView) {
+        [self creatHalfArcProgressViewWithIndex:index originView:progressView];
     }else {
         progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
     }
 }
-
+- (void)creatHalfArcProgressViewWithIndex:(NSInteger)index originView:(UIView *)oriView {
+    [[oriView.layer.sublayers copy] enumerateObjectsUsingBlock:^(CALayer *layer, NSUInteger idx, BOOL * _Nonnull stop) {
+        [layer removeFromSuperlayer];
+    }];
+    oriView.frame = self.pagerTabBar.collectionView.frame;
+    oriView.backgroundColor = [UIColor clearColor];
+    NSInteger countOfCell = self.pagerTabBar.countOfItems;
+    CGFloat margin = self.cellSpacing * 1.0 / 3.0;
+    UIBezierPath *bezierPath = [[UIBezierPath alloc] init];
+    NSMutableArray *pointArray = [NSMutableArray array];
+    for (int i = 0; i < countOfCell + 3; i ++) {
+        CGFloat point_x;
+        CGFloat point_y;
+        CGRect rect;
+        CGPoint point;
+        if (i == index + 1) {
+            rect = [self cellFrameWithIndex:i-1];
+            point_x = rect.origin.x - margin ;
+            point_y = rect.origin.y + margin;
+            point = CGPointMake(point_x, point_y);
+        }else if (i == index +2) {
+            rect = [self cellFrameWithIndex:i-2];
+            point_x = rect.origin.x + rect.size.width + margin;
+            point_y = rect.origin.y + margin;
+            point = CGPointMake(point_x, point_y);
+        }else if (i == index + 3) {
+            rect = [self cellFrameWithIndex:i-2];
+            CGPoint lastPoint = [pointArray[i-1] CGPointValue];
+            point_x = lastPoint.x;
+            point_y = (rect.origin.y + rect.size.height) * 4.0 / 5.0;
+            point = CGPointMake(point_x, point_y);
+        }else if (i == countOfCell+2) {
+            rect = [self cellFrameWithIndex:i-3];
+            point_x = rect.origin.x + rect.size.width + margin;
+            point_y = (rect.origin.y + rect.size.height) * 4.0 / 5.0;
+            point = CGPointMake(point_x, point_y);
+        }else {
+            if (i <= index) {
+                rect = [self cellFrameWithIndex:i];
+                point_x = rect.origin.x - margin;
+                point_y = (rect.origin.y + rect.size.height) * 4.0 / 5.0;
+                point = CGPointMake(point_x, point_y);
+            }else {
+                rect = [self cellFrameWithIndex:i-2];
+                point_x = rect.origin.x - margin;
+                point_y = (rect.origin.y + rect.size.height) * 4.0 / 5.0;
+                point = CGPointMake(point_x, point_y);
+            }
+        }
+        [pointArray addObject:[NSValue valueWithCGPoint:point]];
+        if (i == 0) {
+            [bezierPath moveToPoint:point];
+        }else if (i == index + 1) {
+            CGPoint curPoint = CGPointMake(point.x + 5,  point.y + 5);
+            [bezierPath addArcWithCenter:curPoint radius:5 startAngle:M_PI endAngle:M_PI * 3.0 / 2.0 clockwise:YES];
+        }else if (i == index + 2) {
+            CGPoint curPoint = CGPointMake(point.x - 5,  point.y + 5);
+            [bezierPath addArcWithCenter:curPoint radius:5 startAngle:M_PI *3.0 / 2.0 endAngle:0 clockwise:YES];
+        }else {
+            [bezierPath addLineToPoint:point];
+        }
+    }
+    
+    CGPoint lastPoint = [pointArray.lastObject CGPointValue];
+    if (lastPoint.x < self.pagerTabBar.collectionView.frame.size.width - self.sectionInset.left) {
+        CGPoint point = CGPointMake(self.pagerTabBar.collectionView.frame.size.width - self.sectionInset.left, lastPoint.y);
+        [bezierPath addLineToPoint:point];
+    }
+    
+    
+    CAShapeLayer *borderLayer = [CAShapeLayer layer];
+    borderLayer.lineWidth = kUnderLineViewHeight;
+    borderLayer.strokeColor = self.HalfArcColor.CGColor;
+    borderLayer.fillColor = [UIColor clearColor].CGColor;
+    borderLayer.path = bezierPath.CGPath;
+    [oriView.layer addSublayer:borderLayer];
+}
 - (void)setUnderLineFrameWithfromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress
 {
     UIView *progressView = _pagerTabBar.progressView;
