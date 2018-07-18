@@ -255,27 +255,26 @@
     if (progressView.isHidden || _pagerTabBar.countOfItems == 0) {
         return;
     }
+    
     CGRect cellFrame = [self cellFrameWithIndex:index];
     CGFloat progressHorEdging = _progressWidth > 0 ? (cellFrame.size.width - _progressWidth)/2 : _progressHorEdging;
     CGFloat progressX = cellFrame.origin.x+progressHorEdging;
     CGFloat progressY = _barStyle == TYPagerBarStyleCoverView ? (cellFrame.size.height - _progressHeight)/2:(cellFrame.size.height - _progressHeight - _progressVerEdging);
-    CGFloat width = cellFrame.size.width-2*progressHorEdging;
-    
-    //    if (animated) {
-    //        [UIView animateWithDuration:_animateDuration animations:^{
-    //            progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
-    //        }];
-    //    }else {
-    //        if (_barStyle == TYPagerBarStyleHalfArcView) {
-    //            [self creatHalfArcProgressViewWithIndex:index originView:progressView];
-    //        }else {
-    //            progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
-    //        }
-    //    }
+    CGFloat width = cellFrame.size.width-2 * progressHorEdging;
     if (_barStyle == TYPagerBarStyleHalfArcView) {
         [self creatHalfArcProgressViewWithIndex:index originView:progressView];
     }else {
-        progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
+        if (animated) {
+            [UIView animateWithDuration:_animateDuration animations:^{
+                progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
+            }];
+        }else {
+            if (_barStyle == TYPagerBarStyleHalfArcView) {
+                [self creatHalfArcProgressViewWithIndex:index originView:progressView];
+            }else {
+                progressView.frame = CGRectMake(progressX, progressY, width, _progressHeight);
+            }
+        }
     }
 }
 - (void)creatHalfArcProgressViewWithIndex:(NSInteger)index originView:(UIView *)oriView {
