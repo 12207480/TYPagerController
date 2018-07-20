@@ -217,14 +217,17 @@
             toCell.transform = CGAffineTransformIdentity;
         }
     };
-    if (animate) {
-        [UIView animateWithDuration:_animateDuration animations:^{
-            animateBlock();
-        }];
-    }else{
+    if (_barStyle == TYPagerBarStyleHalfArcView) {
         animateBlock();
+    }else {
+        if (animate) {
+            [UIView animateWithDuration:_animateDuration animations:^{
+                animateBlock();
+            }];
+        }else{
+            animateBlock();
+        }
     }
-    
 }
 
 - (void)transitionFromCell:(UICollectionViewCell<TYTabPagerBarCellProtocol> *)fromCell toCell:(UICollectionViewCell<TYTabPagerBarCellProtocol> *)toCell progress:(CGFloat)progress {
