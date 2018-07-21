@@ -64,8 +64,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    // prevent sysytem automaticallyAdjustsScrollViewInsets
+    [self addFixAutoAdjustInsetScrollView];
     [self.view addSubview:self.layout.scrollView];
+}
+
+- (void)addFixAutoAdjustInsetScrollView {
+    UIView *view = [[UIView alloc]init];
+    [self.view addSubview:view];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
