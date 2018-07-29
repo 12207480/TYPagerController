@@ -415,8 +415,11 @@
         progressX = (toCellFrame.origin.x+progressToEdging-(fromCellFrame.origin.x+progressFromEdging))*progress+fromCellFrame.origin.x+progressFromEdging;
         width = (toCellFrame.size.width-2*progressToEdging)*progress + (fromCellFrame.size.width-2*progressFromEdging)*(1-progress);
     }
-    
-    progressView.frame = CGRectMake(progressX,progressY, width, _progressHeight);
+    if (_barStyle == TYPagerBarStyleHalfArcView) {
+        
+    }else {
+        progressView.frame = CGRectMake(progressX,progressY, width, _progressHeight);
+    }
 }
 
 - (void)layoutSubViews {
