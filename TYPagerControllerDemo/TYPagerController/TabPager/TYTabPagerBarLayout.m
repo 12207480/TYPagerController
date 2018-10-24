@@ -217,7 +217,7 @@
             toCell.transform = CGAffineTransformIdentity;
         }
     };
-    if (_barStyle == TYPagerBarStyleHalfArcView) {
+    if ((_barStyle == TYPagerBarStyleHalfArcView) || (_barStyle == TYPagerBarStyleCoverView)) {
         animateBlock();
     }else {
         if (animate) {
