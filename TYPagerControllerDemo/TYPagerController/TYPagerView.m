@@ -29,7 +29,6 @@
 @end
 
 @implementation TYPagerView {
-    NSInteger _willScrollToIndex;
 }
 #pragma mark - life cycle
 
@@ -118,7 +117,6 @@
 }
 
 - (void)scrollToViewAtIndex:(NSInteger)index animate:(BOOL)animate {
-    _willScrollToIndex = index;
     [_layout scrollToItemAtIndex:index animate:animate];
 }
 
@@ -169,13 +167,7 @@
     if (_delegateFlags.willAppearViewForIndex) {
         [_delegate pagerView:self willAppearView:visibleView forIndex:index];
     }
-    if (_willScrollToIndex == index) {
-        [pagerViewLayout.scrollView addSubview:visibleView];
-    }else {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [pagerViewLayout.scrollView addSubview:visibleView];
-        });
-    }
+    [pagerViewLayout.scrollView addSubview:visibleView];
     if (_delegateFlags.didAppearViewForIndex) {
         [_delegate pagerView:self didAppearView:visibleView forIndex:index];
     }
