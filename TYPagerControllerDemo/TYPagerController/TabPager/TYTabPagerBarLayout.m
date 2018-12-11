@@ -18,6 +18,7 @@
 @end
 
 #define kUnderLineViewHeight 2
+#define kHalfArcProgressViewLineHeight 1
 
 @implementation TYTabPagerBarLayout
 
@@ -354,7 +355,7 @@
     
     
     CAShapeLayer *borderLayer = [CAShapeLayer layer];
-    borderLayer.lineWidth = kUnderLineViewHeight;
+    borderLayer.lineWidth = kHalfArcProgressViewLineHeight;
     borderLayer.strokeColor = self.HalfArcColor.CGColor;
     borderLayer.fillColor = [UIColor clearColor].CGColor;
     borderLayer.path = bezierPath.CGPath;
