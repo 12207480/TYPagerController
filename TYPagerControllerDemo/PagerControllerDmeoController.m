@@ -49,6 +49,7 @@
 
 - (void)addPagerController {
     TYPagerController *pagerController = [[TYPagerController alloc]init];
+    pagerController.layout.firstScrollToIndex = 1;
     pagerController.layout.prefetchItemCount = 1;
     //pagerController.layout.autoMemoryCache = NO;
     // 只有当scroll滚动动画停止时才加载pagerview，用于优化滚动时性能

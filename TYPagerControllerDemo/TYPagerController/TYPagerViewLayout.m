@@ -93,7 +93,6 @@ static const NSInteger kMemoryCountLimit = 16;
     BOOL        _scrollAnimated;
     BOOL        _isTapScrollMoved;
     CGFloat     _preOffsetX;
-    NSInteger   _firstScrollToIndex;
     BOOL        _didReloadData;
     BOOL        _didLayoutSubViews;
     

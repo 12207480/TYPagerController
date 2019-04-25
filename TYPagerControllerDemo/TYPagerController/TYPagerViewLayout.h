@@ -68,6 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) id<TYPagerViewLayoutDataSource> dataSource;
 @property (nonatomic, weak, nullable) id<TYPagerViewLayoutDelegate> delegate;
 
+@property (nonatomic, assign) NSInteger firstScrollToIndex;// default 0
+
 // strong,will control the delegate,don't set delegate on other place.
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 // if viewcontroller's automaticallyAdjustsScrollViewInsets YES ,will cause frame problems, you can set YES, default YES
