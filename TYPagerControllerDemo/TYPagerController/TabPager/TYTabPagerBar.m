@@ -169,6 +169,9 @@
 
 - (CGRect)cellFrameWithIndex:(NSInteger)index
 {
+    if (index < 0) {
+        return CGRectZero;
+    }
     if (index >= _countOfItems) {
         return CGRectZero;
     }
