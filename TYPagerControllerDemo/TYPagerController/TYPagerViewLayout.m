@@ -164,7 +164,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     _didLayoutSubViews = NO;
     _firstScrollToIndex = 0;
     _prefetchItemWillAddToSuperView = NO;
-    _addVisibleItemOnlyWhenScrollAnimatedEnd = NO;
+    _addVisibleItemOnlyWhenScrollAnimatedEnd = YES;
     _progressAnimateEnabel = YES;
     _adjustScrollViewInset = YES;
     _scrollAnimated = YES;
@@ -278,7 +278,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     }
     
     [self scrollViewWillScrollToView:_scrollView animate:animate];
-    [_scrollView setContentOffset:CGPointMake(index * CGRectGetWidth(_scrollView.frame),0) animated:NO];
+    [_scrollView setContentOffset:CGPointMake(index * CGRectGetWidth(_scrollView.frame),0) animated:animate];
     [self scrollViewDidScrollToView:_scrollView animate:animate];
 }
 

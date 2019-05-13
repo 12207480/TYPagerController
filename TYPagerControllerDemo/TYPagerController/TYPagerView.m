@@ -28,8 +28,8 @@
 
 @end
 
-@implementation TYPagerView
-
+@implementation TYPagerView {
+}
 #pragma mark - life cycle
 
 - (instancetype)initWithFrame:(CGRect)frame {
