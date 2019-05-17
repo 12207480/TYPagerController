@@ -278,7 +278,7 @@ static NSString * kScrollViewFrameObserverKey = @"scrollView.frame";
     }
     
     [self scrollViewWillScrollToView:_scrollView animate:animate];
-    [_scrollView setContentOffset:CGPointMake(index * CGRectGetWidth(_scrollView.frame),0) animated:NO];
+    [_scrollView setContentOffset:CGPointMake(index * CGRectGetWidth(_scrollView.frame),0) animated:animate];
     [self scrollViewDidScrollToView:_scrollView animate:animate];
 }
 
