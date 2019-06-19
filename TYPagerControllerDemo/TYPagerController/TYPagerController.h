@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
    3.if controller will display,will call viewWillAppear.
    4.you can register && dequeue controller, usage like tableView
  */
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching;
+- (UIViewController *_Nullable)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching;
 
 @end
 
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 // register && dequeue's usage like tableView
 - (void)registerClass:(Class)Class forControllerWithReuseIdentifier:(NSString *)identifier;
 - (void)registerNib:(UINib *)nib forControllerWithReuseIdentifier:(NSString *)identifier;
-- (UIViewController *)dequeueReusableControllerWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
+- (UIViewController *_Nullable)dequeueReusableControllerWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
 
 // scroll to index
 - (void)scrollToControllerAtIndex:(NSInteger)index animate:(BOOL)animate;
