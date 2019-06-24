@@ -28,6 +28,7 @@
 		B072EC0D1F1E37B100736A2E /* TYPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EC041F1E37B100736A2E /* TYPagerView.m */; };
 		B072EC0E1F1E37B100736A2E /* TYPagerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B072EC061F1E37B100736A2E /* TYPagerViewLayout.m */; };
 		B082E5791F0E79830084C952 /* PagerViewDmeoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B082E5781F0E79830084C952 /* PagerViewDmeoController.m */; };
+		EBF0109522C0E8CE00C5AFD3 /* TYPagerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF0109422C0E8CE00C5AFD3 /* TYPagerScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,8 @@
 		B072EC061F1E37B100736A2E /* TYPagerViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerViewLayout.m; sourceTree = "<group>"; };
 		B082E5771F0E79830084C952 /* PagerViewDmeoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerViewDmeoController.h; sourceTree = "<group>"; };
 		B082E5781F0E79830084C952 /* PagerViewDmeoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerViewDmeoController.m; sourceTree = "<group>"; };
+		EBF0109322C0E8CE00C5AFD3 /* TYPagerScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYPagerScrollView.h; sourceTree = "<group>"; };
+		EBF0109422C0E8CE00C5AFD3 /* TYPagerScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYPagerScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 		B072EBF61F1E37B100736A2E /* TabPager */ = {
 			isa = PBXGroup;
 			children = (
+				EBF0109322C0E8CE00C5AFD3 /* TYPagerScrollView.h */,
+				EBF0109422C0E8CE00C5AFD3 /* TYPagerScrollView.m */,
 				B072EBFF1F1E37B100736A2E /* TYTabPagerView.h */,
 				B072EC001F1E37B100736A2E /* TYTabPagerView.m */,
 				B072EBFD1F1E37B100736A2E /* TYTabPagerController.h */,
@@ -212,6 +217,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -248,6 +254,7 @@
 				2B9C0F531F0E11E7009BC0BD /* ViewController.m in Sources */,
 				B072EC071F1E37B100736A2E /* TYTabPagerBar.m in Sources */,
 				B072EC0A1F1E37B100736A2E /* TYTabPagerController.m in Sources */,
+				EBF0109522C0E8CE00C5AFD3 /* TYPagerScrollView.m in Sources */,
 				B072EC081F1E37B100736A2E /* TYTabPagerBarCell.m in Sources */,
 				B0284FE11F1E595D00C733E6 /* TabPagerControllerDemoController.m in Sources */,
 				B072EC0B1F1E37B100736A2E /* TYTabPagerView.m in Sources */,
