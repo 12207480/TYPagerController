@@ -204,12 +204,12 @@
         if (fromCell) {
             fromCell.titleLabel.font = _normalTextFont;
             fromCell.titleLabel.textColor = _normalTextColor;
-            fromCell.transform = CGAffineTransformMakeScale(_selectFontScale, _selectFontScale);
+            fromCell.transform = CGAffineTransformIdentity;
         }
         if (toCell) {
             toCell.titleLabel.font = _normalTextFont;
             toCell.titleLabel.textColor = _selectedTextColor ? _selectedTextColor : _normalTextColor;
-            toCell.transform = CGAffineTransformIdentity;
+            toCell.transform = CGAffineTransformMakeScale(1/_selectFontScale,1/ _selectFontScale);
         }
     };
     if (animate) {
@@ -226,9 +226,13 @@
     if (_pagerTabBar.countOfItems == 0 || !_textColorProgressEnable) {
         return;
     }
-    CGFloat currentTransform = (1.0 - _selectFontScale)*progress;
-    fromCell.transform = CGAffineTransformMakeScale(1.0-currentTransform, 1.0-currentTransform);
-    toCell.transform = CGAffineTransformMakeScale(_selectFontScale+currentTransform, _selectFontScale+currentTransform);
+    
+
+    // progress 0 --> 1 // from 1/_selectFontScale -> 1
+    CGFloat scale1 = (1 - 1 / _selectFontScale) * progress + 1 / _selectFontScale;
+    CGFloat scale2 = (1 / _selectFontScale - 1) * progress + 1;
+    fromCell.transform = CGAffineTransformMakeScale(scale1, scale1 );
+    toCell.transform = CGAffineTransformMakeScale(scale2, scale2) ;
     
     if (_normalTextColor == _selectedTextColor || !_selectedTextColor) {
         return;
