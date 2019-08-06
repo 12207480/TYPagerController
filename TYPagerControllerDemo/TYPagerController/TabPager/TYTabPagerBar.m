@@ -170,7 +170,6 @@
 
 - (CGRect)cellFrameWithIndex:(NSInteger)index
 {
-    //偶尔会出现 index == -1 的情况 此处修复
     if (index < 0) {
         return CGRectZero;
     }
