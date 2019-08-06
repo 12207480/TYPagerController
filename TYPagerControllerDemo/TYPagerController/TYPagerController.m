@@ -7,6 +7,7 @@
 //
 
 #import "TYPagerController.h"
+#import "TYPagerScrollView.h"
 
 @interface TYPagerController ()<TYPagerViewLayoutDataSource, TYPagerViewLayoutDelegate> {
     // private
@@ -34,7 +35,7 @@
 
 - (TYPagerViewLayout<UIViewController *> *)layout {
     if (!_layout) {
-        UIScrollView *scrollView = [[UIScrollView alloc]init];
+        TYPagerScrollView *scrollView = [[TYPagerScrollView alloc]init];
         TYPagerViewLayout<UIViewController *> *layout = [[TYPagerViewLayout alloc]initWithScrollView:scrollView];
         layout.dataSource = self;
         layout.delegate = self;

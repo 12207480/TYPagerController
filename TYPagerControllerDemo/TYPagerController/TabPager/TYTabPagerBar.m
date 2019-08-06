@@ -149,6 +149,7 @@
         [_delegate pagerTabBar:self configureLayout:self.layout];
     }
     [self.layout layoutIfNeed];
+    [_progressView setBackgroundColor:_layout.progressColor];
     [_collectionView reloadData];
     [self.layout adjustContentCellsCenterInBar];
     [self.layout layoutSubViews];
