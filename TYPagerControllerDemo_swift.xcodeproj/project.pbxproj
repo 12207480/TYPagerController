@@ -1,0 +1,393 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B8C4E861F5E570300539B07 /* TYTabPagerBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E771F5E570300539B07 /* TYTabPagerBar.m */; };
+		2B8C4E871F5E570300539B07 /* TYTabPagerBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E791F5E570300539B07 /* TYTabPagerBarCell.m */; };
+		2B8C4E881F5E570300539B07 /* TYTabPagerBarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E7B1F5E570300539B07 /* TYTabPagerBarLayout.m */; };
+		2B8C4E891F5E570300539B07 /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E7D1F5E570300539B07 /* TYTabPagerController.m */; };
+		2B8C4E8A1F5E570300539B07 /* TYTabPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E7F1F5E570300539B07 /* TYTabPagerView.m */; };
+		2B8C4E8B1F5E570300539B07 /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E811F5E570300539B07 /* TYPagerController.m */; };
+		2B8C4E8C1F5E570300539B07 /* TYPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E831F5E570300539B07 /* TYPagerView.m */; };
+		2B8C4E8D1F5E570300539B07 /* TYPagerViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8C4E851F5E570300539B07 /* TYPagerViewLayout.m */; };
+		2BE687951F1F3D67001FE46D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687941F1F3D67001FE46D /* AppDelegate.swift */; };
+		2BE687971F1F3D67001FE46D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687961F1F3D67001FE46D /* ViewController.swift */; };
+		2BE6879A1F1F3D67001FE46D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE687981F1F3D67001FE46D /* Main.storyboard */; };
+		2BE6879C1F1F3D67001FE46D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE6879B1F1F3D67001FE46D /* Assets.xcassets */; };
+		2BE6879F1F1F3D67001FE46D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE6879D1F1F3D67001FE46D /* LaunchScreen.storyboard */; };
+		2BE687E21F1F42C5001FE46D /* TabPagerViewDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687E11F1F42C5001FE46D /* TabPagerViewDemoController.swift */; };
+		2BE687E41F1F44CA001FE46D /* TabPagerControllerDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687E31F1F44CA001FE46D /* TabPagerControllerDemoController.swift */; };
+		2BE687E61F1F4BF2001FE46D /* PagerControlerDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE687E51F1F4BF2001FE46D /* PagerControlerDemoController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2B8C4E761F5E570300539B07 /* TYTabPagerBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBar.h; sourceTree = "<group>"; };
+		2B8C4E771F5E570300539B07 /* TYTabPagerBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBar.m; sourceTree = "<group>"; };
+		2B8C4E781F5E570300539B07 /* TYTabPagerBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarCell.h; sourceTree = "<group>"; };
+		2B8C4E791F5E570300539B07 /* TYTabPagerBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarCell.m; sourceTree = "<group>"; };
+		2B8C4E7A1F5E570300539B07 /* TYTabPagerBarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerBarLayout.h; sourceTree = "<group>"; };
+		2B8C4E7B1F5E570300539B07 /* TYTabPagerBarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerBarLayout.m; sourceTree = "<group>"; };
+		2B8C4E7C1F5E570300539B07 /* TYTabPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerController.h; sourceTree = "<group>"; };
+		2B8C4E7D1F5E570300539B07 /* TYTabPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerController.m; sourceTree = "<group>"; };
+		2B8C4E7E1F5E570300539B07 /* TYTabPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabPagerView.h; sourceTree = "<group>"; };
+		2B8C4E7F1F5E570300539B07 /* TYTabPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabPagerView.m; sourceTree = "<group>"; };
+		2B8C4E801F5E570300539B07 /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
+		2B8C4E811F5E570300539B07 /* TYPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerController.m; sourceTree = "<group>"; };
+		2B8C4E821F5E570300539B07 /* TYPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerView.h; sourceTree = "<group>"; };
+		2B8C4E831F5E570300539B07 /* TYPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerView.m; sourceTree = "<group>"; };
+		2B8C4E841F5E570300539B07 /* TYPagerViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerViewLayout.h; sourceTree = "<group>"; };
+		2B8C4E851F5E570300539B07 /* TYPagerViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPagerViewLayout.m; sourceTree = "<group>"; };
+		2BE687911F1F3D67001FE46D /* TYPagerControllerDemo_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYPagerControllerDemo_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BE687941F1F3D67001FE46D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2BE687961F1F3D67001FE46D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2BE687991F1F3D67001FE46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BE6879B1F1F3D67001FE46D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BE6879E1F1F3D67001FE46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BE687A01F1F3D67001FE46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BE687E11F1F42C5001FE46D /* TabPagerViewDemoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPagerViewDemoController.swift; sourceTree = "<group>"; };
+		2BE687E31F1F44CA001FE46D /* TabPagerControllerDemoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPagerControllerDemoController.swift; sourceTree = "<group>"; };
+		2BE687E51F1F4BF2001FE46D /* PagerControlerDemoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerControlerDemoController.swift; sourceTree = "<group>"; };
+		2BE688921F204BF6001FE46D /* TYPagerControllerDemo_swift-Brdging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TYPagerControllerDemo_swift-Brdging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BE6878E1F1F3D67001FE46D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B8C4E741F5E570300539B07 /* TYPagerController */ = {
+			isa = PBXGroup;
+			children = (
+				2B8C4E751F5E570300539B07 /* TabPager */,
+				2B8C4E801F5E570300539B07 /* TYPagerController.h */,
+				2B8C4E811F5E570300539B07 /* TYPagerController.m */,
+				2B8C4E821F5E570300539B07 /* TYPagerView.h */,
+				2B8C4E831F5E570300539B07 /* TYPagerView.m */,
+				2B8C4E841F5E570300539B07 /* TYPagerViewLayout.h */,
+				2B8C4E851F5E570300539B07 /* TYPagerViewLayout.m */,
+			);
+			name = TYPagerController;
+			path = TYPagerControllerDemo/TYPagerController;
+			sourceTree = SOURCE_ROOT;
+		};
+		2B8C4E751F5E570300539B07 /* TabPager */ = {
+			isa = PBXGroup;
+			children = (
+				2B8C4E761F5E570300539B07 /* TYTabPagerBar.h */,
+				2B8C4E771F5E570300539B07 /* TYTabPagerBar.m */,
+				2B8C4E781F5E570300539B07 /* TYTabPagerBarCell.h */,
+				2B8C4E791F5E570300539B07 /* TYTabPagerBarCell.m */,
+				2B8C4E7A1F5E570300539B07 /* TYTabPagerBarLayout.h */,
+				2B8C4E7B1F5E570300539B07 /* TYTabPagerBarLayout.m */,
+				2B8C4E7C1F5E570300539B07 /* TYTabPagerController.h */,
+				2B8C4E7D1F5E570300539B07 /* TYTabPagerController.m */,
+				2B8C4E7E1F5E570300539B07 /* TYTabPagerView.h */,
+				2B8C4E7F1F5E570300539B07 /* TYTabPagerView.m */,
+			);
+			path = TabPager;
+			sourceTree = "<group>";
+		};
+		2BE687881F1F3D67001FE46D = {
+			isa = PBXGroup;
+			children = (
+				2BE687931F1F3D67001FE46D /* TYPagerControllerDemo_swift */,
+				2BE687921F1F3D67001FE46D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BE687921F1F3D67001FE46D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BE687911F1F3D67001FE46D /* TYPagerControllerDemo_swift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BE687931F1F3D67001FE46D /* TYPagerControllerDemo_swift */ = {
+			isa = PBXGroup;
+			children = (
+				2B8C4E741F5E570300539B07 /* TYPagerController */,
+				2BE687941F1F3D67001FE46D /* AppDelegate.swift */,
+				2BE687961F1F3D67001FE46D /* ViewController.swift */,
+				2BE687E51F1F4BF2001FE46D /* PagerControlerDemoController.swift */,
+				2BE687E11F1F42C5001FE46D /* TabPagerViewDemoController.swift */,
+				2BE687E31F1F44CA001FE46D /* TabPagerControllerDemoController.swift */,
+				2BE688921F204BF6001FE46D /* TYPagerControllerDemo_swift-Brdging-Header.h */,
+				2BE687981F1F3D67001FE46D /* Main.storyboard */,
+				2BE6879B1F1F3D67001FE46D /* Assets.xcassets */,
+				2BE6879D1F1F3D67001FE46D /* LaunchScreen.storyboard */,
+				2BE687A01F1F3D67001FE46D /* Info.plist */,
+			);
+			path = TYPagerControllerDemo_swift;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BE687901F1F3D67001FE46D /* TYPagerControllerDemo_swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BE687A31F1F3D67001FE46D /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo_swift" */;
+			buildPhases = (
+				2BE6878D1F1F3D67001FE46D /* Sources */,
+				2BE6878E1F1F3D67001FE46D /* Frameworks */,
+				2BE6878F1F1F3D67001FE46D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TYPagerControllerDemo_swift;
+			productName = TYPagerControllerDemo_swift;
+			productReference = 2BE687911F1F3D67001FE46D /* TYPagerControllerDemo_swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BE687891F1F3D67001FE46D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = tany;
+				TargetAttributes = {
+					2BE687901F1F3D67001FE46D = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = ZW52Q3KXX4;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2BE6878C1F1F3D67001FE46D /* Build configuration list for PBXProject "TYPagerControllerDemo_swift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2BE687881F1F3D67001FE46D;
+			productRefGroup = 2BE687921F1F3D67001FE46D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2BE687901F1F3D67001FE46D /* TYPagerControllerDemo_swift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BE6878F1F1F3D67001FE46D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BE6879F1F1F3D67001FE46D /* LaunchScreen.storyboard in Resources */,
+				2BE6879C1F1F3D67001FE46D /* Assets.xcassets in Resources */,
+				2BE6879A1F1F3D67001FE46D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BE6878D1F1F3D67001FE46D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8C4E891F5E570300539B07 /* TYTabPagerController.m in Sources */,
+				2BE687E41F1F44CA001FE46D /* TabPagerControllerDemoController.swift in Sources */,
+				2B8C4E8B1F5E570300539B07 /* TYPagerController.m in Sources */,
+				2B8C4E8C1F5E570300539B07 /* TYPagerView.m in Sources */,
+				2BE687971F1F3D67001FE46D /* ViewController.swift in Sources */,
+				2BE687E21F1F42C5001FE46D /* TabPagerViewDemoController.swift in Sources */,
+				2BE687E61F1F4BF2001FE46D /* PagerControlerDemoController.swift in Sources */,
+				2B8C4E8D1F5E570300539B07 /* TYPagerViewLayout.m in Sources */,
+				2B8C4E861F5E570300539B07 /* TYTabPagerBar.m in Sources */,
+				2BE687951F1F3D67001FE46D /* AppDelegate.swift in Sources */,
+				2B8C4E8A1F5E570300539B07 /* TYTabPagerView.m in Sources */,
+				2B8C4E881F5E570300539B07 /* TYTabPagerBarLayout.m in Sources */,
+				2B8C4E871F5E570300539B07 /* TYTabPagerBarCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2BE687981F1F3D67001FE46D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BE687991F1F3D67001FE46D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2BE6879D1F1F3D67001FE46D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BE6879E1F1F3D67001FE46D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2BE687A11F1F3D67001FE46D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2BE687A21F1F3D67001FE46D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BE687A41F1F3D67001FE46D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZW52Q3KXX4;
+				INFOPLIST_FILE = TYPagerControllerDemo_swift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tany.TYPagerControllerDemo-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TYPagerControllerDemo_swift/TYPagerControllerDemo_swift-Brdging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2BE687A51F1F3D67001FE46D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZW52Q3KXX4;
+				INFOPLIST_FILE = TYPagerControllerDemo_swift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tany.TYPagerControllerDemo-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TYPagerControllerDemo_swift/TYPagerControllerDemo_swift-Brdging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BE6878C1F1F3D67001FE46D /* Build configuration list for PBXProject "TYPagerControllerDemo_swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BE687A11F1F3D67001FE46D /* Debug */,
+				2BE687A21F1F3D67001FE46D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BE687A31F1F3D67001FE46D /* Build configuration list for PBXNativeTarget "TYPagerControllerDemo_swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BE687A41F1F3D67001FE46D /* Debug */,
+				2BE687A51F1F3D67001FE46D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2BE687891F1F3D67001FE46D /* Project object */;
+}

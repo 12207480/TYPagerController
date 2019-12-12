@@ -2,18 +2,18 @@
 //  ViewController.m
 //  TYPagerControllerDemo
 //
-//  Created by tanyang on 16/4/13.
-//  Copyright © 2016年 tanyang. All rights reserved.
+//  Created by tany on 2017/7/6.
+//  Copyright © 2017年 tany. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "TYTabButtonPagerController.h"
-#import "CustomViewController.h"
-#import "ListViewController.h"
-#import "CollectionViewController.h"
+#import "PagerViewDmeoController.h"
+#import "PagerControllerDmeoController.h"
+#import "TabPagerControllerDemoController.h"
+#import "TabPagerViewDmeoController.h"
 
-@interface ViewController ()<TYPagerControllerDataSource>
-@property (nonatomic, strong) TYTabButtonPagerController *pagerController;
+@interface ViewController ()
+
 @end
 
 @implementation ViewController
@@ -21,100 +21,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-    [self addPagerController];
     
-    // 默认第2页 注意：pagerController 默认自动调用reloadData的时机，是在viewWillAppear和viewWillLayoutSubviews 而viewDidLoad至此之前，所以需要手动调用reloadData
-    [_pagerController reloadData];
-    [_pagerController moveToControllerAtIndex:1 animated:NO];
-    
-    UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc]initWithTitle:@"reload" style:UIBarButtonItemStylePlain target:_pagerController action:@selector(reloadData)];
-    UIBarButtonItem *scrollItem = [[UIBarButtonItem alloc]initWithTitle:@"scroll" style:UIBarButtonItemStylePlain target:self action:@selector(scrollToRamdomIndex)];
-    self.navigationItem.rightBarButtonItems = @[reloadItem,scrollItem];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if (!_showNavBar) {
-        self.navigationController.navigationBarHidden = YES;
-    }
+#pragma mark - action
+
+- (IBAction)turnToPageViewDemo:(id)sender {
+    PagerViewDmeoController *vc = [[PagerViewDmeoController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    if (!_showNavBar) {
-        self.navigationController.navigationBarHidden = NO;
-    }
+- (IBAction)turnToTabPagerViewDemo:(id)sender {
+    TabPagerViewDmeoController *vc = [[TabPagerViewDmeoController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    _pagerController.view.frame = self.view.bounds;
+- (IBAction)turnToPageControllerDemo:(id)sender {
+    PagerControllerDmeoController *pagerController = [[PagerControllerDmeoController alloc]init];
+    [self.navigationController pushViewController:pagerController animated:YES];
 }
 
-- (void)addPagerController
-{
-    TYTabButtonPagerController *pagerController = [[TYTabButtonPagerController alloc]init];
-    pagerController.dataSource = self;
-    pagerController.adjustStatusBarHeight = YES;
-    //TYTabButtonPagerController set barstyle will reset (TYTabPagerController not reset)cell propertys
-    pagerController.barStyle = _variable ? (_showNavBar? TYPagerBarStyleProgressBounceView : TYPagerBarStyleProgressElasticView) : TYPagerBarStyleProgressView;
-    // after set barstyle,you need set cell propertys that you want
-    //pagerController.cellWidth = 56;
-    pagerController.cellSpacing = 8;
-    if (_showNavBar) {
-        pagerController.progressWidth = _variable ? 0 : 36;
-    }
-    
-    pagerController.view.frame = self.view.bounds;
-    [self addChildViewController:pagerController];
-    [self.view addSubview:pagerController.view];
-    _pagerController = pagerController;
+- (IBAction)turnToTabPagerControllerDemo:(id)sender {
+    TabPagerControllerDemoController *pagerController = [[TabPagerControllerDemoController alloc]init];
+    //pagerController.pagerController.layout.prefetchItemCount = 1;
+    [self.navigationController pushViewController:pagerController animated:YES];
 }
-
-- (void)scrollToRamdomIndex
-{
-    [_pagerController moveToControllerAtIndex:arc4random()%30 animated:NO];
-}
-
-#pragma mark - TYPagerControllerDataSource
-
-- (NSInteger)numberOfControllersInPagerController
-{
-    return 30;
-}
-
-
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
-{
-    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
-}
-
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
-{
-    if (index%3 == 0) {
-        CustomViewController *VC = [[CustomViewController alloc]init];
-        VC.text = [@(index) stringValue];
-        return VC;
-    }else if (index%3 == 1) {
-         ListViewController *VC = [[ListViewController alloc]init];
-        VC.text = [@(index) stringValue];
-        return VC;
-    }else {
-        CollectionViewController *VC = [[CollectionViewController alloc]init];
-        VC.text = [@(index) stringValue];
-        return VC;
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

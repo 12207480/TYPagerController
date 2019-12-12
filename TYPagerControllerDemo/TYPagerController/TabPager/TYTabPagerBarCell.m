@@ -6,13 +6,13 @@
 //  Copyright © 2016年 tanyang. All rights reserved.
 //
 
-#import "TYTabTitleViewCell.h"
+#import "TYTabPagerBarCell.h"
 
-@interface TYTabTitleViewCell ()
+@interface TYTabPagerBarCell ()
 @property (nonatomic, weak) UILabel *titleLabel;
 @end
 
-@implementation TYTabTitleViewCell
+@implementation TYTabPagerBarCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -38,6 +38,10 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:titleLabel];
     _titleLabel = titleLabel;
+}
+
++ (NSString *)cellIdentifier {
+    return @"TYTabPagerBarCell";
 }
 
 - (void)layoutSubviews

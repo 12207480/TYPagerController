@@ -1,13 +1,16 @@
-# TYPagerController
-page View controller,simple,high custom,and have tabBar styles.<br>
-TYPagerController 简单，支持定制，页面控制器,可以滚动内容和标题栏,包含多种style
+# TYPagerController v2.0
+TYPagerController 简单，强大，高度定制，页面控制器,水平滚动内容和标题栏,包含多种barStyle。<br>
+TYPagerController v2.0 重构优化代码，分离出TYPagerViewLayout布局类,添加更多功能，更加强大，稳定，已经在项目中使用<br>
+如果还想使用以前的版本可以查看分支v1.0.6 和 pod 'TYPagerController', '~> 1.0.6' <br>
 
-**TYPagerController v2.0 is coming soon...**
+* TYPagerViewLayout 水平滚动页面的layout类，只需要initWithScrollView:即可实现水平滚动页面.
+* TYPagerView 包含TYPagerViewLayout的水平滚动页面View
+* TYPagerController 包含TYPagerViewLayout的水平滚动页面Controller。
+* TYTabPagerBar Pager的标题 tabBar
+* TYTabPagerView 包含TabBar的TYPagerView
+* TYTabPagerController 包含TabBar的TYPagerController
 
-* TYPagerController 水平滚动页面控制器，不包含任何其他的控件（TabBar），contentTopEdging 为距离top的高度。
-* TYTabPagerController 包含TabBar（我帮你创建了Tabbar），contentTopEdging为TabBar的高度，调用registerCellClass 注册cell（遵守TYTabTitleCellProtocol），然后在代理方法里改变cell。
-* TYTabButtonPagerController 同上，默认注册了TYTabTitleViewCell
-
+注意：获取数据后必须调用reloadData.<br>
 更详细的使用请看[LovePlayNews](https://github.com/12207480/LovePlayNews)项目
 
 ## CocoaPods
@@ -16,12 +19,12 @@ pod 'TYPagerController'
 ```
 
 ## Requirements
-* Xcode 5 or higher
-* iOS 6.0 or higher
+* Xcode 7 or higher
+* iOS 7.0 or higher
 * ARC
 
 ## ScreenShot
-####TYPagerBarStyle
+### TYPagerBarStyle
 
 New TYPagerBarStyleProgressElasticView<br>
 ![image](https://github.com/12207480/TYPagerController/blob/master/ScreenShot/TYPagerController6.gif)
@@ -34,42 +37,82 @@ New TYPagerBarStyleProgressElasticView<br>
 
 3 TYPagerBarStyleCoverView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController3.gif)
+![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController7.gif)
 
 4 TYPagerBarStyleNoneView<br>
 ![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController4.gif)
 
-![image](https://raw.githubusercontent.com/12207480/TYPagerController/master/ScreenShot/TYPagerController5.gif)
+## API
 
-## Datasource and delegate
-
+### Class
+* TYPagerViewLayout
 ```objc
-@protocol TYPagerControllerDataSource <NSObject>
+@interface TYPagerViewLayout<__covariant ItemType> : NSObject
 
-// viewController count in pagerController
-- (NSInteger)numberOfControllersInPagerController;
+@property (nonatomic, weak, nullable) id<TYPagerViewLayoutDataSource> dataSource;
+@property (nonatomic, weak, nullable) id<TYPagerViewLayoutDelegate> delegate;
 
-// viewController at index in pagerController
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index;
+// strong,will control the delegate,don't set delegate on other place.
+@property (nonatomic, strong, readonly) UIScrollView *scrollView;
+// if viewcontroller's automaticallyAdjustsScrollViewInsets YES ,will cause frame problems, you can set YES, default YES
+@property (nonatomic, assign) BOOL adjustScrollViewInset;
 
-@optional
+@property (nonatomic, assign, readonly) NSInteger countOfPagerItems;
+@property (nonatomic, assign, readonly) NSInteger curIndex;// default -1
 
-// viewController title in pagerController
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index;
+@property (nonatomic, strong, readonly) NSCache<NSNumber *,ItemType> *memoryCache;; // will cache pagerView,you can set countLimit
+@property (nonatomic, assign) BOOL autoMemoryCache; // default YES
 
-@end
+@property (nonatomic, assign) NSInteger prefetchItemCount;// preload left and right item's count , default 0
+
+@property (nonatomic, assign, readonly) NSRange prefetchRange;
+@property (nonatomic, assign, readonly) NSRange visibleRange;
+
+@property (nonatomic, strong, nullable, readonly) NSArray<NSNumber *> * visibleIndexs;
+@property (nonatomic, strong, nullable, readonly) NSArray<ItemType> * visibleItems;
+
+// default YES, if NO,will not call delegate transitionFromIndex:toIndex:progress:,but will call transitionFromIndex:toIndex:
+@property (nonatomic, assign) BOOL progressAnimateEnabel;
+
+// default NO, when scroll visible range change will add item.If YES add item only when scroll animate end, suggest set prefetchItemCount 1 or more
+@property (nonatomic, assign) BOOL addVisibleItemOnlyWhenScrollAnimatedEnd;
+
+// default 0.5,when scroll progress percent will change index, only progressAnimateEnabel is NO or don't implement delegate transitionFromIndex: toIndex: progress:
+@property (nonatomic, assign) CGFloat changeIndexWhenScrollProgress;
 ```
+* TYPagerView
 ```objc
-@protocol TYPagerControllerDelegate <NSObject>
+@interface TYPagerView : UIView
 
-@optional
+@property (nonatomic, weak, nullable) id<TYPagerViewDataSource> dataSource;
+@property (nonatomic, weak, nullable) id<TYPagerViewDelegate> delegate;
+// pagerView's layout,don't set layout's dataSource to other
+@property (nonatomic, strong, readonly) TYPagerViewLayout<UIView *> *layout;
+@property (nonatomic, strong, readonly) UIScrollView *scrollView;
 
-// transition from index to index with animated
-- (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex animated:(BOOL)animated;
+@property (nonatomic, assign, readonly) NSInteger countOfPagerViews;
+@property (nonatomic, assign, readonly) NSInteger curIndex;// default -1
 
-// transition from index to index with progress
-- (void)pagerController:(TYPagerController *)pagerController transitionFromIndex:(NSInteger)formIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
+@property (nonatomic, assign, nullable, readonly) NSArray<UIView *> *visibleViews;
 
-@end
+@property (nonatomic, assign) UIEdgeInsets contentInset;
+
+//if not visible, prefecth, cache view at index, return nil
+- (UIView *_Nullable)viewForIndex:(NSInteger)index;
+
+// register && dequeue's usage like tableView
+- (void)registerClass:(Class)Class forViewWithReuseIdentifier:(NSString *)identifier;
+- (void)registerNib:(UINib *)nib forViewWithReuseIdentifier:(NSString *)identifier;
+- (UIView *)dequeueReusableViewWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
+
+// scroll to index
+- (void)scrollToViewAtIndex:(NSInteger)index animate:(BOOL)animate;
+
+// update data and layout,but don't reset propertys(curIndex,visibleDatas,prefechDatas)
+- (void)updateData;
+
+// reload data and reset propertys
+- (void)reloadData;
 ```
 ```objc
 @protocol TYTabPagerControllerDelegate <TYPagerControllerDelegate>
@@ -85,102 +128,101 @@ New TYPagerBarStyleProgressElasticView<br>
 
 @end
 ```
+* TYPagerController
+```objc
+@interface TYPagerController : UIViewController
+
+@property (nonatomic, weak, nullable) id<TYPagerControllerDataSource> dataSource;
+@property (nonatomic, weak, nullable) id<TYPagerControllerDelegate>   delegate;
+// pagerController's layout,don't set layout's dataSource to other
+@property (nonatomic, strong, readonly) TYPagerViewLayout<UIViewController *> *layout;
+@property (nonatomic, weak, readonly) UIScrollView *scrollView;
+
+@property (nonatomic, assign, readonly) NSInteger countOfControllers;
+@property (nonatomic, assign, readonly) NSInteger curIndex;// default -1
+
+@property (nonatomic, strong, nullable, readonly) NSArray<UIViewController *> *visibleControllers;
+
+@property (nonatomic, assign) UIEdgeInsets contentInset;
+
+//if not visible, prefecth, cache view at index, return nil
+- (UIViewController *_Nullable)controllerForIndex:(NSInteger)index;
+
+// register && dequeue's usage like tableView
+- (void)registerClass:(Class)Class forControllerWithReuseIdentifier:(NSString *)identifier;
+- (void)registerNib:(UINib *)nib forControllerWithReuseIdentifier:(NSString *)identifier;
+- (UIViewController *)dequeueReusableControllerWithReuseIdentifier:(NSString *)identifier forIndex:(NSInteger)index;
+
+// scroll to index
+- (void)scrollToControllerAtIndex:(NSInteger)index animate:(BOOL)animate;
+
+//  update data and layout,but don't reset propertys(curIndex,visibleDatas,prefechDatas)
+- (void)updateData;
+
+// reload data and reset propertys
+- (void)reloadData;
+```
+
 ##Usage Demo
-
-if you want to add coustom TabBar, you can inherit TYPagerController，and set contentTopEdging,else  you can inherit TYTabPagerController or TYTabButtonPagerController,set contentTopEdging(TabBar height) and custom cell(conform TYTabTitleCellProtocol), call registerCellClass, change cell on delegate.<br>
-
-如果你想自己添加TabBar，你可以继承TYPagerController 然后设置 contentTopEdging ，留出高度添加TabBar,你也可以 直接继承 TYTabPagerController或者TYTabButtonPagerController 设置contentTopEdging(TabBar height) ，我帮你创建了Tabbar,你只要调用registerCellClass 注册cell（遵守TYTabTitleCellProtocol），然后在代理方法里改变cell。<br>
-
-关于默认index，可以再viewdidload中调用<br>
+* TYTabPagerView
 ```objc
- // 默认第2页 注意：pagerController 默认自动调用reloadData的时机，是在viewWillAppear和viewWillLayoutSubviews 而viewDidLoad至此之前，所以需要手动调用reloadData
-[_pagerController reloadData];
- [_pagerController moveToControllerAtIndex:1 animated:NO];
-```
-更多的使用方法 请查看 demo。
-
-* **first method**
-
-```objc
-// add pagerController
-- (void)addPagerController
-{
-    TYTabButtonPagerController *pagerController = [[TYTabButtonPagerController alloc]init];
-    pagerController.dataSource = self;
-    pagerController.adjustStatusBarHeight = YES;
-    //pagerController.cellWidth = 56;
-    pagerController.cellSpacing = 8;
-    pagerController.barStyle = _variable ? TYPagerBarStyleProgressBounceView: TYPagerBarStyleProgressView;
-    
-    pagerController.view.frame = self.view.bounds;
-    [self addChildViewController:pagerController];
-    [self.view addSubview:pagerController.view];
-    _pagerController = pagerController;
+- (void)addTabPagerView {
+    TYTabPagerView *pagerView = [[TYTabPagerView alloc]init];
+    pagerView.tabBar.layout.barStyle = TYPagerBarStyleCoverView;
+    pagerView.tabBar.progressView.backgroundColor = [UIColor lightGrayColor];
+    pagerView.dataSource = self;
+    pagerView.delegate = self;
+    [self.view addSubview:pagerView];
+    _pagerView = pagerView;
 }
 
-#pragma mark - TYPagerControllerDataSource
+#pragma mark - TYTabPagerViewDataSource
 
-- (NSInteger)numberOfControllersInPagerController
-{
-    return 30;
+- (NSInteger)numberOfViewsInTabPagerView {
+    return _datas.count;
 }
 
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
-{
-    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
+- (UIView *)tabPagerView:(TYTabPagerView *)tabPagerView viewForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
+    UIView *view = [[UIView alloc]initWithFrame:[tabPagerView.layout frameForItemAtIndex:index]];
+    view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:arc4random()%255/255.0];
+    //NSLog(@"viewForIndex:%ld prefetching:%d",index,prefetching);
+    return view;
 }
 
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
-{
-    if (index%3 == 0) {
-        CustomViewController *VC = [[CustomViewController alloc]init];
-        VC.text = [@(index) stringValue];
-        return VC;
-    }else if (index%3 == 1) {
-         ListViewController *VC = [[ListViewController alloc]init];
-        VC.text = [@(index) stringValue];
-        return VC;
-    }else {
-        CollectionViewController *VC = [[CollectionViewController alloc]init];
-        VC.text = [@(index) stringValue];
-        return VC;
-    }
+- (NSString *)tabPagerView:(TYTabPagerView *)tabPagerView titleForIndex:(NSInteger)index {
+    NSString *title = _datas[index];
+    return title;
 }
-
 ```
 
-* **second method**
-
+* TYTabPagerController
 ```objc
-@interface CustomPagerController : TYTabButtonPagerController
-
-@end
-
-@implementation CustomPagerController
+@interface TabPagerControllerDemoController : TYTabPagerController
 
 - (void)viewDidLoad {
-   // set bar style will reset progress propertys, set it behind [super viewdidload]
-    self.barStyle = TYPagerBarStyleProgressBounceView;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.adjustStatusBarHeight = YES;
-    self.cellSpacing = 8;
+    self.title = @"TabPagerControllerDemoController";
+    self.tabBar.layout.barStyle = TYPagerBarStyleProgressView;
+    self.dataSource = self;
+    self.delegate = self;
+    
+    [self loadData];
 }
 
-#pragma mark - TYPagerControllerDataSource
-
-- (NSInteger)numberOfControllersInPagerController
-{
-    return 30;
+- (void)loadData {
+    _datas = [datas copy];
+    // must call reloadData
+    [self reloadData];
 }
 
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
-{
-    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
+#pragma mark - TYTabPagerControllerDataSource
+
+- (NSInteger)numberOfControllersInTabPagerController {
+    return _datas.count;
 }
 
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
-{
+- (UIViewController *)tabPagerController:(TYTabPagerController *)tabPagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching {
     if (index%3 == 0) {
         CustomViewController *VC = [[CustomViewController alloc]init];
         VC.text = [@(index) stringValue];
@@ -196,9 +238,15 @@ if you want to add coustom TabBar, you can inherit TYPagerController，and set c
     }
 }
 
-@end
-
+- (NSString *)tabPagerController:(TYTabPagerController *)tabPagerController titleForIndex:(NSInteger)index {
+    NSString *title = _datas[index];
+    return title;
+}
 ```
+
+
+更多的使用方法 请查看 demo。
+
 ### Contact
 如果你发现bug，please pull reqeust me <br>
 如果你有更好的改进，please pull reqeust me <br>
