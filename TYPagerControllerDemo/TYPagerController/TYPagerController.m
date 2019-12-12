@@ -204,7 +204,13 @@ NS_INLINE NSRange visibleRangWithOffset(CGFloat offset,CGFloat width, NSInteger 
 
 - (NSInteger)statusBarHeight
 {
-    return (_adjustStatusBarHeight && (!self.navigationController || self.navigationController.isNavigationBarHidden) && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 20:0;
+    return (_adjustStatusBarHeight && (!self.navigationController || self.navigationController.isNavigationBarHidden) && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? [self statusBarHeight]:0;
+}
+
+-(float) statusBarHeight
+{
+    CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
+    return MIN(statusBarSize.width, statusBarSize.height);
 }
 
 // if need layout contentView
