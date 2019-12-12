@@ -129,6 +129,17 @@
     return _automaticallySystemManagerViewAppearanceMethods;
 }
 
+- (NSInteger)statusBarHeight
+{
+    return (_adjustStatusBarHeight && (!self.navigationController || self.navigationController.isNavigationBarHidden) && [[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? [self statusBarHeight]:0;
+}
+
+-(float) statusBarHeight
+{
+    CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
+    return MIN(statusBarSize.width, statusBarSize.height);
+}
+
 - (void)childViewController:(UIViewController *)childViewController BeginAppearanceTransition:(BOOL)isAppearing animated:(BOOL)animated {
     if (!_automaticallySystemManagerViewAppearanceMethods) {
         [childViewController beginAppearanceTransition:isAppearing animated:animated];
