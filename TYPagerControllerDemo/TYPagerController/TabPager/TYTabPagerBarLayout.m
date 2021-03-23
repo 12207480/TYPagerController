@@ -207,7 +207,7 @@
             fromCell.transform = CGAffineTransformMakeScale(_selectFontScale, _selectFontScale);
         }
         if (toCell) {
-            toCell.titleLabel.font = _normalTextFont;
+            toCell.titleLabel.font = _selectedTextFont;
             toCell.titleLabel.textColor = _selectedTextColor ? _selectedTextColor : _normalTextColor;
             toCell.transform = CGAffineTransformIdentity;
         }
